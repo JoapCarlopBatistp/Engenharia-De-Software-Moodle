@@ -1,4 +1,4 @@
-package View;
+package View.View_Login;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,20 +11,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import View.botao_redondo;
 
 public class painel_login extends JPanel{
     
     private JTextField usuario;
-    private JTextField senha;
+    private JPasswordField senha;
 
     public painel_login() throws IOException{
         JLabel titulo_login = new JLabel("Login");
         JLabel titulo_usuario = new JLabel("Usuário:");
         JLabel titulo_senha = new JLabel("Senha:");
-        JButton botao_login = new JButton("Login");
+        botao_redondo botao_login = new botao_redondo("Login");
         usuario = new JTextField();
-        senha = new JTextField();
+        senha = new JPasswordField();
 
         configPainel();
         adicionaComponentes(usuario, senha, titulo_login, titulo_usuario, titulo_senha, botao_login);
@@ -39,10 +42,10 @@ public class painel_login extends JPanel{
         
     }
 
-    private void adicionaComponentes(JTextField usuario, JTextField senha, JLabel titulo_login, JLabel titulo_usuario, JLabel titulo_senha, JButton botao_login){
+    private void adicionaComponentes(JTextField usuario, JPasswordField senha, JLabel titulo_login, JLabel titulo_usuario, JLabel titulo_senha, botao_redondo botao_login){
         
         setLayout(null);
-        titulo_login.setFont(new Font("Verdana", Font.PLAIN, 30));
+        titulo_login.setFont(new Font("Britannic Bold", Font.BOLD, 30));
         titulo_login.setForeground(new Color(248, 181, 95));
         titulo_login.setBounds(145,240,150,100);
 
@@ -60,6 +63,7 @@ public class painel_login extends JPanel{
 
         botao_login.setBounds(70, 530, 230, 40);
         botao_login.setBackground(Color.WHITE);
+        botao_login.setFocusable(false);
 
 
         add(titulo_login);

@@ -1,10 +1,11 @@
-package View;
+package View.View_Login;
 
 import javax.swing.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -23,12 +24,13 @@ public class tela_cadastro extends JFrame{
         botaoMinimizar = new JButton();
         painel = new painel_login();
         JLabel imagem_cadastro = new JLabel();
+        JLabel nome_programa = new JLabel();
 
         botaoFechar.addActionListener(new FecharListener());
         botaoMinimizar.addActionListener(new MinimizarListener());
 
         configTela();
-        adicionaComponentes(botaoFechar, botaoMinimizar, painel, imagem_cadastro);
+        adicionaComponentes(botaoFechar, botaoMinimizar, painel, imagem_cadastro, nome_programa);
         setVisible(true);
     }
 
@@ -44,7 +46,7 @@ public class tela_cadastro extends JFrame{
         getContentPane().setBackground(new Color(61, 54, 92));
     }
 
-    private void adicionaComponentes(JButton botaoFechar, JButton botaoMinimizar, painel_login painel, JLabel imagem_cadastro){
+    private void adicionaComponentes(JButton botaoFechar, JButton botaoMinimizar, painel_login painel, JLabel imagem_cadastro, JLabel nome_programa){
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         ImageIcon icone_fechar = new ImageIcon("img/cross.png");
         Image imagem_fechar = icone_fechar.getImage();
@@ -71,6 +73,11 @@ public class tela_cadastro extends JFrame{
         imagem_cadastro.setIcon(icone_gato);
         imagem_cadastro.setBounds(200, 200, 500, 500);
 
+        nome_programa.setBounds(110,32,200,50);
+        nome_programa.setForeground(new Color(248, 181, 95));
+        nome_programa.setFont(new Font("Britannic Bold", Font.BOLD, 15));
+
+        add(nome_programa);
         add(imagem_cadastro, BorderLayout.CENTER);
         add(painel);
         add(botaoFechar);
