@@ -59,6 +59,7 @@ public class painel_login extends JPanel{
         senha.setBounds(40, 450, 300, 20);
 
         botao_login.setBounds(70, 530, 230, 40);
+        botao_login.setBackground(Color.WHITE);
 
 
         add(titulo_login);
