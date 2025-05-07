@@ -33,7 +33,7 @@ public class painel_login extends JPanel{
 
     private void configPainel() throws IOException{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBackground(new Color(124, 69, 133));
+        setBackground(new Color(61, 46, 85));
         setSize((int)screensize.getWidth()/4, (int)screensize.getHeight()/2);
         setLayout(new FlowLayout(FlowLayout.CENTER));
         
@@ -50,11 +50,17 @@ public class painel_login extends JPanel{
         titulo_usuario.setForeground(new Color(248, 181, 95));
         titulo_usuario.setBounds(40,290,150,100);
 
+        usuario.setBounds(40, 370, 300, 20);
+
         titulo_senha.setFont(new Font("Verdana", Font.PLAIN, 18));
         titulo_senha.setForeground(new Color(248, 181, 95));
         titulo_senha.setBounds(40,370,150,100);
 
-        
+        senha.setBounds(40, 450, 300, 20);
+
+        botao_login.setBounds(70, 530, 230, 40);
+
+
         add(titulo_login);
         add(titulo_usuario);
         add(usuario);
