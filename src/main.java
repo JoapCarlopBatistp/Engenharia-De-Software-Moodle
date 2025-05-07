@@ -1,4 +1,3 @@
-import View.View_Aluno.*;
 import View.View_Login.tela_cadastro;
 
 public class main {
@@ -7,7 +6,7 @@ public class main {
         try {
             new tela_cadastro();
         } catch (Exception e) {
-            // TODO: handle exception
+            System.err.println("Não foi possível iniciar a operação");
         }
     }
 }

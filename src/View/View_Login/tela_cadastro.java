@@ -1,7 +1,7 @@
 package View.View_Login;
 
 import javax.swing.*;
-
+import Controller.actions_performed.fechar_listener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,8 +26,8 @@ public class tela_cadastro extends JFrame{
         JLabel imagem_cadastro = new JLabel();
         JLabel nome_programa = new JLabel();
 
-        botaoFechar.addActionListener(new FecharListener());
-        botaoMinimizar.addActionListener(new MinimizarListener());
+        botaoFechar.addActionListener(new fechar_listener());
+        botaoMinimizar.addActionListener(new minimizar_listener());
 
         configTela();
         adicionaComponentes(botaoFechar, botaoMinimizar, painel, imagem_cadastro, nome_programa);
@@ -84,19 +84,12 @@ public class tela_cadastro extends JFrame{
         add(botaoMinimizar);
     }
 
-    private class FecharListener implements ActionListener{
+    public class minimizar_listener implements ActionListener{
+    
         @Override
         public void actionPerformed(ActionEvent e) {
             //DO SOMETHING
-            System.exit(0);
-        }
-    }
-
-    private class MinimizarListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //DO SOMETHING
-            setState(JFrame.ICONIFIED);;
+            setState(JFrame.ICONIFIED);
         }
     }
 
