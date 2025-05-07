@@ -1,0 +1,96 @@
+package View;
+
+import javax.swing.*;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+
+public class tela_cadastro extends JFrame{
+    
+    private JButton botaoFechar;
+    private JButton botaoMinimizar;
+    private painel_login painel;
+
+    public tela_cadastro() throws IOException{
+        botaoFechar = new JButton();
+        botaoMinimizar = new JButton();
+        painel = new painel_login();
+        JLabel imagem_cadastro = new JLabel();
+
+        botaoFechar.addActionListener(new FecharListener());
+        botaoMinimizar.addActionListener(new MinimizarListener());
+
+        configTela();
+        adicionaComponentes(botaoFechar, botaoMinimizar, painel, imagem_cadastro);
+        setVisible(true);
+    }
+
+    private void configTela() throws IOException{
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        setUndecorated(true);
+        setTitle("Moodle 2");
+        setSize((int)screensize.getWidth(), (int)screensize.getHeight());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setLayout(null);
+        getContentPane().setBackground(new Color(61, 54, 92));
+    }
+
+    private void adicionaComponentes(JButton botaoFechar, JButton botaoMinimizar, painel_login painel, JLabel imagem_cadastro){
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        ImageIcon icone_fechar = new ImageIcon("img/cross.png");
+        Image imagem_fechar = icone_fechar.getImage();
+        Image imagemEmEscala_fechar = imagem_fechar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
+        ImageIcon icone_minimizar = new ImageIcon("img/window-minimize.png");
+        Image imagem_minimizar = icone_minimizar.getImage();
+        Image imagemEmEscala_minimizar = imagem_minimizar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
+        ImageIcon icone_gato = new ImageIcon("img/gato.gif");
+
+        botaoFechar.setBounds((int)screensize.getWidth() - 64,32,32,32);
+        botaoFechar.setLayout(null);
+        botaoFechar.setBackground(new Color(61, 54, 92));
+        botaoFechar.setBorder(null);
+        botaoFechar.setIcon(new ImageIcon(imagemEmEscala_fechar));
+
+        botaoMinimizar.setBounds((int)screensize.getWidth() - 110,32,32,32);
+        botaoMinimizar.setLayout(null);
+        botaoMinimizar.setBackground(new Color(61, 54, 92));
+        botaoMinimizar.setBorder(null);
+        botaoMinimizar.setIcon(new ImageIcon(imagemEmEscala_minimizar));
+
+        painel.setBounds((int)screensize.getWidth()/2, 0, (int)screensize.getWidth()/4, (int)screensize.getHeight());
+
+        imagem_cadastro.setIcon(icone_gato);
+        imagem_cadastro.setBounds(200, 200, 500, 500);
+
+        add(imagem_cadastro, BorderLayout.CENTER);
+        add(painel);
+        add(botaoFechar);
+        add(botaoMinimizar);
+    }
+
+    private class FecharListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //DO SOMETHING
+            System.exit(0);
+        }
+    }
+
+    private class MinimizarListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //DO SOMETHING
+            setState(JFrame.ICONIFIED);;
+        }
+    }
+
+}
