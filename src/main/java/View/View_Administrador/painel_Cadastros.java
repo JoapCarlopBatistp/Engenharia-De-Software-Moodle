@@ -30,6 +30,8 @@ public class painel_Cadastros extends JPanel{
         adicionaComponentes(titulo, botoes );
 
         botao_sala.addActionListener(e -> new adminController().cadastrarSala());
+        botao_aluno.addActionListener(e -> new adminController().cadastrarAluno());
+        botao_profe.addActionListener(e -> new adminController().cadastrarProfessor());
         setVisible(true);
     }
  

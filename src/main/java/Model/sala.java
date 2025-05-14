@@ -4,7 +4,6 @@ import Database.databaseconn;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class sala {
     public void cadastrar(final Integer capacidade) {

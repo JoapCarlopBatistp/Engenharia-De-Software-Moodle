@@ -16,13 +16,10 @@ public class databaseconn {
         try {
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(URL, LOGIN, SENHA);
-            System.out.println("Conectou");
             return true;
         } catch (ClassNotFoundException erro){
-            System.out.println("Driver não encontrado!\n" + erro.toString());
             return false;
         } catch (SQLException erro){
-            System.out.println("Problemas na conexão com a fonte de dados\n" + erro.toString());
             return false;
         }
     }
