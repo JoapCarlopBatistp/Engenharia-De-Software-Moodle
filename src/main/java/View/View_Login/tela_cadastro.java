@@ -1,7 +1,7 @@
-package View.View_Login;
+package main.java.View.View_Login;
 
 import javax.swing.*;
-import Controller.actions_performed.fechar_listener;
+import main.java.Controller.actions_performed.fechar_listener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -48,13 +48,13 @@ public class tela_cadastro extends JFrame{
 
     private void adicionaComponentes(JButton botaoFechar, JButton botaoMinimizar, painel_login painel, JLabel imagem_cadastro, JLabel nome_programa){
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon icone_fechar = new ImageIcon("img/cross.png");
+        ImageIcon icone_fechar = new ImageIcon(tela_cadastro.class.getResource("/cross.png"));
         Image imagem_fechar = icone_fechar.getImage();
         Image imagemEmEscala_fechar = imagem_fechar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
-        ImageIcon icone_minimizar = new ImageIcon("img/window-minimize.png");
+        ImageIcon icone_minimizar = new ImageIcon(tela_cadastro.class.getResource("/window-minimize.png"));
         Image imagem_minimizar = icone_minimizar.getImage();
         Image imagemEmEscala_minimizar = imagem_minimizar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
-        ImageIcon icone_gato = new ImageIcon("img/gato.gif");
+        ImageIcon icone_gato = new ImageIcon(tela_cadastro.class.getResource("/gato.gif"));
 
         botaoFechar.setBounds((int)screensize.getWidth() - 64,32,32,32);
         botaoFechar.setLayout(null);

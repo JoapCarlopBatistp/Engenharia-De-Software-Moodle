@@ -1,7 +1,7 @@
-package View.View_Administrador;
+package main.java.View.View_Administrador;
 
-import static View.View_Administrador.tela_administrador.*;
-import View.botao_redondo;
+import static main.java.View.View_Administrador.tela_administrador.*;
+import main.java.View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;

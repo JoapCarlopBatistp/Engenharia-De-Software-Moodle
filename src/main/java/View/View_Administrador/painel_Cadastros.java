@@ -1,7 +1,9 @@
-package View.View_Administrador;
+package main.java.View.View_Administrador;
 
-import static View.View_Administrador.tela_administrador.*;
-import View.botao_redondo;
+import static main.java.View.View_Administrador.tela_administrador.*;
+
+import main.java.Controller.adminController;
+import main.java.View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
@@ -16,7 +18,7 @@ public class painel_Cadastros extends JPanel{
 
         public painel_Cadastros() throws IOException{
         JLabel titulo = new JLabel("Cadastro");
-        botao_redondo botao_sala = new botao_redondo("Cadastrar nova sala");
+        botao_redondo botao_sala  = new botao_redondo("Cadastrar nova sala");
         botao_redondo botao_turma = new botao_redondo("Cadastrar nova turma");
         botao_redondo botao_aluno = new botao_redondo("Cadastrar novo aluno");
         botao_redondo botao_profe = new botao_redondo("Cadastrar novo professor");
@@ -26,6 +28,8 @@ public class painel_Cadastros extends JPanel{
 
         configPainel();
         adicionaComponentes(titulo, botoes );
+
+        botao_sala.addActionListener(e -> new adminController().cadastrarSala());
         setVisible(true);
     }
  

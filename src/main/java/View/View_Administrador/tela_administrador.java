@@ -1,6 +1,7 @@
-package View.View_Administrador;
+package main.java.View.View_Administrador;
 
-import Controller.actions_performed.fechar_listener;
+import main.java.Controller.actions_performed.fechar_listener;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -80,12 +81,12 @@ public class tela_administrador extends JFrame{
     // Função para definir os botões de fechar e minimizar
     private void configurarBotoesControle() {
         
-        ImageIcon icone_fechar = new ImageIcon("img/cross.png");
+        ImageIcon icone_fechar = new ImageIcon(tela_administrador.class.getResource("/cross.png"));
         Image imagem_fechar = icone_fechar.getImage();
         Image imagemEmEscala_fechar = imagem_fechar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
         
         // importando a imagem
-        ImageIcon icone_minimizar = new ImageIcon("img/window-minimize.png");
+        ImageIcon icone_minimizar = new ImageIcon(tela_administrador.class.getResource("/window-minimize.png"));
         // transformando na classe Image em vez de ImageIcon
         Image imagem_minimizar = icone_minimizar.getImage();
         // Definindo o tamanho(escala)

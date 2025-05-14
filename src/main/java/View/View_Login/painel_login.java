@@ -1,4 +1,4 @@
-package View.View_Login;
+package main.java.View.View_Login;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import View.botao_redondo;
+import main.java.View.botao_redondo;
 
 public class painel_login extends JPanel{
     
