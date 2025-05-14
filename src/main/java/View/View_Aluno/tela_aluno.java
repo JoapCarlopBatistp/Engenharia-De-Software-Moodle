@@ -1,4 +1,4 @@
-package main.java.View.View_Aluno;
+package View.View_Aluno;
 
 import javax.swing.*;
 

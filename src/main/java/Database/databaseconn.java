@@ -1,4 +1,4 @@
-package main.java.Database;
+package Database;
 
 import javax.swing.*;
 import java.sql.*;

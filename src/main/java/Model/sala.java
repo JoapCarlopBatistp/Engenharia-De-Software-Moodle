@@ -1,6 +1,6 @@
-package main.java.Model;
+package Model;
 
-import main.java.Database.databaseconn;
+import Database.databaseconn;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;

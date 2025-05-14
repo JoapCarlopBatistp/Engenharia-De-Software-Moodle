@@ -1,7 +1,7 @@
-package main.java.View.View_Login;
+package View.View_Login;
 
 import javax.swing.*;
-import main.java.Controller.actions_performed.fechar_listener;
+import Controller.actions_performed.fechar_listener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

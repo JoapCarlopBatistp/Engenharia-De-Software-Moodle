@@ -1,6 +1,6 @@
-package main.java.View.View_Administrador;
+package View.View_Administrador;
 
-import main.java.Controller.actions_performed.fechar_listener;
+import Controller.actions_performed.fechar_listener;
 
 import java.awt.Color;
 import java.awt.Image;

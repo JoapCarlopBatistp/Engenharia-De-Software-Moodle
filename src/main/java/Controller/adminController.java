@@ -1,6 +1,6 @@
-package main.java.Controller;
+package Controller;
 
-import main.java.Model.sala;
+import Model.sala;
 
 import javax.swing.*;
 
