@@ -13,7 +13,12 @@ public class pessoa {
     private int telefone;
     private String username;
     private char[] password;
+    private Long papel;
     
+    public void setPapel(Long papel) {
+        this.papel = papel;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -77,7 +82,7 @@ public class pessoa {
                 System.exit(0);
             }
 
-            String url = "INSERT INTO Pessoa (Id_Pessoa, Nome, DDD_Telefone, Telefone, Nome_de_Usuario, Senha, Email) VALUES (nextval('Pessoa_Id_Pessoa_seq'),?,?,?,?,?,?)";
+            String url = "INSERT INTO Pessoa (Id_Pessoa, Nome, DDD_Telefone, Telefone, Nome_de_Usuario, Senha, Email, Papel) VALUES (nextval('Pessoa_Id_Pessoa_seq'),?,?,?,?,?,?,?)";
             statement = bd.connection.prepareStatement(url);
             statement.setString(1, this.nome);
             statement.setInt(2, this.ddd);
@@ -85,6 +90,7 @@ public class pessoa {
             statement.setString(4, this.username);
             statement.setString(5, new String(this.password));
             statement.setString(6, this.email);
+            statement.setLong(7, this.papel);
             statement.executeUpdate();
             statement.close();
             bd.close();

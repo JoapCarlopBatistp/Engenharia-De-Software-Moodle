@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import Database.databaseconn;
 import View.botao_redondo;
 import View.View_Administrador.tela_administrador;
+import View.View_Aluno.tela_aluno;
+import View.View_Professor.tela_professor;
 
 public class painel_login extends JPanel{
     
@@ -79,11 +81,11 @@ public class painel_login extends JPanel{
         add(botao_login);
     }
 
-    public void login(final JFrame frameParaFechar, tela_administrador telaParaAbrir) {
-        this.loginLogic(frameParaFechar, telaParaAbrir);
+    public void login(final JFrame frameParaFechar) {
+        this.loginLogic(frameParaFechar);
     }
 
-    private void loginLogic(final JFrame frameParaFechar, tela_administrador telaParaAbrir) {
+    private void loginLogic(final JFrame frameParaFechar) {
         databaseconn bd = new databaseconn();
         PreparedStatement statement = null;
         ResultSet resultSet;
@@ -102,8 +104,15 @@ public class painel_login extends JPanel{
                 statement.setString(2, stringSenha);
                 resultSet = statement.executeQuery();
                 if(resultSet.next()){
-                    JOptionPane.showMessageDialog(null, "Usuaro logado com sucesso");
-                    new tela_administrador();
+                    JOptionPane.showMessageDialog(null, "Usuário logado com sucesso");
+                    if(resultSet.getLong("Papel") == 1) {
+                        new tela_aluno();
+                    } else if(resultSet.getLong("Papel") == 2) {
+                        new tela_professor();
+                    } else {
+                        new tela_administrador();
+                    }
+                    
                     frameParaFechar.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Nenhum usuário com esse username e senha foi encontrado!");

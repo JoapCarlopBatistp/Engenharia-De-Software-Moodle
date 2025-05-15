@@ -32,8 +32,8 @@ public class tela_cadastro extends JFrame{
         botaoMinimizar.addActionListener(new minimizar_listener());
         painel.botao_login.addActionListener(e -> {
             try {
-                painel.login(this, new tela_administrador());
-            } catch (IOException e1) {
+                painel.login(this);
+            } catch (Exception e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }

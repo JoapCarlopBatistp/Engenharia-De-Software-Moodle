@@ -27,10 +27,9 @@ public class adminController {
     public void cadastrarAluno() {
         try {
             aluno aluno = new aluno();
-            cadastrarPessoa();
+            cadastrarPessoa(Long.valueOf(1));
             this.pessoa.cadastrar();
             aluno.cadastrar(this.pessoa);
-            System.out.println("Deu bom");
         } catch (SQLException exception) {
 
         }
@@ -39,7 +38,7 @@ public class adminController {
     public void cadastrarProfessor() {
         try {
             professor professor = new professor();
-            cadastrarPessoa();
+            cadastrarPessoa(Long.valueOf(2));
             this.pessoa.cadastrar();
             professor.cadastrar(this.pessoa);
         } catch (SQLException exception) {
@@ -48,14 +47,9 @@ public class adminController {
 
     }
 
-    private void cadastrarPessoa() {
+    private void cadastrarPessoa(final Long papel) {
 
-        String nome;
-        int ddd;
-        int telefone;
-        String username;
-        String password;
-        String email;
+  
 
         JTextField nomeField = new JTextField(20);
         JTextField dddField = new JTextField(2);
@@ -91,6 +85,7 @@ public class adminController {
             pessoa.setUsername(usernameField.getText());
             pessoa.setPassword(passwordField.getPassword());
             pessoa.setEmail(emailField.getText());
+            pessoa.setPapel(papel);
         }
     }
 
