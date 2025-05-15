@@ -1,6 +1,5 @@
 package View.View_Login;
 
-import javax.swing.*;
 import Controller.actions_performed.fechar_listener;
 import View.View_Administrador.tela_administrador;
 
@@ -13,6 +12,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.*;
 
 
 public class tela_cadastro extends JFrame{

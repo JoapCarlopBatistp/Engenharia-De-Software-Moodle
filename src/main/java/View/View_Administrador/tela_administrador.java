@@ -1,6 +1,7 @@
 package View.View_Administrador;
 
 import Controller.actions_performed.fechar_listener;
+import View.botao_logout;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -17,6 +18,7 @@ public class tela_administrador extends JFrame{
     private final painel_Cadastros painel_cadastros;
     private final painel_Relatorios painel_relatorios;
     private final painel_Alocacoes painel_alocacoes;
+    private final botao_logout botao_sair;
 
     // Constantes em tamanho real dos pixels
     public static final int LARGURA_TELA = 1920;
@@ -30,6 +32,7 @@ public class tela_administrador extends JFrame{
         painel_cadastros = new painel_Cadastros();
         painel_relatorios = new painel_Relatorios();
         painel_alocacoes = new painel_Alocacoes();
+        botao_sair = new botao_logout(this);
         
         // Transforma as medidas em pixels, parece mais razoável
         System.setProperty("sun.java2d.uiScale", "1");
@@ -69,7 +72,9 @@ public class tela_administrador extends JFrame{
         painel_cadastros.setBounds(espacamento, 150, LARGURA_PAINEL, ALTURA_PAINEL);
         painel_relatorios.setBounds(2*espacamento + LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
         painel_alocacoes.setBounds(3*espacamento + 2*LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
-
+        botao_sair.setBounds(LARGURA_TELA - 500,27,40,40);
+        
+        add(botao_sair);
         add(painel_cadastros);
         add(painel_relatorios);
         add(painel_alocacoes);
