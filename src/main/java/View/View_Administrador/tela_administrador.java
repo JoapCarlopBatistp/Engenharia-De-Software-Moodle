@@ -52,10 +52,10 @@ public class tela_administrador extends JFrame{
 
     // Padrão para toda tela a principio
     private void configTela() throws IOException{
-        // Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setUndecorated(true);
         setTitle("Portal do Aluno");
-        setSize(LARGURA_TELA, ALTURA_TELA);
+        setSize((int)screensize.getWidth(), (int)screensize.getHeight());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -79,12 +79,15 @@ public class tela_administrador extends JFrame{
             (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) );    
 
         // Posicionamento dos painéis com espaçamento uniforme
-        int espacamento = 50;
+        int espacamento = 100;
         // int larguraPainel = larguraDisponivel/3;
 
         // painel_cadastros.setBounds(espacamento, 150, LARGURA_PAINEL, ALTURA_PAINEL);
-        painel_relatorios.setBounds(2*espacamento + LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
-        painel_alocacoes.setBounds(3*espacamento + 2*LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
+        //painel_relatorios.setBounds(2*espacamento + LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
+        painel_alocacoes.setBounds(
+            975, 100,
+            (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
+            (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) ); 
         botao_sair.setBounds((int)screensize.getWidth() - 150,27,40,40);
         add(botao_sair);
         

@@ -49,7 +49,7 @@ public class painel_Relatorios extends JPanel{
         add(titulo);
         
         // Configuração dos botões
-        int x = (LARGURA_PAINEL - 230) / 2;  // Centraliza horizontalmente
+        int x = (LARGURA_PAINEL - 260) / 2;  // Centraliza horizontalmente
         int yBase = 150;                     // Posição Y inicial
         int espacamento = 80;                // Espaço entre botões
 
