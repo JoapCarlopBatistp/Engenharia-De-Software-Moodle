@@ -47,7 +47,7 @@ public class tela_cadastro extends JFrame{
     private void configTela() throws IOException{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setUndecorated(true);
-        setTitle("Moodle 2");
+        setTitle("Portal do Aluno");
         setSize((int)screensize.getWidth(), (int)screensize.getHeight());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);

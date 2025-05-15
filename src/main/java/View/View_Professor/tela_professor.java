@@ -38,7 +38,7 @@ public class tela_professor extends JFrame{
     private void configTela() throws IOException{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setUndecorated(true);
-        setTitle("Moodle 2");
+        setTitle("Portal do Aluno");
         setSize((int)screensize.getWidth(), (int)screensize.getHeight());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -60,7 +60,7 @@ public class tela_professor extends JFrame{
             (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
             (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) );
         
-        botao_sair.setBounds((int)screensize.getWidth() - 150,27,40,40);
+        botao_sair.setBounds((int)screensize.getWidth() - 156,27,40,40);
         add(botao_sair);
 
         add(painel_professor);

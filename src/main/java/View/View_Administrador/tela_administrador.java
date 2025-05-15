@@ -49,7 +49,7 @@ public class tela_administrador extends JFrame{
     private void configTela() throws IOException{
         // Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         setUndecorated(true);
-        setTitle("Moodle 2");
+        setTitle("Portal do Aluno");
         setSize(LARGURA_TELA, ALTURA_TELA);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
