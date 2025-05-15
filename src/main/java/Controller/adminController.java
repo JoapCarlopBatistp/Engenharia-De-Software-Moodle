@@ -3,6 +3,7 @@ package Controller;
 import Model.sala;
 import Model.aluno;
 import Model.pessoa;
+import Model.professor;
 
 import java.sql.SQLException;
 
@@ -33,16 +34,18 @@ public class adminController {
         } catch (SQLException exception) {
 
         }
-
     }
 
     public void cadastrarProfessor() {
-        Integer numero = pedirNumeroInteiro();
-        if (numero != null) {
-            new sala().cadastrar(numero);
-        } else {
-            System.out.println("Erro no cadastro da Sala.");
+        try {
+            professor professor = new professor();
+            cadastrarPessoa();
+            this.pessoa.cadastrar();
+            professor.cadastrar(this.pessoa);
+        } catch (SQLException exception) {
+
         }
+
     }
 
     private void cadastrarPessoa() {
@@ -94,7 +97,7 @@ public class adminController {
 
     private static Integer pedirNumeroInteiro() {
         while (true) {
-            String input = JOptionPane.showInputDialog(null, "Digite um número inteiro:", "Entrada", JOptionPane.QUESTION_MESSAGE);
+            String input = JOptionPane.showInputDialog(null, "Digite a capacidade da sala:", "Entrada", JOptionPane.QUESTION_MESSAGE);
 
             if (input == null) {
                 // Usuário cancelou
