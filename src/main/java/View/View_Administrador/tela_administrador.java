@@ -1,14 +1,19 @@
 package View.View_Administrador;
 
-import Controller.actions_performed.fechar_listener;
-import View.botao_logout;
-
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import javax.swing.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import Controller.actions_performed.fechar_listener;
+import View.botao_logout;
 
 public class tela_administrador extends JFrame{
     
@@ -35,7 +40,7 @@ public class tela_administrador extends JFrame{
         botao_sair = new botao_logout(this);
         
         // Transforma as medidas em pixels, parece mais razoável
-        System.setProperty("sun.java2d.uiScale", "1");
+        // System.setProperty("sun.java2d.uiScale", "1");
         
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());
@@ -61,30 +66,39 @@ public class tela_administrador extends JFrame{
     // Isso que vai mudar de tela p tela principalmente
     private void adicionaComponentes(){
                         
-        // setBounds(pos_x ,pos_y, largura, altura)
-        // O x é normal mas o y aumenta para baixo 0o0 
-        // O ponto (0,0) é o canto superior esquerdo.
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        painel_cadastros.setBounds(
+            75, 100,
+            (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
+            (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5));
+        
+        painel_relatorios.setBounds(
+            525, 100,
+            (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
+            (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) );    
 
         // Posicionamento dos painéis com espaçamento uniforme
         int espacamento = 50;
         // int larguraPainel = larguraDisponivel/3;
 
-        painel_cadastros.setBounds(espacamento, 150, LARGURA_PAINEL, ALTURA_PAINEL);
+        // painel_cadastros.setBounds(espacamento, 150, LARGURA_PAINEL, ALTURA_PAINEL);
         painel_relatorios.setBounds(2*espacamento + LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
         painel_alocacoes.setBounds(3*espacamento + 2*LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
-        botao_sair.setBounds(LARGURA_TELA - 500,27,40,40);
-        
+        botao_sair.setBounds((int)screensize.getWidth() - 150,27,40,40);
         add(botao_sair);
+        
+
         add(painel_cadastros);
         add(painel_relatorios);
         add(painel_alocacoes);
         //add(botaoFechar);
         //add(botaoMinimizar);
-        configurarBotoesControle();
+        configurarBotoesControle(screensize);
     }
 
     // Função para definir os botões de fechar e minimizar
-    private void configurarBotoesControle() {
+    private void configurarBotoesControle(Dimension screensize) {
         
         ImageIcon icone_fechar = new ImageIcon(tela_administrador.class.getResource("/cross.png"));
         Image imagem_fechar = icone_fechar.getImage();
@@ -97,17 +111,19 @@ public class tela_administrador extends JFrame{
         // Definindo o tamanho(escala)
         Image imagemEmEscala_minimizar = imagem_minimizar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
         
-        botaoFechar.setBounds(LARGURA_TELA - 440, 32, 32, 32);
+                botaoFechar.setBounds((int)screensize.getWidth() - 64,32,32,32);
+        botaoFechar.setLayout(null);
         botaoFechar.setBackground(new Color(61, 54, 92));
         botaoFechar.setBorder(null);
-        botaoFechar.setFocusPainted(false);
         botaoFechar.setIcon(new ImageIcon(imagemEmEscala_fechar));
 
-        botaoMinimizar.setBounds(LARGURA_TELA - 465, 32, 32, 32);
+        botaoMinimizar.setBounds((int)screensize.getWidth() - 110,32,32,32);
+        botaoMinimizar.setLayout(null);
         botaoMinimizar.setBackground(new Color(61, 54, 92));
         botaoMinimizar.setBorder(null);
-        botaoMinimizar.setFocusPainted(false);
         botaoMinimizar.setIcon(new ImageIcon(imagemEmEscala_minimizar));
+        botaoMinimizar.setFocusPainted(false); // muda o ícone
+        
 
         add(botaoFechar);
         add(botaoMinimizar);
