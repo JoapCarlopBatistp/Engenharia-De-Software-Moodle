@@ -2,6 +2,8 @@ package View.View_Login;
 
 import javax.swing.*;
 import Controller.actions_performed.fechar_listener;
+import View.View_Administrador.tela_administrador;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,9 +27,17 @@ public class tela_cadastro extends JFrame{
         painel = new painel_login();
         JLabel imagem_cadastro = new JLabel();
         JLabel nome_programa = new JLabel();
-
+        
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());
+        painel.botao_login.addActionListener(e -> {
+            try {
+                painel.login(this, new tela_administrador());
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
 
         configTela();
         adicionaComponentes(botaoFechar, botaoMinimizar, painel, imagem_cadastro, nome_programa);

@@ -6,23 +6,31 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Database.databaseconn;
 import View.botao_redondo;
+import View.View_Administrador.tela_administrador;
 
 public class painel_login extends JPanel{
     
-    private JTextField usuario;
-    private JPasswordField senha;
+    public JTextField usuario;
+    public JPasswordField senha;
+    public botao_redondo botao_login;
 
     public painel_login() throws IOException{
         JLabel titulo_login = new JLabel("Login");
         JLabel titulo_usuario = new JLabel("Usuário:");
         JLabel titulo_senha = new JLabel("Senha:");
-        botao_redondo botao_login = new botao_redondo("Login");
+        botao_login = new botao_redondo("Login");
         usuario = new JTextField();
         senha = new JPasswordField();
 
@@ -69,5 +77,45 @@ public class painel_login extends JPanel{
         add(titulo_senha);
         add(senha);
         add(botao_login);
+    }
+
+    public void login(final JFrame frameParaFechar, tela_administrador telaParaAbrir) {
+        this.loginLogic(frameParaFechar, telaParaAbrir);
+    }
+
+    private void loginLogic(final JFrame frameParaFechar, tela_administrador telaParaAbrir) {
+        databaseconn bd = new databaseconn();
+        PreparedStatement statement = null;
+        ResultSet resultSet;
+        String stringSenha = new String(senha.getPassword()).trim();
+        if((usuario.getText().trim().equals("")) && stringSenha.equals("")){
+					JOptionPane.showMessageDialog(null, "Verifique se algum campo está vazio!");
+        } else {
+            try {
+                if(!bd.getConnection()){
+                    JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                    System.exit(0);
+                }
+                String url = "SELECT * FROM pessoa WHERE nome_de_usuario=? AND senha=?";
+                statement = bd.connection.prepareStatement(url);
+                statement.setString(1, usuario.getText());
+                statement.setString(2, stringSenha);
+                resultSet = statement.executeQuery();
+                if(resultSet.next()){
+                    JOptionPane.showMessageDialog(null, "Usuaro logado com sucesso");
+                    new tela_administrador();
+                    frameParaFechar.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nenhum usuário com esse username e senha foi encontrado!");
+                }
+                resultSet.close();
+                statement.close();
+                bd.close();
+            } catch(Exception erro) {
+                JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
+            }
+            
+        }
+			
     }
 }
