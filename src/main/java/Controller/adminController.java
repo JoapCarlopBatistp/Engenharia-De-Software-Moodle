@@ -1,9 +1,11 @@
 package Controller;
 
 import Model.sala;
+import Model.turma;
 import Model.aluno;
 import Model.pessoa;
 import Model.professor;
+
 
 import java.sql.SQLException;
 
@@ -14,6 +16,15 @@ public class adminController {
 
     private pessoa pessoa = new pessoa();
     public adminController() {}
+
+    public void cadastrarTurma() {
+        Integer numero = pedirTamTurma();
+        if (numero != null) {
+            new turma().cadastrar(numero);
+        } else {
+            System.out.println("Erro no cadastro da Turma.");
+        }
+    }
 
     public void cadastrarSala() {
         Integer numero = pedirNumeroInteiro();
@@ -93,6 +104,24 @@ public class adminController {
     private static Integer pedirNumeroInteiro() {
         while (true) {
             String input = JOptionPane.showInputDialog(null, "Digite a capacidade da sala:", "Entrada", JOptionPane.QUESTION_MESSAGE);
+
+            if (input == null) {
+                // Usuário cancelou
+                return null;
+            }
+
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Valor inválido. Por favor, digite um número inteiro.");
+            }
+        }
+    }
+
+
+    private static Integer pedirTamTurma() {
+        while (true) {
+            String input = JOptionPane.showInputDialog(null, "Digite o tamanho da turma:", "Entrada", JOptionPane.QUESTION_MESSAGE);
 
             if (input == null) {
                 // Usuário cancelou
