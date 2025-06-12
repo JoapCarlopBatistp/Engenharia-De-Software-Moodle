@@ -3,12 +3,19 @@ package View.View_Administrador;
 import static View.View_Administrador.tela_administrador.*;
 
 import Controller.adminController;
+import Model.pessoa;
+import Model.roleEnum;
 import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
+
+import javax.swing.Box;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class painel_Cadastros extends JPanel{
 
@@ -31,8 +38,8 @@ public class painel_Cadastros extends JPanel{
         adminController admin = new adminController();
         botao_sala.addActionListener(e -> admin.cadastrarSala());
         botao_turma.addActionListener(e -> admin.cadastrarTurma());
-        botao_aluno.addActionListener(e -> admin.cadastrarAluno());
-        botao_profe.addActionListener(e -> admin.cadastrarProfessor());        
+        botao_aluno.addActionListener(e -> this.cadastrarAluno());
+        botao_profe.addActionListener(e -> this.cadastrarProfessor());
         setVisible(true);
     }
  
@@ -68,6 +75,59 @@ public class painel_Cadastros extends JPanel{
             add(btn);
         }
 
+    }
+
+    private pessoa cadastrarPessoa(final int papel) {
+
+        JTextField nomeField = new JTextField(20);
+        JTextField dddField = new JTextField(2);
+        JTextField telefoneField = new JTextField(9);
+        JTextField usernameField = new JTextField(20);
+        JTextField emailField = new JTextField(20);
+        JPasswordField passwordField = new JPasswordField(28);
+
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Nome :"));
+        myPanel.add(nomeField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("DDD:"));
+        myPanel.add(dddField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Telefone:"));
+        myPanel.add(telefoneField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Username:"));
+        myPanel.add(usernameField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Senha:"));
+        myPanel.add(passwordField);
+        myPanel.add(new JLabel("Email:"));
+        myPanel.add(emailField);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+           pessoa pessoa = new pessoa();
+            pessoa.setNome(nomeField.getText());
+            pessoa.setDdd(Integer.parseInt(dddField.getText()));
+            pessoa.setTelefone(Integer.parseInt(telefoneField.getText()));
+            pessoa.setUsername(usernameField.getText());
+            pessoa.setPassword(passwordField.getPassword());
+            pessoa.setEmail(emailField.getText());
+            pessoa.setPapel(papel);
+            return pessoa;
+        }
+        return null;
+    }
+
+    private void cadastrarAluno() {
+        adminController admController = new adminController(this.cadastrarPessoa(roleEnum.ALUNO.ordinal()));
+        admController.cadastrarAluno();
+    }
+
+    private void cadastrarProfessor() {
+        adminController admController = new adminController(this.cadastrarPessoa(roleEnum.PROFESSOR.ordinal()));
+        admController.cadastrarProfessor();
     }
 
 }

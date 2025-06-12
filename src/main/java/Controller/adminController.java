@@ -4,6 +4,7 @@ import Model.sala;
 import Model.turma;
 import Model.aluno;
 import Model.pessoa;
+import DAO.pessoaDao;
 import Model.professor;
 
 
@@ -11,11 +12,20 @@ import java.sql.SQLException;
 
 import javax.swing.*;
 
-
 public class adminController {
 
-    private pessoa pessoa = new pessoa();
-    public adminController() {}
+    private pessoa pessoa;
+    private pessoaDao pessoaDao;
+
+    
+    public adminController() {
+    }
+
+    public adminController(pessoa pessoa) {
+        this.pessoa = pessoa;
+        this.pessoaDao = new pessoaDao();
+        pessoaDao.cadastrar(pessoa);
+    }
 
     public void cadastrarTurma() {
         Integer numero = pedirTamTurma();
@@ -37,9 +47,8 @@ public class adminController {
 
     public void cadastrarAluno() {
         try {
+            
             aluno aluno = new aluno();
-            cadastrarPessoa(Long.valueOf(1));
-            this.pessoa.cadastrar();
             aluno.cadastrar(this.pessoa);
         } catch (SQLException exception) {
 
@@ -49,57 +58,12 @@ public class adminController {
     public void cadastrarProfessor() {
         try {
             professor professor = new professor();
-            cadastrarPessoa(Long.valueOf(2));
-            this.pessoa.cadastrar();
             professor.cadastrar(this.pessoa);
         } catch (SQLException exception) {
 
         }
 
     }
-
-    private void cadastrarPessoa(final Long papel) {
-
-  
-
-        JTextField nomeField = new JTextField(20);
-        JTextField dddField = new JTextField(2);
-        JTextField telefoneField = new JTextField(9);
-        JTextField usernameField = new JTextField(20);
-        JTextField emailField = new JTextField(20);
-        JPasswordField passwordField = new JPasswordField(28);
-
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Nome :"));
-        myPanel.add(nomeField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("DDD:"));
-        myPanel.add(dddField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Telefone:"));
-        myPanel.add(telefoneField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Username:"));
-        myPanel.add(usernameField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Senha:"));
-        myPanel.add(passwordField);
-        myPanel.add(new JLabel("Email:"));
-        myPanel.add(emailField);
-
-        int result = JOptionPane.showConfirmDialog(null, myPanel, 
-                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            pessoa.setNome(nomeField.getText());
-            pessoa.setDdd(Integer.parseInt(dddField.getText()));
-            pessoa.setTelefone(Integer.parseInt(telefoneField.getText()));
-            pessoa.setUsername(usernameField.getText());
-            pessoa.setPassword(passwordField.getPassword());
-            pessoa.setEmail(emailField.getText());
-            pessoa.setPapel(papel);
-        }
-    }
-
 
     private static Integer pedirNumeroInteiro() {
         while (true) {
