@@ -96,6 +96,7 @@ public class pessoaDao{
                 pessoa.setPapel(rs.getInt("Papel"));
                 pessoa.setTelefone(rs.getInt("Telefone"));
                 pessoa.setUsername(rs.getString("Nome_de_Usuario"));
+                pessoa.setId(rs.getInt("Id_Pessoa"));
                 pessoas.add(pessoa);
             }
             statement.close();
