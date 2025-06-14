@@ -121,13 +121,13 @@ public class painel_Cadastros extends JPanel{
     }
 
     private void cadastrarAluno() {
-        adminController admController = new adminController(this.cadastrarPessoa(roleEnum.ALUNO.ordinal()));
-        admController.cadastrarAluno();
+        adminController admController = new adminController();
+        admController.cadastrarAluno(this.cadastrarPessoa(roleEnum.ALUNO.ordinal()));
     }
 
     private void cadastrarProfessor() {
-        adminController admController = new adminController(this.cadastrarPessoa(roleEnum.PROFESSOR.ordinal()));
-        admController.cadastrarProfessor();
+        adminController admController = new adminController();
+        admController.cadastrarProfessor(this.cadastrarPessoa(roleEnum.PROFESSOR.ordinal()));
     }
 
 }

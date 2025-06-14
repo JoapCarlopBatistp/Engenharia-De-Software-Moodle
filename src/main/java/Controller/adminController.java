@@ -2,29 +2,16 @@ package Controller;
 
 import Model.sala;
 import Model.turma;
-import Model.aluno;
 import Model.pessoa;
-import DAO.pessoaDao;
-import Model.professor;
+import DAO.alunoDao;
+import DAO.professorDao;
 
-
-import java.sql.SQLException;
 
 import javax.swing.*;
 
 public class adminController {
-
-    private pessoa pessoa;
-    private pessoaDao pessoaDao;
-
     
     public adminController() {
-    }
-
-    public adminController(pessoa pessoa) {
-        this.pessoa = pessoa;
-        this.pessoaDao = new pessoaDao();
-        pessoaDao.cadastrar(pessoa);
     }
 
     public void cadastrarTurma() {
@@ -45,24 +32,15 @@ public class adminController {
         }
     }
 
-    public void cadastrarAluno() {
-        try {
-            
-            aluno aluno = new aluno();
-            aluno.cadastrar(this.pessoa);
-        } catch (SQLException exception) {
-
-        }
+    public void cadastrarAluno(pessoa pessoa) {
+        alunoDao aluno = new alunoDao();
+        aluno.cadastrar(pessoa);
     }
 
-    public void cadastrarProfessor() {
-        try {
-            professor professor = new professor();
-            professor.cadastrar(this.pessoa);
-        } catch (SQLException exception) {
+    public void cadastrarProfessor(pessoa pessoa) {
 
-        }
-
+        professorDao professor = new professorDao();
+        professor.cadastrar(pessoa);
     }
 
     private static Integer pedirNumeroInteiro() {

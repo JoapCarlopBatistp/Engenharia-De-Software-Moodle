@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import Database.databaseconn;
 import Model.pessoa;
+import Model.roleEnum;
 
 public class pessoaDao{
 
@@ -39,9 +40,9 @@ public class pessoaDao{
         }
     }
 
-    public pessoa buscar(String username) {
+    public pessoa buscar(String username, String query) {
         pessoa pessoa = new pessoa ();
-
+        String url = null;
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
@@ -50,9 +51,8 @@ public class pessoaDao{
                 JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
                 System.exit(0);
             }
-
-            String url = this.buscarQuery();
-            statement = bd.connection.prepareStatement(url);
+            
+            statement = bd.connection.prepareStatement(query);
             statement.setString(1, username);
             rs = statement.executeQuery();
 
@@ -116,7 +116,14 @@ public class pessoaDao{
         return "SELECT * FROM Pessoa WHERE Nome_de_Usuario = ?";
     }
 
-    
+    private String buscarQueryAluno() {
+        return "select pes.* from aluno alu join pessoa pes on pes.id_pessoa = alu.id_pessoa WHERE pes.Nome_de_Usuario = ?";
+    }
+
+    private String buscarQueryProfessor() {
+        return "select pes.* from professor pro join pessoa pes on pes.id_pessoa = pro.id_pessoa WHERE pes.Nome_de_Usuario = ?";
+    }
+
     private String cadastrarQuery() {
         return "INSERT INTO Pessoa (Id_Pessoa, Nome, DDD_Telefone, Telefone, Nome_de_Usuario, Senha, Email, Papel) VALUES (nextval('Pessoa_Id_Pessoa_seq'),?,?,?,?,?,?,?)";
     }
