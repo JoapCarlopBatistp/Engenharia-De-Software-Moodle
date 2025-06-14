@@ -10,8 +10,6 @@ import javax.swing.JOptionPane;
 import Database.databaseconn;
 import Model.aluno;
 import Model.pessoa;
-import Model.professor;
-import Model.roleEnum;
 
 public class alunoDao extends pessoaDao{
 

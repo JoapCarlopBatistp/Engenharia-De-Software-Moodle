@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 
 import Database.databaseconn;
 import Model.pessoa;
-import Model.roleEnum;
 
 public class pessoaDao{
 
@@ -42,7 +41,6 @@ public class pessoaDao{
 
     public pessoa buscar(String username, String query) {
         pessoa pessoa = new pessoa ();
-        String url = null;
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
@@ -110,18 +108,6 @@ public class pessoaDao{
 
      private String buscarTodosQuery() {
         return "SELECT * FROM Pessoa";
-    }
-    
-    private String buscarQuery() {
-        return "SELECT * FROM Pessoa WHERE Nome_de_Usuario = ?";
-    }
-
-    private String buscarQueryAluno() {
-        return "select pes.* from aluno alu join pessoa pes on pes.id_pessoa = alu.id_pessoa WHERE pes.Nome_de_Usuario = ?";
-    }
-
-    private String buscarQueryProfessor() {
-        return "select pes.* from professor pro join pessoa pes on pes.id_pessoa = pro.id_pessoa WHERE pes.Nome_de_Usuario = ?";
     }
 
     private String cadastrarQuery() {

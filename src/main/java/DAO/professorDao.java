@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import Database.databaseconn;
 import Model.pessoa;
 import Model.professor;
-import Model.roleEnum;
 
 public class professorDao extends pessoaDao{
 
@@ -37,7 +36,7 @@ public class professorDao extends pessoaDao{
     }
 
     public pessoa buscar(String username) {
-       return super.buscar(username, this.buscarTodosQuery());
+       return super.buscar(username, this.buscarQuery());
     }
 
     public List<professor> buscarTodosProfessores() {
