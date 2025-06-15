@@ -39,7 +39,7 @@ public class professorDao extends pessoaDao{
     }
 
     public List<professor> buscarTodosProfessores() {
-        List<professor> professores = new ArrayList<>();
+        List<professor> professores = new ArrayList<professor>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;

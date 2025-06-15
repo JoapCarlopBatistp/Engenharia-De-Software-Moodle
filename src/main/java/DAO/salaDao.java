@@ -34,7 +34,7 @@ public class salaDao {
     }
 
     public List<sala> buscaSalasDisponiveis() {
-        List<sala> salas = new ArrayList<>();
+        List<sala> salas = new ArrayList<sala>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
@@ -63,7 +63,7 @@ public class salaDao {
     }
 
     public List<sala> buscaSalasDisponivelNoHorario(String horario) {
-        List<sala> salas = new ArrayList<>();
+        List<sala> salas = new ArrayList<sala>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;

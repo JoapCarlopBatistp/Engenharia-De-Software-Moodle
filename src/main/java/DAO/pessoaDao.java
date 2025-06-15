@@ -71,7 +71,7 @@ public class pessoaDao{
     }
 
     public List<pessoa> buscarTodos() {
-        List<pessoa> pessoas = new ArrayList<>();
+        List<pessoa> pessoas = new ArrayList<pessoa>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;

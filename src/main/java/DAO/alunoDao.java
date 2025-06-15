@@ -39,7 +39,7 @@ public class alunoDao extends pessoaDao{
     }
 
     public List<aluno> buscarTodoAlunos() {
-        List<aluno> alunos = new ArrayList<>();
+        List<aluno> alunos = new ArrayList<aluno>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
