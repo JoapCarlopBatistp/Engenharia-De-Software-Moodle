@@ -21,8 +21,7 @@ public class pessoaDao{
                 System.exit(0);
             }
 
-            String url = this.cadastrarQuery();
-            statement = bd.connection.prepareStatement(url);
+            statement = bd.connection.prepareStatement(this.cadastrarQuery());
             statement.setString(1, pessoa.getNome());
             statement.setInt(2, pessoa.getDdd());
             statement.setInt(3, pessoa.getTelefone());
@@ -82,8 +81,7 @@ public class pessoaDao{
                 System.exit(0);
             }
 
-            String url = this.buscarTodosQuery();
-            statement = bd.connection.prepareStatement(url);
+            statement = bd.connection.prepareStatement(this.buscarTodosQuery());
             rs = statement.executeQuery();
 
             while (rs.next()) {
