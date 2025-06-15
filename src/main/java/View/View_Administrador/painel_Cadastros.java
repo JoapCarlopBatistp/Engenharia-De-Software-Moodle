@@ -36,7 +36,7 @@ public class painel_Cadastros extends JPanel{
         configPainel();
         adicionaComponentes(titulo, botoes );
         adminController admin = new adminController();
-        botao_sala.addActionListener(e -> admin.cadastrarSala());
+        botao_sala.addActionListener(e -> this.cadastrarSala());
         botao_turma.addActionListener(e -> admin.cadastrarTurma());
         botao_aluno.addActionListener(e -> this.cadastrarAluno());
         botao_profe.addActionListener(e -> this.cadastrarProfessor());
@@ -118,6 +118,24 @@ public class painel_Cadastros extends JPanel{
             return pessoa;
         }
         return null;
+    }
+
+    private void cadastrarSala(){
+        String input = null;
+        while (input == null) {
+            input = JOptionPane.showInputDialog(null, "Digite a capacidade da sala:", "Entrada", JOptionPane.QUESTION_MESSAGE);
+
+            if (input == null) {
+                // Usuário cancelou
+                return;
+            }
+        }
+        try {
+            adminController admController = new adminController();
+            admController.cadastrarSala(Integer.parseInt(input));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido. Por favor, digite um número inteiro.");
+        }
     }
 
     private void cadastrarAluno() {
