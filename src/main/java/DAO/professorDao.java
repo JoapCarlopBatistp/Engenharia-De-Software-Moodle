@@ -23,8 +23,7 @@ public class professorDao extends pessoaDao{
                 System.exit(0);
             }
 
-            String url = this.cadastrarQuery();
-            statement = bd.connection.prepareStatement(url);
+            statement = bd.connection.prepareStatement(this.cadastrarQuery());
             statement.setString(1, pessoa.getUsername());
             statement.executeUpdate();
             statement.close();
@@ -50,8 +49,7 @@ public class professorDao extends pessoaDao{
                 System.exit(0);
             }
 
-            String url = this.buscarTodosQuery();
-            statement = bd.connection.prepareStatement(url);
+            statement = bd.connection.prepareStatement(this.buscarTodosQuery());
             rs = statement.executeQuery();
 
             while (rs.next()) {
