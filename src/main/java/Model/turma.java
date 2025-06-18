@@ -1,30 +1,62 @@
 package Model;
 
-import Database.databaseconn;
-
-import javax.swing.*;
-import java.sql.PreparedStatement;
-
 public class turma {
-    public void cadastrar(final Integer capacidade) {
-        databaseconn bd = new databaseconn();
-        PreparedStatement statement;
-        try {
-            if(!bd.getConnection()){
-                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-                System.exit(0);
-            }
+    private int Id_Turma;
+    private String semestre;
+    private int vagas_disponibilidadas;
+    private int vagas_ocupadas;
+    private String dias;
+    private String horario; 
 
-            String url = "INSERT INTO Turma (Id_Turma,Capacidade) VALUES (nextval('Sala_Id_Turma_seq'),?)";
-            statement = bd.connection.prepareStatement(url);
-            statement.setInt(1, capacidade);
-            statement.executeUpdate();
-            statement.close();
-            bd.close();
-        } catch(Exception erro) {
-            JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
-            System.out.println(erro.toString());
-        }
+    public int getId_Turma() {
+        return Id_Turma;
+    }
+
+    public void setId_Turma(int Id_Turma) {
+        this.Id_Turma = Id_Turma;  
+    }
+
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
+    }
+
+    public int getVagas_disponibilidadas() {
+        return vagas_disponibilidadas;
+    }
+
+    public void setVagas_disponibilidadas(int vagas_disponibilidadas) {
+        this.vagas_disponibilidadas = vagas_disponibilidadas;
+    }
+
+    public int getVagas_ocupadas() {
+        return vagas_ocupadas;
+    }
+
+    public void setVagas_ocupadas(int vagas_ocupadas) {
+        this.vagas_ocupadas = vagas_ocupadas;
+    }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+       this.horario = horario;
+    }
+
+    public turma() {
 
     }
 }

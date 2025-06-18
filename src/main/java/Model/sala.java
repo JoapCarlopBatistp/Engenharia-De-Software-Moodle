@@ -1,30 +1,28 @@
 package Model;
 
-import Database.databaseconn;
-
-import javax.swing.*;
-import java.sql.PreparedStatement;
-
 public class sala {
-    public void cadastrar(final Integer capacidade) {
-        databaseconn bd = new databaseconn();
-        PreparedStatement statement;
-        try {
-            if(!bd.getConnection()){
-                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-                System.exit(0);
-            }
+    private int id_Sala;
+    private int capacidade_Sala;
 
-            String url = "INSERT INTO Sala (Id_Sala,Capacidade) VALUES (nextval('Sala_Id_Sala_seq'),?)";
-            statement = bd.connection.prepareStatement(url);
-            statement.setInt(1, capacidade);
-            statement.executeUpdate();
-            statement.close();
-            bd.close();
-        } catch(Exception erro) {
-            JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
-            System.out.println(erro.toString());
-        }
-
+    public int getId_Sala() {
+        return id_Sala;
     }
+
+    public void setId_Sala(int id_Sala) {
+        this.id_Sala = id_Sala;
+    }
+
+    public int getCapacidade_Sala() {
+        return capacidade_Sala;
+    }
+
+    public void setCapacidade_Sala(int capacidade_Sala) {
+        this.capacidade_Sala = capacidade_Sala;
+    }
+
+     public sala() {
+        
+    }  
 }
+
+

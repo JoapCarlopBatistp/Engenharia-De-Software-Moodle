@@ -4,6 +4,8 @@ import static View.View_Administrador.tela_administrador.*;
 
 import Controller.adminController;
 import Model.pessoa;
+import Model.sala;
+import Model.turma;
 import Model.roleEnum;
 import View.botao_redondo;
 import java.awt.Color;
@@ -36,8 +38,8 @@ public class painel_Cadastros extends JPanel{
         configPainel();
         adicionaComponentes(titulo, botoes );
         adminController admin = new adminController();
-        botao_sala.addActionListener(e -> admin.cadastrarSala());
-        botao_turma.addActionListener(e -> admin.cadastrarTurma());
+        botao_sala.addActionListener(e -> this.cadastrarSala());
+        botao_turma.addActionListener(e -> this.cadastrarTurma());
         botao_aluno.addActionListener(e -> this.cadastrarAluno());
         botao_profe.addActionListener(e -> this.cadastrarProfessor());
         setVisible(true);
@@ -74,6 +76,64 @@ public class painel_Cadastros extends JPanel{
             btn.setFocusable(false);
             add(btn);
         }
+
+    }
+
+    private sala cadastrarSala() {        
+        JTextField CapacidadeField = new JTextField(2);
+
+        JPanel myPanel = new JPanel();       
+        myPanel.add(new JLabel("Capacidade da sala:"));
+        myPanel.add(CapacidadeField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+           sala sala = new sala();            
+            sala.setCapacidade_Sala(Integer.parseInt(CapacidadeField.getText()));
+            return sala;
+        }
+        return null;
+
+    }
+
+    private turma cadastrarTurma() {        
+        JTextField SemestreField = new JTextField(2);
+        JTextField Vagas_DisponibilizadasField = new JTextField(2);
+        JTextField Vagas_OcupadasField = new JTextField(2);
+        JTextField DiasField = new JTextField(2);
+        JTextField HorarioField = new JTextField(2);
+
+        JPanel myPanel = new JPanel();       
+        myPanel.add(new JLabel("Semestre:"));
+        myPanel.add(SemestreField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Vagas Disponibilizadas:"));
+        myPanel.add(Vagas_DisponibilizadasField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Vagas Ocupadas:"));
+        myPanel.add(Vagas_OcupadasField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Dias:"));
+        myPanel.add(DiasField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Horario:"));
+        myPanel.add(HorarioField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+           turma turma = new turma();            
+            turma.setSemestre(SemestreField.getText());
+            turma.setVagas_disponibilidadas(Integer.parseInt(Vagas_DisponibilizadasField.getText()));
+            turma.setVagas_ocupadas(Integer.parseInt(Vagas_OcupadasField.getText()));
+            turma.setDias(DiasField.getText());
+            turma.setHorario(HorarioField.getText());
+            return turma;
+        }
+        return null;
 
     }
 
@@ -131,3 +191,5 @@ public class painel_Cadastros extends JPanel{
     }
 
 }
+
+
