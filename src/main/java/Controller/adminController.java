@@ -3,7 +3,6 @@ package Controller;
 import Model.sala;
 import Model.turma;
 import Model.pessoa;
-import Model.turma;
 import DAO.alunoDao;
 import DAO.professorDao;
 import DAO.salaDao;
@@ -19,7 +18,7 @@ public class adminController {
     
     public void cadastrarTurma() {
         turmaDao turma = new turmaDao();
-        sala.cadastrar(turma);
+        turma.cadastrar(turma);
     }
 
     public void cadastrarSala() {
