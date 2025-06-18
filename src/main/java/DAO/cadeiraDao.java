@@ -8,10 +8,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import Database.databaseconn;
-import Model.turma;
+import Model.cadeira;
 
-public class turmaDao {
-    public void cadastrar(turma turma){
+public class cadeiraDao {
+    public void cadastrar(cadeira cadeira){
 
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
@@ -22,11 +22,8 @@ public class turmaDao {
             }
 
              statement = bd.connection.prepareStatement(this.cadastrarQuery());             
-             statement.setString(1, turma.getSemestre());
-             statement.setInt(2, turma.getVagas_disponibilidadas());
-             statement.setInt(3, turma.getVagas_ocupadas());
-             statement.setString(4, turma.getDias());
-             statement.setString(5, turma.getHorario());
+             statement.setString(1, cadeira.getNome_Cadeira());
+             statement.setString(2, cadeira.getCodigo_Cadeira());
              statement.executeUpdate();
              statement.close();
              bd.connection.close();
@@ -36,8 +33,8 @@ public class turmaDao {
         }
     }
 
-    public turma buscar(int id_Turma, String query) {
-        turma turma = new turma ();
+    public cadeira buscar(String Codigo_Cadeira, String query) {
+        cadeira cadeira = new cadeira ();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
@@ -49,15 +46,12 @@ public class turmaDao {
             }
             
             statement = bd.connection.prepareStatement(query);
-            statement.setInt(1, id_Turma);
+            statement.setString(1, Codigo_Cadeira);
             rs = statement.executeQuery();
          
             while (rs.next()) {                
-                turma.setSemestre(rs.getString("Semestre"));  
-                turma.setVagas_disponibilidadas(rs.getInt("Vagas_Disponibilizadas"));
-                turma.setVagas_ocupadas(rs.getInt("Vagas_Ocupadas")); 
-                turma.setDias(rs.getString("Dias"));
-                turma.setHorario(rs.getString("Horario"));     
+                cadeira.setNome_Cadeira(rs.getString("Nome"));
+                cadeira.setCodigo_Cadeira(rs.getString("Codigo"));                
             }
             statement.close();
             bd.connection.close();
@@ -65,11 +59,11 @@ public class turmaDao {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
 
-        return turma;
+        return cadeira;
     }
  
-    public List<turma> buscarTodos() {
-        List<turma> turmas = new ArrayList<>();
+    public List<cadeira> buscarTodos() {
+        List<cadeira> cadeiras = new ArrayList<>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
@@ -83,13 +77,11 @@ public class turmaDao {
             rs = statement.executeQuery();
 
             while (rs.next()) {
-                turma turma = new turma ();               
-                turma.setSemestre(rs.getString("Semestre"));  
-                turma.setVagas_disponibilidadas(rs.getInt("Vagas_Disponibilizadas"));
-                turma.setVagas_ocupadas(rs.getInt("Vagas_Ocupadas")); 
-                turma.setDias(rs.getString("Dias"));
-                turma.setHorario(rs.getString("Horario"));     
-                turmas.add(turma);
+                cadeira cadeira = new cadeira ();               
+                cadeira.setNome_Cadeira(rs.getString("Nome")); 
+                cadeira.setCodigo_Cadeira(rs.getString("Codigo")); 
+                cadeira.setId_Cadeira(rs.getInt("Id_Cadeira"));
+                cadeiras.add(cadeira);
             }
             statement.close();
             bd.connection.close();
@@ -97,19 +89,18 @@ public class turmaDao {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
 
-        return turmas;
+        return cadeiras;
     }
 
     private String buscarTodosQuery() {
-        return "SELECT * FROM Turma";
+        return "SELECT * FROM Cadeira";
     }
 
     private String cadastrarQuery() {
-        return "INSERT INTO Sala (Id_Turma, Semestre, Vagas_Disponibilizadas, Vagas_Ocupadas, Dias, Horario) VALUES (nextval('Pessoa_Id_Turma_seq'),?,?,?,?,?)";
+        return "INSERT INTO Cadeira (Id_Cadeira, Nome, Codigo) VALUES (nextval('Pessoa_Id_Cadeir_seq'),?,?)";
     }
 
-    public turmaDao() {}
+    public cadeiraDao() {}
     
 }  
-    
 
