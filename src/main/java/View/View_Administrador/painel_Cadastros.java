@@ -79,7 +79,7 @@ public class painel_Cadastros extends JPanel{
 
     }
 
-    private sala cadastrarSala() {        
+    private sala painelSala() {        
         JTextField CapacidadeField = new JTextField(2);
 
         JPanel myPanel = new JPanel();       
@@ -97,8 +97,15 @@ public class painel_Cadastros extends JPanel{
         return null;
 
     }
+    
+    private void cadastrarSala(){
+        adminController admController = new adminController();
+        admController.cadastrarSala(this.painelSala());
+    }
 
-    private turma cadastrarTurma() {        
+
+    private turma painelTurma() {             
+        
         JTextField SemestreField = new JTextField(2);
         JTextField Vagas_DisponibilizadasField = new JTextField(2);
         JTextField Vagas_OcupadasField = new JTextField(2);
@@ -135,7 +142,13 @@ public class painel_Cadastros extends JPanel{
         }
         return null;
 
+    }     
+
+    private void cadastrarTurma(){
+        adminController admController = new adminController();
+        admController.cadastrarTurma(this.painelTurma());
     }
+   
 
     private pessoa cadastrarPessoa(final int papel) {
 

@@ -97,7 +97,7 @@ public class cadeiraDao {
     }
 
     private String cadastrarQuery() {
-        return "INSERT INTO Cadeira (Id_Cadeira, Nome, Codigo) VALUES (nextval('Pessoa_Id_Cadeir_seq'),?,?)";
+        return "INSERT INTO Cadeira (Id_Cadeira, Nome, Codigo) VALUES (nextval('Cadeira_Id_Cadeira_seq'),?,?)";
     }
 
     public cadeiraDao() {}

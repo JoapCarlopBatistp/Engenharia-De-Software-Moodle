@@ -16,14 +16,14 @@ public class adminController {
     public adminController() {
     } 
     
-    public void cadastrarTurma() {
-        turmaDao turma = new turmaDao();
-        turma.cadastrar(turma);
+    public void cadastrarTurma(turma turma) {
+        turmaDao turmaDAO = new turmaDao();
+        turmaDAO.cadastrar(turma);
     }
 
-    public void cadastrarSala() {
-        salaDao sala = new salaDao();
-        sala.cadastrar(sala);
+    public void cadastrarSala(sala sala) {
+        salaDao salaDAO = new salaDao();
+        salaDAO.cadastrar(sala);
     }
 
     public void cadastrarAluno(pessoa pessoa) {

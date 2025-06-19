@@ -95,7 +95,7 @@ public class salaDao {
     }
 
     private String cadastrarQuery() {
-        return "INSERT INTO Sala (Id_Sala, Capacidade) VALUES (nextval('Pessoa_Id_Sala_seq'),?)";
+        return "INSERT INTO Sala (Id_Sala, Capacidade) VALUES (nextval('Sala_Id_Sala_seq'),?)";
     }
 
     public salaDao() {}

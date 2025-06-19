@@ -105,7 +105,7 @@ public class turmaDao {
     }
 
     private String cadastrarQuery() {
-        return "INSERT INTO Sala (Id_Turma, Semestre, Vagas_Disponibilizadas, Vagas_Ocupadas, Dias, Horario) VALUES (nextval('Pessoa_Id_Turma_seq'),?,?,?,?,?)";
+        return "INSERT INTO Sala (Id_Turma, Semestre, Vagas_Disponibilizadas, Vagas_Ocupadas, Dias, Horario, Id_Sala, Id_Cadeira) VALUES (nextval('Turma_Id_Turma_seq'),?,?,?,?,?,?,?)";
     }
 
     public turmaDao() {}

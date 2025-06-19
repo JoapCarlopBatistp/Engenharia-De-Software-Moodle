@@ -76,7 +76,7 @@ public class alunoDao extends pessoaDao{
     }
 
      private String buscarTodosQuery() {
-        return "select pes.*, alu.id_aluno from professor pro	join pessoa pes on pes.id_pessoa = alu.id_pessoa";
+        return "select pes.*, alu.id_aluno from aluno alu	join pessoa pes on pes.id_pessoa = alu.id_pessoa";
     }
     
     private String buscarQuery() {
