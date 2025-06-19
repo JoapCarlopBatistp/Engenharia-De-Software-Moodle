@@ -134,7 +134,7 @@ public class painel_Cadastros extends JPanel{
         if (result == JOptionPane.OK_OPTION) {
            turma turma = new turma();            
             turma.setSemestre(SemestreField.getText());
-            turma.setVagas_disponibilidadas(Integer.parseInt(Vagas_DisponibilizadasField.getText()));
+            turma.setVagas_disponibilizadas(Integer.parseInt(Vagas_DisponibilizadasField.getText()));
             turma.setVagas_ocupadas(Integer.parseInt(Vagas_OcupadasField.getText()));
             turma.setDias(DiasField.getText());
             turma.setHorario(HorarioField.getText());

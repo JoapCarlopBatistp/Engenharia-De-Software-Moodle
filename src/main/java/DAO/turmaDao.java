@@ -23,7 +23,7 @@ public class turmaDao {
 
              statement = bd.connection.prepareStatement(this.cadastrarQuery());             
              statement.setString(1, turma.getSemestre());
-             statement.setInt(2, turma.getVagas_disponibilidadas());
+             statement.setInt(2, turma.getVagas_disponibilizadas());
              statement.setInt(3, turma.getVagas_ocupadas());
              statement.setString(4, turma.getDias());
              statement.setString(5, turma.getHorario());
@@ -54,7 +54,7 @@ public class turmaDao {
          
             while (rs.next()) {                
                 turma.setSemestre(rs.getString("Semestre"));  
-                turma.setVagas_disponibilidadas(rs.getInt("Vagas_Disponibilizadas"));
+                turma.setVagas_disponibilizadas(rs.getInt("Vagas_Disponibilizadas"));
                 turma.setVagas_ocupadas(rs.getInt("Vagas_Ocupadas")); 
                 turma.setDias(rs.getString("Dias"));
                 turma.setHorario(rs.getString("Horario"));     
@@ -85,7 +85,7 @@ public class turmaDao {
             while (rs.next()) {
                 turma turma = new turma ();               
                 turma.setSemestre(rs.getString("Semestre"));  
-                turma.setVagas_disponibilidadas(rs.getInt("Vagas_Disponibilizadas"));
+                turma.setVagas_disponibilizadas(rs.getInt("Vagas_Disponibilizadas"));
                 turma.setVagas_ocupadas(rs.getInt("Vagas_Ocupadas")); 
                 turma.setDias(rs.getString("Dias"));
                 turma.setHorario(rs.getString("Horario"));     

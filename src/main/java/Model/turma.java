@@ -3,7 +3,7 @@ package Model;
 public class turma {
     private int Id_Turma;
     private String semestre;
-    private int vagas_disponibilidadas;
+    private int vagas_disponibilizadas;
     private int vagas_ocupadas;
     private String dias;
     private String horario; 
@@ -24,12 +24,12 @@ public class turma {
         this.semestre = semestre;
     }
 
-    public int getVagas_disponibilidadas() {
-        return vagas_disponibilidadas;
+    public int getVagas_disponibilizadas() {
+        return vagas_disponibilizadas;
     }
 
-    public void setVagas_disponibilidadas(int vagas_disponibilidadas) {
-        this.vagas_disponibilidadas = vagas_disponibilidadas;
+    public void setVagas_disponibilizadas(int vagas_disponibilizadas) {
+        this.vagas_disponibilizadas = vagas_disponibilizadas;
     }
 
     public int getVagas_ocupadas() {
