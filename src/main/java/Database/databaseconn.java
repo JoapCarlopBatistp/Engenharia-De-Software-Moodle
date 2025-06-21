@@ -1,7 +1,10 @@
 package Database;
 
-import javax.swing.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 public class databaseconn {
 
@@ -10,7 +13,7 @@ public class databaseconn {
     private final String DBNAME = "Trab_EngSoftware";
     private final String URL = "jdbc:postgresql://localhost:5432/" + DBNAME;
     private final String LOGIN = "postgres";
-    private final String SENHA = "Guns1993@";
+    private final String SENHA = "1234";
 
     public boolean getConnection(){
         try {

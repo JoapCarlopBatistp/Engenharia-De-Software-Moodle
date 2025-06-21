@@ -1,12 +1,16 @@
 package View.View_Administrador;
 
-import static View.View_Administrador.tela_administrador.*;
-import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Controller.reports.report_test;
+import static View.View_Administrador.tela_administrador.ALTURA_PAINEL;
+import static View.View_Administrador.tela_administrador.LARGURA_PAINEL;
+import View.botao_redondo;
 
 public class painel_Relatorios extends JPanel{
 
@@ -21,6 +25,9 @@ public class painel_Relatorios extends JPanel{
         botao_redondo botao_profe = new botao_redondo("Listar professores");
         botao_redondo botao_matricula = new botao_redondo("Gerar histórico de matrícula");
         
+        // Adicionando o report ao botão
+        botao_sala.addActionListener(new report_test());
+
         // Array para o loop
         botao_redondo[] botoes = {botao_sala, botao_turma, botao_matricula, botao_profe};
 
