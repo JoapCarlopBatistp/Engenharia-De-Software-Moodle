@@ -47,7 +47,7 @@ public class report_sala implements ActionListener{
             Map<String, Object> params = new HashMap<>();
 
              System.out.println("CRIAMOS O hashmap");
-
+             System.out.println(dataSource);
             // No parameters, so empty map
             JasperPrint print = JasperFillManager.fillReport(report, params, dataSource);
 
