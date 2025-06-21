@@ -64,7 +64,9 @@ public class tela_cadastro extends JFrame{
         ImageIcon icone_minimizar = new ImageIcon(tela_cadastro.class.getResource("/window-minimize.png"));
         Image imagem_minimizar = icone_minimizar.getImage();
         Image imagemEmEscala_minimizar = imagem_minimizar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
-        ImageIcon icone_gato = new ImageIcon(tela_cadastro.class.getResource("/gato.gif"));
+        ImageIcon icone_gato = new ImageIcon(tela_cadastro.class.getResource("/gatinho_login.png"));
+        Image gato_login = icone_gato.getImage();
+        Image imagemEmEscala_gatinho = gato_login.getScaledInstance(430,640,  java.awt.Image.SCALE_SMOOTH);
 
         botaoFechar.setBounds((int)screensize.getWidth() - 64,32,32,32);
         botaoFechar.setLayout(null);
@@ -78,18 +80,18 @@ public class tela_cadastro extends JFrame{
         botaoMinimizar.setBorder(null);
         botaoMinimizar.setIcon(new ImageIcon(imagemEmEscala_minimizar));
 
-        painel.setBounds((int)screensize.getWidth()/2, 0, (int)screensize.getWidth()/4, (int)screensize.getHeight());
-
-        imagem_cadastro.setIcon(icone_gato);
-        imagem_cadastro.setBounds(200, 200, 500, 500);
+        painel.setBounds((int)screensize.getWidth()/2 - (int)screensize.getWidth()/8, 0, (int)screensize.getWidth()/4, (int)screensize.getHeight());
+        painel.setOpaque(true);
+        imagem_cadastro.setIcon(new ImageIcon(imagemEmEscala_gatinho));
+        imagem_cadastro.setBounds(270, 300, 430, 640);
 
         nome_programa.setBounds(110,32,200,50);
         nome_programa.setForeground(new Color(248, 181, 95));
         nome_programa.setFont(new Font("Britannic Bold", Font.BOLD, 15));
 
         add(nome_programa);
-        add(imagem_cadastro, BorderLayout.CENTER);
         add(painel);
+        add(imagem_cadastro, BorderLayout.CENTER);
         add(botaoFechar);
         add(botaoMinimizar);
     }

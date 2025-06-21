@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -39,7 +40,7 @@ public class botao_redondo extends JButton{
     protected void paintBorder(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(getForeground());
+        g2d.setColor(Color.BLACK);
         g2d.drawRoundRect(0, 0, getSize().width - 1, getSize().height - 1, 20, 20);
         g2d.dispose();
     }

@@ -10,7 +10,7 @@ public class databaseconn {
     private final String DBNAME = "Trab_EngSoftware";
     private final String URL = "jdbc:postgresql://localhost:5432/" + DBNAME;
     private final String LOGIN = "postgres";
-    private final String SENHA = "";
+    private final String SENHA = "Guns1993@";
 
     public boolean getConnection(){
         try {

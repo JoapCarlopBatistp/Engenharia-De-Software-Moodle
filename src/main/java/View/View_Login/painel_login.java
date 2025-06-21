@@ -1,5 +1,6 @@
 package View.View_Login;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -43,7 +45,7 @@ public class painel_login extends JPanel{
 
     private void configPainel() throws IOException{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBackground(new Color(61, 46, 85));
+        setBackground(new Color(55,44,78));
         setSize((int)screensize.getWidth()/4, (int)screensize.getHeight()/2);
         setLayout(new FlowLayout(FlowLayout.CENTER));
         
@@ -53,24 +55,32 @@ public class painel_login extends JPanel{
         
         setLayout(null);
         titulo_login.setFont(new Font("Britannic Bold", Font.BOLD, 30));
-        titulo_login.setForeground(new Color(248, 181, 95));
+        titulo_login.setForeground(new Color(194,48,160));
         titulo_login.setBounds(145,240,150,100);
 
-        titulo_usuario.setFont(new Font("Verdana", Font.PLAIN, 18));
-        titulo_usuario.setForeground(new Color(248, 181, 95));
+        titulo_usuario.setFont(new Font("Verdana", Font.BOLD, 18));
+        titulo_usuario.setForeground(new Color(194,48,160));
         titulo_usuario.setBounds(40,290,150,100);
 
-        usuario.setBounds(40, 370, 300, 20);
+        usuario.setBounds(40, 360, 300, 40);
+        usuario.setBackground(new Color(61,54,92));
+        usuario.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        usuario.setForeground(new Color(194,48,160));
 
-        titulo_senha.setFont(new Font("Verdana", Font.PLAIN, 18));
-        titulo_senha.setForeground(new Color(248, 181, 95));
+        titulo_senha.setFont(new Font("Verdana", Font.BOLD, 18));
+        titulo_senha.setForeground(new Color(194,48,160));
         titulo_senha.setBounds(40,370,150,100);
 
-        senha.setBounds(40, 450, 300, 20);
+        senha.setBounds(40, 440, 300, 40);
+        senha.setBackground(new Color(61,54,92));
+        senha.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        senha.setForeground(new Color(194,48,160));
 
-        botao_login.setBounds(70, 530, 230, 40);
-        botao_login.setBackground(Color.WHITE);
+        botao_login.setBounds(70, 530, 230, 50);
+        botao_login.setBackground(new Color(61,54,92));
         botao_login.setFocusable(false);
+        botao_login.setForeground(new Color(194,48,160));
+        botao_login.setFont(new Font("Verdana", Font.BOLD, 18));
 
 
         add(titulo_login);

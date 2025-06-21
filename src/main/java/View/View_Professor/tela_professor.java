@@ -70,12 +70,12 @@ public class tela_professor extends JFrame{
 
     private void configurarBotoesControle(Dimension screensize){
         
-        ImageIcon icone_fechar = new ImageIcon("img/cross.png");
+        ImageIcon icone_fechar = new ImageIcon(tela_professor.class.getResource("/cross.png"));
         Image imagem_fechar = icone_fechar.getImage();
         Image imagemEmEscala_fechar = imagem_fechar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
         
         // importando a imagem
-        ImageIcon icone_minimizar = new ImageIcon("img/window-minimize.png");
+        ImageIcon icone_minimizar = new ImageIcon(tela_professor.class.getResource("/window-minimize.png"));
         // transformando na classe Image em vez de ImageIcon
         Image imagem_minimizar = icone_minimizar.getImage();
         // Definindo o tamanho(escala)
