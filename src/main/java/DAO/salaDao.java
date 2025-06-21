@@ -78,7 +78,7 @@ public class salaDao {
             while (rs.next()) {
                 sala sala = new sala ();               
                 sala.setCapacidade_Sala(rs.getInt("Capacidade")); 
-                sala.setCapacidade_Sala(rs.getInt("Id_Sala"));
+                sala.setId_Sala(rs.getInt("Id_Sala"));
                 salas.add(sala);
             }
             statement.close();
