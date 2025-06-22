@@ -11,19 +11,31 @@ import Database.databaseconn;
 public class sessao extends pessoa {
 
     private databaseconn connection;
-    List<turma> turmasMatriculadas = new ArrayList<turma>();
-    List<turma> turmasEnsinadas = new ArrayList<turma>();
-    List<notificacao> notificacoes = new ArrayList<notificacao>();
+    private List<turma> turmasMatriculadas = new ArrayList<turma>();
+    private List<turma> turmasEnsinadas = new ArrayList<turma>();
+    private List<notificacao> notificacoes = new ArrayList<notificacao>();
 
     public databaseconn getConnection() {
-        connection = new databaseconn();
-        connection.getConnection();
         return connection;
+    }
+
+    public List<turma> getTurmasMatriculadas() {
+        return turmasMatriculadas;
+    }
+
+    public List<turma> getTurmasEnsinadas() {
+        return turmasEnsinadas;
+    }
+
+    public List<notificacao> getNotificacoes() {
+        return notificacoes;
     }
 
     public sessao(pessoa pessoa) throws Exception {
 
         try {
+            connection = new databaseconn();
+            connection.getConnection();
             this.setDdd(pessoa.getDdd());
             this.setEmail(pessoa.getEmail());
             this.setNome(pessoa.getNome());
