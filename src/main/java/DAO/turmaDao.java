@@ -47,6 +47,7 @@ public class turmaDao {
             statement.executeUpdate();
             statement.close();
            bd.close();
+
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
             System.out.println(erro.toString());
@@ -78,6 +79,7 @@ public class turmaDao {
                 turma.setId_sala(rs.getInt("id_sala"));
                 turma.setId_cadeira(rs.getInt("id_cadeira"));
                 turma.setId_professor(rs.getInt("id_professor"));
+
                 turmas.add(turma);
             }
             statement.close();
@@ -107,5 +109,6 @@ public class turmaDao {
                     "id_cadeira, "+
                     "id_professor) " +
                     "values(nextval('turma_id_turma_seq'), ?, ?, ?, ?, ?, ?, ?, ?)";
+
     }
 }

@@ -86,6 +86,7 @@ public class turma {
 
     public turma() {}
 
+
     @Override
     public String toString() {
         return "Turma " + Integer.toString(Id_Turma) + " " + dias + "-" + horario; // Display only the name in the combo box
