@@ -1,9 +1,5 @@
 package View.View_Aluno;
 
-import Controller.actions_performed.fechar_listener;
-import Model.sessao;
-import View.botao_logout;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -11,7 +7,15 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import javax.swing.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import Controller.actions_performed.fechar_listener;
+import Model.sessao;
+import View.botao_logout;
 
 public class tela_aluno extends JFrame{
 
@@ -29,6 +33,8 @@ public class tela_aluno extends JFrame{
 
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());
+
+        
 
         configTela();
         adicionaComponentes(painel_aluno);

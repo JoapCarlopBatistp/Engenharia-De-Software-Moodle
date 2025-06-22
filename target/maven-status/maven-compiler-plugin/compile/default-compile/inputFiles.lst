@@ -1,43 +1,45 @@
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\actions_performed\fechar_listener.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\adminController.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\alunoController.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\professorController.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_professor.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_sala.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_turma.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\sessaoController.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Controller\turmaController.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\administradorDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\alunoDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\cadeiraDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\pessoaDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\professorDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\salaDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\sessaoDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\DAO\turmaDao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Database\databaseconn.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\main.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\admin.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\aluno.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\cadeira.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\notificacao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\pessoa.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\presenca.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\professor.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\roleEnum.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\sala.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\sessao.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\Model\turma.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\botao_logout.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\botao_redondo.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\painel_Alocacoes.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\painel_Cadastros.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\painel_Relatorios.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\tela_administrador.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Aluno\painel_Aluno.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Aluno\tela_aluno.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Login\painel_login.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Login\tela_cadastro.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Professor\painel_Presenca.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Professor\painel_Professor.java
-C:\Users\jooca\OneDrive\Área de Trabalho\UFRGS\Engenharia-De-Software-Moodle\src\main\java\View\View_Professor\tela_professor.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\actions_performed\fechar_listener.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\adminController.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\alunoController.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\professorController.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_minhas_turmas.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_professor.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_sala.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_turma_ensinada.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\reports\report_turma_vagas.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\sessaoController.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Controller\turmaController.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\administradorDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\alunoDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\cadeiraDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\pessoaDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\professorDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\salaDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\sessaoDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\DAO\turmaDao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Database\databaseconn.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\main.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\admin.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\aluno.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\cadeira.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\notificacao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\pessoa.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\presenca.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\professor.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\roleEnum.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\sala.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\sessao.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\Model\turma.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\botao_logout.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\botao_redondo.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\painel_Alocacoes.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\painel_Cadastros.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\painel_Relatorios.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Administrador\tela_administrador.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Aluno\painel_Aluno.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Aluno\tela_aluno.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Login\painel_login.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Login\tela_cadastro.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Professor\painel_Presenca.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Professor\painel_Professor.java
+C:\Users\gabri\OneDrive\Área de Trabalho\Reta Final\Engenharia-De-Software-Moodle\src\main\java\View\View_Professor\tela_professor.java

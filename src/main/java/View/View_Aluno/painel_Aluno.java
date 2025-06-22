@@ -1,6 +1,5 @@
 package View.View_Aluno;
 
-import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
@@ -11,8 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Controller.alunoController;
-import Model.turma;
+import Controller.reports.report_minhas_turmas;
 import Model.sessao;
+import Model.turma;
+import View.botao_redondo;
 
 public class painel_Aluno extends JPanel{
     private sessao sessao;
@@ -34,6 +35,8 @@ public class painel_Aluno extends JPanel{
         // botao_historico.addActionListener(e -> this.configPainel());
         // botao_turmas_atuais.addActionListener(e -> this.configPainel());
         botao_turmas_disponiveis.addActionListener(e -> this.visualizarTurmasDisponiveis());
+        
+        botao_turmas_atuais.addActionListener(new report_minhas_turmas(sessao));
         setVisible(true);
     }
 
