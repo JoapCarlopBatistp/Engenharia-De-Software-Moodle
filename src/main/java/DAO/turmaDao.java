@@ -27,6 +27,9 @@ public class turmaDao {
              statement.setInt(3, turma.getVagas_ocupadas());
              statement.setString(4, turma.getDias());
              statement.setString(5, turma.getHorario());
+             statement.setInt(6,1);
+             statement.setInt(7, 1);
+             //statement.setInt(8, 1);
              statement.executeUpdate();
              statement.close();
              bd.connection.close();
@@ -83,12 +86,16 @@ public class turmaDao {
             rs = statement.executeQuery();
 
             while (rs.next()) {
-                turma turma = new turma ();               
+                turma turma = new turma ();  
+                //turma.setId_Turma(rs.getInt("Id_Turma"));             
                 turma.setSemestre(rs.getString("Semestre"));  
                 turma.setVagas_disponibilizadas(rs.getInt("Vagas_Disponibilizadas"));
                 turma.setVagas_ocupadas(rs.getInt("Vagas_Ocupadas")); 
                 turma.setDias(rs.getString("Dias"));
-                turma.setHorario(rs.getString("Horario"));     
+                turma.setHorario(rs.getString("Horario")); 
+                turma.setId_Sala(rs.getInt("Id_Sala")); 
+                turma.setId_Cadeira(rs.getInt("Id_Cadeira")); 
+                //turma.setId_Professor(rs.getInt("Id_Professor"));     
                 turmas.add(turma);
             }
             statement.close();
@@ -105,7 +112,7 @@ public class turmaDao {
     }
 
     private String cadastrarQuery() {
-        return "INSERT INTO Sala (Id_Turma, Semestre, Vagas_Disponibilizadas, Vagas_Ocupadas, Dias, Horario, Id_Sala, Id_Cadeira) VALUES (nextval('Turma_Id_Turma_seq'),?,?,?,?,?,?,?)";
+        return "INSERT INTO Turma (Id_Turma, Semestre, Vagas_Disponibilizadas, Vagas_Ocupadas, Dias, Horario, Id_Sala, Id_Cadeira) VALUES (nextval('Turma_Id_Turma_seq'),?,?,?,?,?,?,?)";
     }
 
     public turmaDao() {}
