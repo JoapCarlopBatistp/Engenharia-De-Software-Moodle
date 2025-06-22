@@ -1,7 +1,7 @@
 package Model;
 
 public class turma {
-    private int Id_Turma;
+    private int id_turma;
     private String semestre;
     private int vagas_disponibilizadas;
     private int vagas_ocupadas;
@@ -11,14 +11,7 @@ public class turma {
 	private int id_cadeira;
 	private int id_professor;
 
-    public int getId_Turma() {
-        return Id_Turma;
-    }
-
-    public void setId_Turma(int Id_Turma) {
-        this.Id_Turma = Id_Turma;  
-    }
-
+    
     public String getSemestre() {
         return semestre;
     }
@@ -89,6 +82,14 @@ public class turma {
 
     @Override
     public String toString() {
-        return "Turma " + Integer.toString(Id_Turma) + " " + dias + "-" + horario; // Display only the name in the combo box
+        return "Turma " + Integer.toString(id_turma) + " " + dias + "-" + horario; // Display only the name in the combo box
+    }
+
+    public int getId_turma() {
+        return id_turma;
+    }
+
+    public void setId_turma(int id_turma) {
+        this.id_turma = id_turma;
     }
 }

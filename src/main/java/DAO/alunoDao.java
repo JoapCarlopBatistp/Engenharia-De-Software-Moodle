@@ -83,11 +83,11 @@ public class alunoDao extends pessoaDao{
         try {
             statement = sessao.getConnection().connection.prepareStatement(this.cadastrarMatricula());
             statement.setInt(1, sessao.getId());
-            statement.setInt(2, turmaParaMatricular.getId_Turma());
+            statement.setInt(2, turmaParaMatricular.getId_turma());
             statement.executeUpdate();
 
             statementUpdateTurma = sessao.getConnection().connection.prepareStatement(this.updateVagasTurmasQuery());
-            statementUpdateTurma.setInt(2, turmaParaMatricular.getId_Turma());
+            statementUpdateTurma.setInt(2, turmaParaMatricular.getId_turma());
             statementUpdateTurma.executeUpdate();
         
             statement.close();
@@ -103,7 +103,7 @@ public class alunoDao extends pessoaDao{
         try {
             statement = sessao.getConnection().connection.prepareStatement(this.cadastrarMatriculaPendente(),Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, sessao.getId());
-            statement.setInt(2, turmaParaMatricular.getId_Turma());
+            statement.setInt(2, turmaParaMatricular.getId_turma());
             statement.executeUpdate();
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -135,7 +135,7 @@ public class alunoDao extends pessoaDao{
 
             while (rs.next()) {
                 turma turma = new turma ();
-                turma.setId_Turma(rs.getInt("id_turma"));
+                turma.setId_turma(rs.getInt("Id_Turma"));
                 turma.setSemestre(rs.getString("semestre"));
                 turma.setVagas_disponibilizadas(rs.getInt("vagas_disponibilizadas"));
                 turma.setVagas_ocupadas(rs.getInt("vagas_ocupadas"));
@@ -195,7 +195,7 @@ public class alunoDao extends pessoaDao{
     private String cadastrarMatricula() {
        return "INSERT INTO matricula " +
                 "(id_aluno, " +
-                 "id_turma, " +
+                 "Id_Turma, " +
                  "data_matricula, " +
                  "data_cancelamentomatricula, " +
                  "data_encerramentomatricula, " +
@@ -206,7 +206,7 @@ public class alunoDao extends pessoaDao{
     private String cadastrarMatriculaPendente() {
        return "INSERT INTO matricula_pendente " +
                 "(id_aluno, " +
-                 "id_turma, " +
+                 "Id_Turma, " +
                  "data_matricula, " +
                  "data_cancelamentomatricula, " +
                  "data_encerramentomatricula, " +
@@ -235,7 +235,7 @@ public class alunoDao extends pessoaDao{
                 "from "+
                     "matricula mati "+
                     "join aluno alu on alu.id_aluno = mati.id_aluno "+
-                    "join turma tur on tur.id_turma = mati.id_turma "+
+                    "join turma tur on tur.Id_Turma = mati.Id_Turma "+
                 "where "+
                     "alu.id_pessoa = ?";
     }
@@ -246,7 +246,7 @@ public class alunoDao extends pessoaDao{
                 "set "+
                     "vagas_ocupadas = vagas_ocupadas + 1 "+
                 "where "+
-                    "id_turma = ?";
+                    "Id_Turma = ?";
     }
     private String cadastrarNotificacaoAlunoQuery(){
         return "INSERT INTO notificacao "+
