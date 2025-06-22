@@ -24,4 +24,9 @@ public class cadeira {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    @Override
+    public String toString() {
+        return nome; // Display only the name in the combo box
+    }
 }

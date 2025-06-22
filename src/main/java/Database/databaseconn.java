@@ -10,16 +10,19 @@ public class databaseconn {
     private final String DBNAME = "Trab_EngSoftware";
     private final String URL = "jdbc:postgresql://localhost:5432/" + DBNAME;
     private final String LOGIN = "postgres";
-    private final String SENHA = "";
+    private final String SENHA = "fF$WTE@$5FL*hZWe938VEu@VSetyTu";
 
     public boolean getConnection(){
         try {
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(URL, LOGIN, SENHA);
+            System.out.println("Conectou no banco de dados");
             return true;
         } catch (ClassNotFoundException erro){
+            System.out.println("Não foi possível conectar encontrar a classe do banco");
             return false;
         } catch (SQLException erro){
+            System.out.println("Erro durante o sql");
             return false;
         }
     }

@@ -6,8 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,13 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Database.databaseconn;
+import Controller.sessaoController;
+import Model.roleEnum;
+import Model.sessao;
 import View.botao_redondo;
 import View.View_Administrador.tela_administrador;
 import View.View_Aluno.tela_aluno;
 import View.View_Professor.tela_professor;
 
-public class painel_login extends JPanel{
+public class painel_login extends JPanel {
     
     public JTextField usuario;
     public JPasswordField senha;
@@ -86,45 +86,28 @@ public class painel_login extends JPanel{
     }
 
     private void loginLogic(final JFrame frameParaFechar) {
-        databaseconn bd = new databaseconn();
-        PreparedStatement statement = null;
-        ResultSet resultSet;
         String stringSenha = new String(senha.getPassword()).trim();
-        if((usuario.getText().trim().equals("")) && stringSenha.equals("")){
-					JOptionPane.showMessageDialog(null, "Verifique se algum campo está vazio!");
-        } else {
-            try {
-                if(!bd.getConnection()){
-                    JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-                    System.exit(0);
+        try {
+             if((usuario.getText().trim().equals("")) && stringSenha.equals("")){
+					throw new Exception ("Verifique se algum campo está vazio!");
+            } else {
+                sessaoController sessaoContrl = new sessaoController();
+                sessao sessao = sessaoContrl.login(usuario.getText().trim(), stringSenha);
+                switch(roleEnum.values()[sessao.getPapel()]) {
+                    case PROFESSOR:
+                        new tela_professor(sessao);
+                        break;
+                    case ALUNO:
+                        new tela_aluno(sessao);
+                        break;
+                    default:
+                        new tela_administrador(sessao);
                 }
-                String url = "SELECT * FROM pessoa WHERE nome_de_usuario=? AND senha=?";
-                statement = bd.connection.prepareStatement(url);
-                statement.setString(1, usuario.getText());
-                statement.setString(2, stringSenha);
-                resultSet = statement.executeQuery();
-                if(resultSet.next()){
-                    JOptionPane.showMessageDialog(null, "Usuário logado com sucesso");
-                    if(resultSet.getLong("Papel") == 1) {
-                        new tela_aluno();
-                    } else if(resultSet.getLong("Papel") == 2) {
-                        new tela_professor();
-                    } else {
-                        new tela_administrador();
-                    }
-                    
-                    frameParaFechar.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Nenhum usuário com esse username e senha foi encontrado!");
-                }
-                resultSet.close();
-                statement.close();
-                bd.close();
-            } catch(Exception erro) {
-                JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
-            }
-            
-        }
-			
+                frameParaFechar.dispose();
+                sessao.disconnect();
+            }   
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }	
     }
 }

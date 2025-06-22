@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 
 import Database.databaseconn;
 import Model.cadeira;
-import Model.sala;
 
 public class cadeiraDao {
 
@@ -35,7 +34,7 @@ public class cadeiraDao {
 
     }
 
-      public List<cadeira> buscarTodasCadeiras() {
+    public List<cadeira> buscarTodasCadeiras() {
         List<cadeira> cadeiras = new ArrayList<cadeira>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
@@ -57,7 +56,7 @@ public class cadeiraDao {
                 cadeiras.add(cadeira);
             }
             statement.close();
-            bd.connection.close();
+           bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }

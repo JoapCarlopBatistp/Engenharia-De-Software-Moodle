@@ -1,6 +1,7 @@
 package View.View_Professor;
 
 import Controller.actions_performed.fechar_listener;
+import Model.sessao;
 import View.botao_logout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,13 +20,13 @@ public class tela_professor extends JFrame{
     private final painel_Professor painel_professor;
     private final JButton botao_sair;
 
-    public tela_professor() throws IOException{
+    public tela_professor(sessao sessao) throws IOException{
 
         botaoFechar = new JButton();
         botaoMinimizar = new JButton();
-        painel_professor = new painel_Professor();
+        painel_professor = new painel_Professor(sessao);
         painel_presenca = new painel_Presenca();
-        botao_sair = new botao_logout(this);
+        botao_sair = new botao_logout(this, sessao);
 
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());

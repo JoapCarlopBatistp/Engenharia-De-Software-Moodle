@@ -1,25 +1,28 @@
 package Controller;
 
-import Model.turma;
+import Model.cadeira;
 import Model.pessoa;
+import Model.professor;
+import Model.sala;
+import Model.turma;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import DAO.alunoDao;
+import DAO.cadeiraDao;
 import DAO.professorDao;
 import DAO.salaDao;
 
-import javax.swing.*;
 
 public class adminController {
     
     public adminController() {
     }
 
-    public void cadastrarTurma() {
-        Integer numero = pedirTamTurma();
-        if (numero != null) {
-            new turma().cadastrar(numero);
-        } else {
-            System.out.println("Erro no cadastro da Turma.");
-        }
+    public void cadastrarTurma(turma turma) {
+        turmaController turmaContrl = new turmaController();
+        turmaContrl.cadastrarTurma(turma);
     }
 
     public void cadastrarSala(int capacidade) {
@@ -28,30 +31,36 @@ public class adminController {
     }
 
     public void cadastrarAluno(pessoa pessoa) {
+        if(pessoa == null) return;
         alunoDao aluno = new alunoDao();
         aluno.cadastrar(pessoa);
     }
 
     public void cadastrarProfessor(pessoa pessoa) {
-
+        if(pessoa == null) return;
         professorDao professor = new professorDao();
         professor.cadastrar(pessoa);
     }
 
-    private static Integer pedirTamTurma() {
-        while (true) {
-            String input = JOptionPane.showInputDialog(null, "Digite o tamanho da turma:", "Entrada", JOptionPane.QUESTION_MESSAGE);
-
-            if (input == null) {
-                // Usuário cancelou
-                return null;
-            }
-
-            try {
-                return Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Valor inválido. Por favor, digite um número inteiro.");
-            }
-        }
+    public List<cadeira> listarCadeiras() {
+        List<cadeira> cadeiras = new ArrayList<cadeira>();
+        cadeiraDao dao = new cadeiraDao();
+        cadeiras = dao.buscarTodasCadeiras();
+        return cadeiras;
     }
+
+    public List<professor> listarProfessores() {
+        List<professor> professores = new ArrayList<professor>();
+        professorDao dao = new professorDao();
+        professores = dao.buscarTodosProfessores();
+        return professores;
+    }
+
+    public List<sala> listarSalas() {
+        List<sala> salas = new ArrayList<sala>();
+        salaDao dao = new salaDao();
+        salas = dao.buscaSalas();
+        return salas;
+    }
+
 }

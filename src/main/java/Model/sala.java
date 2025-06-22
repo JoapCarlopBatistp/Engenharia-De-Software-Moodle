@@ -21,4 +21,8 @@ public class sala {
         this.capacidade = capacidade;
     }
 
+    @Override//para mostrar o id na sala do combobox
+    public String toString() {
+        return Integer.toString(id_sala) + " - " + "Vagas possíves: " + Integer.toString(capacidade); // Display only the name in the combo box
+    }
 }

@@ -33,7 +33,7 @@ public class salaDao {
 
     }
 
-    public List<sala> buscaSalasDisponiveis() {
+    public List<sala> buscaSalas() {
         List<sala> salas = new ArrayList<sala>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
@@ -44,7 +44,7 @@ public class salaDao {
                 System.exit(0);
             }
 
-            statement = bd.connection.prepareStatement(this.buscaSalasDisponiveisQuery());
+            statement = bd.connection.prepareStatement(this.buscaTodasSalas());
             rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -54,7 +54,7 @@ public class salaDao {
                 salas.add(sala);
             }
             statement.close();
-            bd.connection.close();
+           bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -84,7 +84,7 @@ public class salaDao {
                 salas.add(sala);
             }
             statement.close();
-            bd.connection.close();
+           bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -96,15 +96,11 @@ public class salaDao {
         return "INSERT INTO Sala (Id_Sala,Capacidade) VALUES (nextval('Sala_Id_Sala_seq'),?)";
     }
 
-    private String buscaSalasDisponiveisQuery() {
+    private String buscaTodasSalas() {
         return "select " + //
-                "sala.* " + //
+                "* " + //
                 "from " + //
-                "sala sala " + //
-                "left join turma tur on tur.id_sala = sala.id_sala " + //
-                "where " + //
-                "tur.id_sala is null" + //
-                "order by sala.id_sala";
+                "sala ";
     }
 
     private String buscaSalasDisponivelNoHorarioQuery() {

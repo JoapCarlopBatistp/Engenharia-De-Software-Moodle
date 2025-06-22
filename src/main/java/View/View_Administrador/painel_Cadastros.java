@@ -3,14 +3,19 @@ package View.View_Administrador;
 import static View.View_Administrador.tela_administrador.*;
 
 import Controller.adminController;
+import Model.cadeira;
 import Model.pessoa;
+import Model.professor;
 import Model.roleEnum;
+import Model.sala;
+import Model.turma;
 import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
 
 import javax.swing.Box;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -35,9 +40,8 @@ public class painel_Cadastros extends JPanel{
 
         configPainel();
         adicionaComponentes(titulo, botoes );
-        adminController admin = new adminController();
         botao_sala.addActionListener(e -> this.cadastrarSala());
-        botao_turma.addActionListener(e -> admin.cadastrarTurma());
+        botao_turma.addActionListener(e -> this.cadastrarTurma());
         botao_aluno.addActionListener(e -> this.cadastrarAluno());
         botao_profe.addActionListener(e -> this.cadastrarProfessor());
         setVisible(true);
@@ -122,13 +126,10 @@ public class painel_Cadastros extends JPanel{
 
     private void cadastrarSala(){
         String input = null;
-        while (input == null) {
-            input = JOptionPane.showInputDialog(null, "Digite a capacidade da sala:", "Entrada", JOptionPane.QUESTION_MESSAGE);
+        input = JOptionPane.showInputDialog(null, "Digite a capacidade da sala:", "Entrada", JOptionPane.QUESTION_MESSAGE);
 
-            if (input == null) {
-                // Usuário cancelou
-                return;
-            }
+        if (input == null) {
+            return; // Usuário cancelou
         }
         try {
             adminController admController = new adminController();
@@ -136,6 +137,7 @@ public class painel_Cadastros extends JPanel{
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Valor inválido. Por favor, digite um número inteiro.");
         }
+        
     }
 
     private void cadastrarAluno() {
@@ -148,4 +150,69 @@ public class painel_Cadastros extends JPanel{
         admController.cadastrarProfessor(this.cadastrarPessoa(roleEnum.PROFESSOR.ordinal()));
     }
 
+    private void listarSalas() {
+         adminController controller = new adminController();
+        JPanel myPanel = new JPanel();
+        JComboBox<sala> comboBoxTurma = new JComboBox<>(controller.listarSalas().toArray(new sala[0]));
+        myPanel.add(new JLabel("Turmas disponiveis"));
+        myPanel.add(comboBoxTurma);
+
+        JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+    }
+
+    private void cadastrarTurma() {
+        adminController admController = new adminController();
+        admController.cadastrarTurma(this.turmaPopUp());
+    }
+
+    private turma turmaPopUp(){
+        adminController admController = new adminController();
+        JPanel myPanel = new JPanel();
+        JTextField semestre = new JTextField(9);
+        JTextField vagas_disponibilizadas = new JTextField(2);
+        JTextField dias = new JTextField(20);
+        JTextField horario = new JTextField(9);
+        JComboBox<cadeira> comboBoxCadeira = new JComboBox<>(admController.listarCadeiras().toArray(new cadeira[0]));
+        JComboBox<professor> comboBoxProfessor = new JComboBox<>(admController.listarProfessores().toArray(new professor[0]));
+        JComboBox<sala> comboBoxSala = new JComboBox<>(admController.listarSalas().toArray(new sala[0]));
+        
+        myPanel.add(new JLabel("Digite o semestre atual :"));
+        myPanel.add(semestre);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Digite as vagas disponibilizadas para a turma:"));
+        myPanel.add(vagas_disponibilizadas);
+        myPanel.add(Box.createHorizontalStrut(50)); // a spacer
+        myPanel.add(new JLabel("Digite os dias de aula(separados por vírgula):"));
+        myPanel.add(dias);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Digite o horário da turma:"));
+        myPanel.add(horario);
+        myPanel.add(new JLabel("Nome da Cadeira:"));
+        myPanel.add(comboBoxCadeira);
+        myPanel.add(new JLabel("Nome de Professores:"));
+        myPanel.add(comboBoxProfessor);
+        myPanel.add(new JLabel("Escolha uma sala para a turma:"));
+        myPanel.add(comboBoxSala);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            professor professorSelecionado = (professor) comboBoxProfessor.getSelectedItem();
+            sala salaSelecionado = (sala) comboBoxSala.getSelectedItem();
+            cadeira cadeiraSelecionada = (cadeira) comboBoxCadeira.getSelectedItem();
+            turma turma = new turma();
+            turma.setDias(dias.getText());
+            turma.setVagas_disponibilizadas(Integer.parseInt(vagas_disponibilizadas.getText()));
+            turma.setHorario(horario.getText());
+            turma.setSemestre(semestre.getText());
+            turma.setId_professor(professorSelecionado.getId_Professor());
+            turma.setId_sala(salaSelecionado.getId_sala());
+            turma.setId_cadeira(cadeiraSelecionada.getId_cadeira());
+            return turma;
+        }
+        return null;
+
+    }
 }
