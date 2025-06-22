@@ -111,7 +111,7 @@ public class painel_Cadastros extends JPanel{
         admController.cadastrarCadeira(this.painelCadeira());
     }
 
-    private sala painelSala() {        
+    private int painelSala() {        
         JTextField CapacidadeField = new JTextField(2);
 
         JPanel myPanel = new JPanel();       
@@ -122,11 +122,9 @@ public class painel_Cadastros extends JPanel{
         int result = JOptionPane.showConfirmDialog(null, myPanel, 
                 "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-           sala sala = new sala();            
-            sala.setCapacidade_Sala(Integer.parseInt(CapacidadeField.getText()));
-            return sala;
+            return Integer.parseInt(CapacidadeField.getText());
         }
-        return null;
+        return -1;
 
     }
     

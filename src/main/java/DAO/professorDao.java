@@ -87,7 +87,7 @@ public class professorDao extends pessoaDao{
 
             while (rs.next()) {
                 turma turma = new turma();
-                turma.setId_turma(rs.getInt("id_turma"));
+                turma.setId_Turma(rs.getInt("id_turma"));
                 turma.setSemestre(rs.getString("semestre"));
                 turma.setVagas_disponibilizadas(rs.getInt("vagas_disponibilizadas"));
                 turma.setVagas_ocupadas(rs.getInt("vagas_ocupadas"));

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import DAO.turmaDao;
+import Controller.turmaController;
 import Model.turma;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -25,8 +25,8 @@ public class report_turma implements ActionListener{
          try {
             // System.out.println("bla alb");
             // Sample data
-            turmaDao dao = new turmaDao();
-            List<turma> items = dao.buscarTodos();
+            turmaController controller = new turmaController();
+            List<turma> items = controller.listarTurmas();
             
             System.out.println("criamos a lista");
 

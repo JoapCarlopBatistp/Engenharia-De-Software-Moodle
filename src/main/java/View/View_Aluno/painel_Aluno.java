@@ -97,7 +97,7 @@ public class painel_Aluno extends JPanel{
         if (result == JOptionPane.OK_OPTION) {
             turma turmaSelecionada = (turma) comboBoxTurma.getSelectedItem();
             turma turma = new turma();
-            turma.setId_turma(turmaSelecionada.getId_turma());
+            turma.setId_Turma(turmaSelecionada.getId_Turma());
             turma.setSemestre(turmaSelecionada.getSemestre());
             turma.setVagas_disponibilizadas(turmaSelecionada.getVagas_disponibilizadas());
             turma.setVagas_ocupadas(turmaSelecionada.getVagas_ocupadas());

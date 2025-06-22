@@ -31,6 +31,7 @@ public class adminController {
     }
 
     public void cadastrarSala(int capacidade) {
+        if (capacidade == -1) return;
         salaDao sala = new salaDao();
         sala.cadastrar(capacidade);
     }
