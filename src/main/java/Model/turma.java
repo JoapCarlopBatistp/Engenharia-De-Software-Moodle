@@ -7,9 +7,9 @@ public class turma {
     private int vagas_ocupadas;
     private String dias;
     private String horario; 
-    private int Id_Sala;
-    private int Id_Cadeira;
-    private int Id_Professor;
+    private int id_sala;
+	private int id_cadeira;
+	private int id_professor;
 
     public int getId_Turma() {
         return Id_Turma;
@@ -58,32 +58,37 @@ public class turma {
     public void setHorario(String horario) {
        this.horario = horario;
     }
+    
 
-    public int getId_Sala() {
-        return Id_Sala;
+    public int getId_sala() {
+        return id_sala;
     }
 
-    public void setId_Sala(int Id_Sala) {
-        this.Id_Sala = Id_Sala;  
+    public void setId_sala(int id_sala) {
+        this.id_sala = id_sala;
     }
 
-    public int getId_Cadeira() {
-        return Id_Cadeira;
+    public int getId_cadeira() {
+        return id_cadeira;
     }
 
-    public void setId_Cadeira(int Id_Cadeira) {
-        this.Id_Cadeira = Id_Cadeira;  
+    public void setId_cadeira(int id_cadeira) {
+        this.id_cadeira = id_cadeira;
     }
 
-    public int getId_Professor() {
-        return Id_Professor;
+    public int getId_professor() {
+        return id_professor;
     }
 
-    public void setId_Professor(int Id_Professor) {
-        this.Id_Professor = Id_Professor;  
+    public void setId_professor(int id_professor) {
+        this.id_professor = id_professor;
     }
 
-    public turma() {
+    public turma() {}
 
+
+    @Override
+    public String toString() {
+        return "Turma " + Integer.toString(Id_Turma) + " " + dias + "-" + horario; // Display only the name in the combo box
     }
 }

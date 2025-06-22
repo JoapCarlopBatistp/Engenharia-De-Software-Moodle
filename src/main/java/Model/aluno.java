@@ -10,4 +10,6 @@ public class aluno extends pessoa{
     public void setId_Aluno(int id_Aluno) {
         Id_Aluno = id_Aluno;
     }
+
+
 }

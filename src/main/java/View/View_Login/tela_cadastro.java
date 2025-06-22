@@ -1,7 +1,6 @@
 package View.View_Login;
 
-import Controller.actions_performed.*;
-import View.View_Administrador.tela_administrador;
+import Controller.actions_performed.fechar_listener;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -34,7 +33,6 @@ public class tela_cadastro extends JFrame{
             try {
                 painel.login(this);
             } catch (Exception e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });

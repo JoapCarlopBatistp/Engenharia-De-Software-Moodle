@@ -4,12 +4,20 @@ import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
+
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class painel_Aluno extends JPanel{
+import Controller.alunoController;
+import Model.turma;
+import Model.sessao;
 
-    public painel_Aluno() throws IOException{
+public class painel_Aluno extends JPanel{
+    private sessao sessao;
+    public painel_Aluno(sessao sessao) throws IOException{
+        this.sessao = sessao;
         JLabel titulo = new JLabel("Opções");
         botao_redondo botao_turmas_disponiveis = new botao_redondo("Visualizar turmas disponíveis");
         botao_redondo botao_turmas_atuais = new botao_redondo("Visualizar minhas turmas");
@@ -21,6 +29,11 @@ public class painel_Aluno extends JPanel{
 
         configPainel();
         adicionaComponentes(titulo, botoes );
+        botao_matricula.addActionListener(e -> this.fazerMatricula());
+        // botao_presenca.addActionListener(e -> this.configPainel());
+        // botao_historico.addActionListener(e -> this.configPainel());
+        // botao_turmas_atuais.addActionListener(e -> this.configPainel());
+        botao_turmas_disponiveis.addActionListener(e -> this.visualizarTurmasDisponiveis());
         setVisible(true);
     }
 
@@ -60,5 +73,52 @@ public class painel_Aluno extends JPanel{
         }
 
 
+    }
+
+    private void fazerMatricula() {
+        try {
+            alunoController controller = new alunoController();
+            controller.cadastrarMatricula(this.PainelMatricula(), this.sessao);
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private turma PainelMatricula() {
+        alunoController controller = new alunoController();
+        JPanel myPanel = new JPanel();
+        JComboBox<turma> comboBoxTurma = new JComboBox<>(controller.listarTurmas().toArray(new turma[0]));
+        myPanel.add(new JLabel("Digite a turma para matrícula"));
+        myPanel.add(comboBoxTurma);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            turma turmaSelecionada = (turma) comboBoxTurma.getSelectedItem();
+            turma turma = new turma();
+            turma.setId_Turma(turmaSelecionada.getId_Turma());
+            turma.setSemestre(turmaSelecionada.getSemestre());
+            turma.setVagas_disponibilizadas(turmaSelecionada.getVagas_disponibilizadas());
+            turma.setVagas_ocupadas(turmaSelecionada.getVagas_ocupadas());
+            turma.setDias(turmaSelecionada.getDias());
+            turma.setHorario(turmaSelecionada.getHorario());
+            turma.setId_sala(turmaSelecionada.getId_sala());
+            turma.setId_cadeira(turmaSelecionada.getId_cadeira());
+            turma.setId_professor(turmaSelecionada.getId_professor());
+            return turma;
+        }
+        return null;
+    }
+
+    private void visualizarTurmasDisponiveis() {
+        alunoController controller = new alunoController();
+        JPanel myPanel = new JPanel();
+        JComboBox<turma> comboBoxTurma = new JComboBox<>(controller.listarTurmas().toArray(new turma[0]));
+        myPanel.add(new JLabel("Turmas disponiveis"));
+        myPanel.add(comboBoxTurma);
+
+        JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
     }
 }

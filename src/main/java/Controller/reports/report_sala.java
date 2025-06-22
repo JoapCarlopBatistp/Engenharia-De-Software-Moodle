@@ -2,7 +2,6 @@ package Controller.reports;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
-import DAO.salaDao;
+import Controller.adminController;
 
 public class report_sala implements ActionListener{
 
@@ -26,8 +25,8 @@ public class report_sala implements ActionListener{
          try {
             // System.out.println("bla alb");
             // Sample data
-            salaDao dao = new salaDao();
-            List<sala> items = dao.buscarTodos();
+            adminController controller = new adminController();
+            List<sala> items = controller.listarSalas();
             
             System.out.println("criamos a lista");
 

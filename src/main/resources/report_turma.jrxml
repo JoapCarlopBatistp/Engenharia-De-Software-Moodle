@@ -80,7 +80,7 @@
                 <textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="450" y="0" width="100" height="20" style="RowStyleGray"/>
+                <reportElement x="500" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
             </textField>
         </band>
@@ -106,7 +106,8 @@
                 <textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="450" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <reportElement x="500" y="0" width="100" height="20" style="RowStyleWhite"/>
+
                 <textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
             </textField>
         </band>
