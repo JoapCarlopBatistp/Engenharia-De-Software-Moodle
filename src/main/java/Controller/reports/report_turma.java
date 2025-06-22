@@ -32,7 +32,7 @@ public class report_turma implements ActionListener{
 
             // Load and compile .jrxml
             JasperReport report = JasperCompileManager.compileReport(
-                report_sala.class.getResourceAsStream("/report_sala.jrxml")
+                report_sala.class.getResourceAsStream("/report_turma.jrxml")
             );
 
              System.out.println("CRIAMOS O REPORT");

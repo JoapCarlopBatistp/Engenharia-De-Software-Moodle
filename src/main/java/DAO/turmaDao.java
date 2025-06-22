@@ -104,7 +104,7 @@ public class turmaDao {
                     "dias, " +
                     "horario, " +
                     "id_sala, " +
-                    "id_cadeira "+
+                    "id_cadeira, "+
                     "id_professor) " +
                     "values(nextval('turma_id_turma_seq'), ?, ?, ?, ?, ?, ?, ?, ?)";
     }
