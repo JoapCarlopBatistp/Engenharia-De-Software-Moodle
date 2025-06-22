@@ -31,7 +31,7 @@ public class pessoaDao{
             statement.setLong(7, pessoa.getPapel());
             statement.executeUpdate();
             statement.close();
-            bd.connection.close();
+           bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
             System.out.println(erro.toString());
@@ -62,7 +62,7 @@ public class pessoaDao{
                 pessoa.setUsername(rs.getString("Nome_de_Usuario"));
             }
             statement.close();
-            bd.connection.close();
+           bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -71,7 +71,7 @@ public class pessoaDao{
     }
 
     public List<pessoa> buscarTodos() {
-        List<pessoa> pessoas = new ArrayList<>();
+        List<pessoa> pessoas = new ArrayList<pessoa>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         ResultSet rs = null;
@@ -96,7 +96,7 @@ public class pessoaDao{
                 pessoas.add(pessoa);
             }
             statement.close();
-            bd.connection.close();
+           bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }

@@ -8,11 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Model.sessao;
+
 public class botao_logout extends JButton{
         
     private final JFrame tela_atual;
 
-    public botao_logout(JFrame tela_atual) {
+    public botao_logout(JFrame tela_atual, sessao sessao) {
         //super("Logout");
         this.tela_atual = tela_atual;
 
@@ -31,7 +33,7 @@ public class botao_logout extends JButton{
         setFocusPainted(false);
         // setContentAreaFilled(false); 
 
-        addActionListener(this::handleLogout);
+        addActionListener(e -> handleLogout(e, sessao));
     }
 
     private void criar_tela_login() {
@@ -47,7 +49,7 @@ public class botao_logout extends JButton{
         }
     }
 
-    private void handleLogout(ActionEvent e) {
+    private void handleLogout(ActionEvent e, sessao sessao) {
         
         // Color bgColor = new Color(61, 54, 92);
         // UIManager.put("OptionPane.background", bgColor);
@@ -62,6 +64,7 @@ public class botao_logout extends JButton{
 
         if (confirm == JOptionPane.YES_OPTION) {
              tela_atual.dispose();  
+             sessao.disconnect();
              criar_tela_login();
 
         }

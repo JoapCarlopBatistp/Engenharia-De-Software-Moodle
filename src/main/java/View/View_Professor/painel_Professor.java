@@ -10,11 +10,13 @@ import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Model.sessao;
+
 
 
 public class painel_Professor extends JPanel{
-
-    public painel_Professor() throws IOException{
+    private sessao sessao;
+    public painel_Professor(sessao sessao) throws IOException{
         JLabel titulo = new JLabel("Opções");
         botao_redondo botao_turmas_atuais = new botao_redondo("Visualizar minhas turmas");
         botao_redondo botao_autorizar_matricula = new botao_redondo("Fazer nova matrícula");

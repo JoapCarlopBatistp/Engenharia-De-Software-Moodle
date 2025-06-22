@@ -78,4 +78,9 @@ public class pessoa {
     public pessoa() {
         
     }
+
+    @Override
+    public String toString() {
+        return nome; // Display only the name in the combo box
+    }
 }
