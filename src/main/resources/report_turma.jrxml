@@ -68,7 +68,7 @@
                 <textFieldExpression><![CDATA[$F{semestre}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="100" y="0" width="100" height="20" style="RowStyleGray"/>
+                <reportElement x="100" y="0" width="150" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{vagas_disponibilizadas}]]></textFieldExpression>
             </textField>
             <textField>
@@ -80,7 +80,7 @@
                 <textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="500" y="0" width="100" height="20" style="RowStyleGray"/>
+                <reportElement x="450" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
             </textField>
         </band>
@@ -94,7 +94,7 @@
                 <textFieldExpression><![CDATA[$F{semestre}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="100" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <reportElement x="100" y="0" width="150" height="20" style="RowStyleWhite"/>
                 <textFieldExpression><![CDATA[$F{vagas_disponibilizadas}]]></textFieldExpression>
             </textField>
             <textField>
@@ -106,7 +106,7 @@
                 <textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="500" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <reportElement x="450" y="0" width="100" height="20" style="RowStyleWhite"/>
 
                 <textFieldExpression><![CDATA[$F{horario}]]></textFieldExpression>
             </textField>
