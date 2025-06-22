@@ -70,7 +70,7 @@ public class turmaDao {
 
             while (rs.next()) {
                 turma turma = new turma ();
-                turma.setId_Turma(rs.getInt("id_turma"));
+                turma.setId_turma(rs.getInt("Id_Turma"));
                 turma.setSemestre(rs.getString("semestre"));
                 turma.setVagas_disponibilizadas(rs.getInt("vagas_disponibilizadas"));
                 turma.setVagas_ocupadas(rs.getInt("vagas_ocupadas"));
@@ -99,7 +99,7 @@ public class turmaDao {
         return "insert " +
                     "into " +
                     "turma " +
-                    "(id_turma, " +
+                    "(Id_Turma, " +
                     "semestre, " +
                     "vagas_disponibilizadas, " +
                     "vagas_ocupadas, " +
@@ -108,7 +108,7 @@ public class turmaDao {
                     "id_sala, " +
                     "id_cadeira, "+
                     "id_professor) " +
-                    "values(nextval('turma_id_turma_seq'), ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "values(nextval('turma_Id_Turma_seq'), ?, ?, ?, ?, ?, ?, ?, ?)";
 
     }
 }

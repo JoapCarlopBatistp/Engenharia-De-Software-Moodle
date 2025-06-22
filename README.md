@@ -44,7 +44,10 @@ Lista de frameworks, banco de dados e ferramentas utilizadas no projeto.
   
 ![image](https://github.com/user-attachments/assets/df98e523-7b03-4833-a75a-2335999c2197)
 
-- <b>[9]</b> O SQL para rodar no banco ainda não está no repositório... (ajustar isso depois)
+- <b>[9]</b> O SQL para rodar no banco está no repositório (arquivo banco.sql). Para rodá-lo basta criar um novo sql script no DBeaver como a imagem abaixo sugere:
+
+![image](https://github.com/user-attachments/assets/0b487374-5ea2-4e7f-8cb0-8fb3bdd70bc5)
+
 - <b>[10]</b> No arquivo Database/databaseconn troque o campo SENHA pela senha do seu banco de dados
   
 ![image](https://github.com/user-attachments/assets/5fb6322c-3ab1-4f4f-b04b-27f93f0a3102)
