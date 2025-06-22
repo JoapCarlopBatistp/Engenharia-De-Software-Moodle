@@ -6,6 +6,7 @@ import Controller.adminController;
 import Model.pessoa;
 import Model.sala;
 import Model.turma;
+import Model.cadeira;
 import Model.roleEnum;
 import View.botao_redondo;
 import java.awt.Color;
@@ -31,9 +32,10 @@ public class painel_Cadastros extends JPanel{
         botao_redondo botao_turma = new botao_redondo("Cadastrar nova turma");
         botao_redondo botao_aluno = new botao_redondo("Cadastrar novo aluno");
         botao_redondo botao_profe = new botao_redondo("Cadastrar novo professor");
+        botao_redondo botao_cadeira = new botao_redondo("Cadastrar nova cadeira");
         
         // Array para o loop
-        botao_redondo[] botoes = {botao_sala, botao_turma, botao_aluno, botao_profe};
+        botao_redondo[] botoes = {botao_sala, botao_turma, botao_aluno, botao_profe, botao_cadeira};
 
         configPainel();
         adicionaComponentes(titulo, botoes );
@@ -42,6 +44,7 @@ public class painel_Cadastros extends JPanel{
         botao_turma.addActionListener(e -> this.cadastrarTurma());
         botao_aluno.addActionListener(e -> this.cadastrarAluno());
         botao_profe.addActionListener(e -> this.cadastrarProfessor());
+        botao_cadeira.addActionListener(e -> this.cadastrarCadeira());
         setVisible(true);
     }
  
@@ -77,6 +80,35 @@ public class painel_Cadastros extends JPanel{
             add(btn);
         }
 
+    }
+
+    private cadeira painelCadeira() {        
+        JTextField NomeCadeiraField = new JTextField(20);
+        JTextField CodigoCadeiraField = new JTextField(2);
+
+        JPanel myPanel = new JPanel();       
+        myPanel.add(new JLabel("Nome da cadeira:"));
+        myPanel.add(NomeCadeiraField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Código da cadeira:"));
+        myPanel.add(CodigoCadeiraField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+           cadeira cadeira = new cadeira();            
+            cadeira.setNome_Cadeira(NomeCadeiraField.getText());
+            cadeira.setCodigo_Cadeira(CodigoCadeiraField.getText());
+            return cadeira;
+        }
+        return null;
+
+    }
+
+    private void cadastrarCadeira(){
+        adminController admController = new adminController();
+        admController.cadastrarCadeira(this.painelCadeira());
     }
 
     private sala painelSala() {        

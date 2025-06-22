@@ -3,10 +3,13 @@ package Controller;
 import Model.sala;
 import Model.turma;
 import Model.pessoa;
+import Model.cadeira;
 import DAO.alunoDao;
 import DAO.professorDao;
 import DAO.salaDao;
 import DAO.turmaDao;
+import DAO.cadeiraDao;
+
 
 
 import javax.swing.*;
@@ -15,6 +18,11 @@ public class adminController {
     
     public adminController() {
     } 
+
+    public void cadastrarCadeira(cadeira cadeira) {
+        cadeiraDao cadeiraDAO = new cadeiraDao();
+        cadeiraDAO.cadastrar(cadeira);
+    }
     
     public void cadastrarTurma(turma turma) {
         turmaDao turmaDAO = new turmaDao();
