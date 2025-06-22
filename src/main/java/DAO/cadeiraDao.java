@@ -73,7 +73,7 @@ public class cadeiraDao {
                 System.exit(0);
             }
 
-            statement = bd.connection.prepareStatement(this.buscarTodosQuery());
+            statement = bd.connection.prepareStatement(this.buscaCadeirasQuery());
             rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -92,15 +92,11 @@ public class cadeiraDao {
         return cadeiras;
     }
 
-    private String buscarTodosQuery() {
-        return "SELECT * FROM Cadeira";
-    }
-
     private String cadastrarQuery() {
-        return "INSERT INTO Cadeira (Id_Cadeira, Nome, Codigo) VALUES (nextval('Cadeira_Id_Cadeira_seq'),?,?)";
+        return "INSERT INTO cadeira (Id_cadeira,nome,codigo) VALUES (nextval('cadeira_Id_cadeira_seq'),?,?)";
     }
-
-    public cadeiraDao() {}
     
-}  
-
+    private String buscaCadeirasQuery() {
+        return "select * from cadeira";
+    }
+}

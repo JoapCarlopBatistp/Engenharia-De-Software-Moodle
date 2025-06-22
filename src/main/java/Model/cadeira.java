@@ -32,4 +32,9 @@ public class cadeira {
     public cadeira() {
         
     }
+
+     @Override
+    public String toString() {
+        return Nome_Cadeira; // Display only the name in the combo box
+    }
 }

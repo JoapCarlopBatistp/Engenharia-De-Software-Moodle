@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import Controller.actions_performed.fechar_listener;
+import Model.sessao;
 import View.botao_logout;
 
 public class tela_administrador extends JFrame{
@@ -31,13 +32,13 @@ public class tela_administrador extends JFrame{
     public static final int ALTURA_PAINEL = ALTURA_TELA - 550;
     public static final int LARGURA_PAINEL = LARGURA_TELA/5;
 
-    public tela_administrador() throws IOException{
+    public tela_administrador(sessao sessao) throws IOException{
         botaoFechar = new JButton();
         botaoMinimizar = new JButton();
         painel_cadastros = new painel_Cadastros();
         painel_relatorios = new painel_Relatorios();
         painel_alocacoes = new painel_Alocacoes();
-        botao_sair = new botao_logout(this);
+        botao_sair = new botao_logout(this, sessao);
         
         // Transforma as medidas em pixels, parece mais razoável
         // System.setProperty("sun.java2d.uiScale", "1");
@@ -79,7 +80,7 @@ public class tela_administrador extends JFrame{
             (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) );    
 
         // Posicionamento dos painéis com espaçamento uniforme
-        int espacamento = 100;
+        //int espacamento = 100;
         // int larguraPainel = larguraDisponivel/3;
 
         // painel_cadastros.setBounds(espacamento, 150, LARGURA_PAINEL, ALTURA_PAINEL);

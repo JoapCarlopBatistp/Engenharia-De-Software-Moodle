@@ -1,8 +1,8 @@
 package View.View_Aluno;
 
 import Controller.actions_performed.fechar_listener;
+import Model.sessao;
 import View.botao_logout;
-import View.View_Login.tela_cadastro;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,12 +20,12 @@ public class tela_aluno extends JFrame{
     private final painel_Aluno painel_aluno;
     private final JButton botao_sair;
 
-    public tela_aluno() throws IOException{
+    public tela_aluno(sessao sessao) throws IOException{
 
         botaoFechar = new JButton();
         botaoMinimizar = new JButton();
-        painel_aluno = new painel_Aluno();
-        botao_sair = new botao_logout(this);
+        painel_aluno = new painel_Aluno(sessao);
+        botao_sair = new botao_logout(this, sessao);
 
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());

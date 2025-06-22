@@ -3,17 +3,18 @@ package View.View_Administrador;
 import static View.View_Administrador.tela_administrador.*;
 
 import Controller.adminController;
+import Model.cadeira;
 import Model.pessoa;
+import Model.roleEnum;
 import Model.sala;
 import Model.turma;
-import Model.cadeira;
-import Model.roleEnum;
 import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
 
 import javax.swing.Box;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -39,7 +40,6 @@ public class painel_Cadastros extends JPanel{
 
         configPainel();
         adicionaComponentes(titulo, botoes );
-        adminController admin = new adminController();
         botao_sala.addActionListener(e -> this.cadastrarSala());
         botao_turma.addActionListener(e -> this.cadastrarTurma());
         botao_aluno.addActionListener(e -> this.cadastrarAluno());
@@ -235,6 +235,16 @@ public class painel_Cadastros extends JPanel{
         admController.cadastrarProfessor(this.cadastrarPessoa(roleEnum.PROFESSOR.ordinal()));
     }
 
+    private void listarSalas() {
+         adminController controller = new adminController();
+        JPanel myPanel = new JPanel();
+        JComboBox<sala> comboBoxTurma = new JComboBox<>(controller.listarSalas().toArray(new sala[0]));
+        myPanel.add(new JLabel("Turmas disponiveis"));
+        myPanel.add(comboBoxTurma);
+
+        JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+    }
 }
 
 
