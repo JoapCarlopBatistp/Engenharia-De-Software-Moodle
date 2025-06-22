@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.reports.report_professor;
 import Controller.reports.report_sala;
 import Controller.reports.report_turma;
 import static View.View_Administrador.tela_administrador.ALTURA_PAINEL;
@@ -29,6 +30,7 @@ public class painel_Relatorios extends JPanel{
         // Adicionando o report ao botão
         botao_sala.addActionListener(new report_sala());
         botao_turma.addActionListener(new report_turma());
+        botao_profe.addActionListener(new report_professor());
 
         // Array para o loop
         botao_redondo[] botoes = {botao_sala, botao_turma, botao_matricula, botao_profe};
