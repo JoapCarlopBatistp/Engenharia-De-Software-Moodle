@@ -21,7 +21,6 @@ public class report_sala implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
          try {
             // System.out.println("bla alb");
             // Sample data

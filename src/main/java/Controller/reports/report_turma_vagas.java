@@ -17,7 +17,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
-public class report_turma implements ActionListener{
+public class report_turma_vagas implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -32,7 +32,7 @@ public class report_turma implements ActionListener{
 
             // Load and compile .jrxml
             JasperReport report = JasperCompileManager.compileReport(
-                report_sala.class.getResourceAsStream("/report_turma.jrxml")
+                report_turma_vagas.class.getResourceAsStream("/report_turma_vagas.jrxml")
             );
 
              System.out.println("CRIAMOS O REPORT");

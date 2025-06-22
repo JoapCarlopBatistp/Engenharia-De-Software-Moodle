@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import Controller.reports.report_professor;
 import Controller.reports.report_sala;
-import Controller.reports.report_turma;
+import Controller.reports.report_turma_vagas;
 import static View.View_Administrador.tela_administrador.ALTURA_PAINEL;
 import static View.View_Administrador.tela_administrador.LARGURA_PAINEL;
 import View.botao_redondo;
@@ -23,17 +23,18 @@ public class painel_Relatorios extends JPanel{
         public painel_Relatorios() throws IOException{
         JLabel titulo = new JLabel("Relatórios");
         botao_redondo botao_sala = new botao_redondo("Listar salas");
-        botao_redondo botao_turma = new botao_redondo("Listar turmas");        
+        botao_redondo botao_turma_vagas = new botao_redondo("Listar turmas com vaga"); 
+        botao_redondo botao_turma_professores = new botao_redondo("Listar turmas por professor");        
         botao_redondo botao_profe = new botao_redondo("Listar professores");
         botao_redondo botao_matricula = new botao_redondo("Gerar histórico de matrícula");
         
         // Adicionando o report ao botão
         botao_sala.addActionListener(new report_sala());
-        botao_turma.addActionListener(new report_turma());
+        botao_turma_vagas.addActionListener(new report_turma_vagas());
         botao_profe.addActionListener(new report_professor());
 
         // Array para o loop
-        botao_redondo[] botoes = {botao_sala, botao_turma, botao_matricula, botao_profe};
+        botao_redondo[] botoes = {botao_sala, botao_turma_vagas, botao_turma_professores, botao_matricula, botao_profe};
 
         configPainel();
         adicionaComponentes(titulo, botoes );
