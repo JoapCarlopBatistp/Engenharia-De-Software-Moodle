@@ -1,6 +1,7 @@
 package View.View_Login;
 
 import Controller.actions_performed.fechar_listener;
+import View.BackgroundImagePanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +20,7 @@ public class tela_cadastro extends JFrame{
     private JButton botaoFechar;
     private JButton botaoMinimizar;
     private painel_login painel;
+    private BackgroundImagePanel backgroundPanel;
 
     public tela_cadastro() throws IOException{
         botaoFechar = new JButton();
@@ -38,6 +40,9 @@ public class tela_cadastro extends JFrame{
         });
 
         configTela();
+       
+        ImageIcon icone_background = new ImageIcon(tela_cadastro.class.getResource("/flat-mountains.png"));
+        backgroundPanel = new BackgroundImagePanel(icone_background);
         adicionaComponentes(botaoFechar, botaoMinimizar, painel, imagem_cadastro, nome_programa);
         setVisible(true);
     }
@@ -87,11 +92,16 @@ public class tela_cadastro extends JFrame{
         nome_programa.setForeground(new Color(248, 181, 95));
         nome_programa.setFont(new Font("Britannic Bold", Font.BOLD, 15));
 
+        backgroundPanel.setLayout(null); 
+        backgroundPanel.setOpaque(false);
+        backgroundPanel.setBounds(0,0,getWidth(),getHeight());
+
         add(nome_programa);
         add(painel);
         add(imagem_cadastro, BorderLayout.CENTER);
         add(botaoFechar);
         add(botaoMinimizar);
+        add(backgroundPanel, BorderLayout.CENTER);
     }
 
     public class minimizar_listener implements ActionListener{
