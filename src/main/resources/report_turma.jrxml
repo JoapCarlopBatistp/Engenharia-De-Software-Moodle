@@ -5,6 +5,11 @@
               name="simple_report" pageWidth="595" pageHeight="842" columnWidth="555"
               leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 
+
+    <style name="RowStyleWhite" mode="Opaque" backcolor="#FFFFFF" fontSize="11"/>
+    <style name="RowStyleGray" mode="Opaque" backcolor="#b67dc7" fontSize="11"/>
+    <style name="HeaderStyle" isBold="true" fontSize="12"/>
+
     <field name="Id_Turma" class="java.lang.Integer"/>
     <field name="semestre" class="java.lang.String"/>
     <field name="vagas_disponibilizadas" class="java.lang.Integer"/>
@@ -12,39 +17,107 @@
     <field name="dias" class="java.lang.String"/>
     <field name="horario" class="java.lang.String"/>
 
+    <variable name="rowCounter" class="java.lang.Integer" calculation="System">
+        <variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
+    </variable>
+
     <title>
-        <band height="50">
+        <band height="40">
             <staticText>
-                <reportElement x="0" y="0" width="300" height="30"/>
-                <text><![CDATA[Items Report]]></text>
+                <reportElement x="0" y="0" width="555" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Relatório de Turmas]]></text>
             </staticText>
         </band>
     </title>
 
-    <detail>
+    <columnHeader>
         <band height="20">
+            <staticText>
+                <reportElement x="0" y="0" width="300" height="20" style="HeaderStyle"/>
+                <text><![CDATA[ID da Turma]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="300" y="0" width="255" height="20" style="HeaderStyle"/>
+                <text><![CDATA[Semestre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="0" width="300" height="20" style="HeaderStyle"/>
+                <text><![CDATA[Vagas Disponibilizadas]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="0" width="300" height="20" style="HeaderStyle"/>
+                <text><![CDATA[Vagas Ocupadas]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="0" width="300" height="20" style="HeaderStyle"/>
+                <text><![CDATA[Dias]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="0" width="300" height="20" style="HeaderStyle"/>
+                <text><![CDATA[Horário]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <!-- Linhas pares -->
+        <band height="20">
+            <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
             <textField>
-                <reportElement x="0" y="0" width="100" height="20"/>
+                <reportElement x="0" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{Id_Turma}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="100" y="0" width="100" height="20"/>
+                <reportElement x="100" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{semestre}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="200" y="0" width="100" height="20"/>
+                <reportElement x="200" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{vagas_disponibilizadas}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="300" y="0" width="100" height="20"/>
+                <reportElement x="300" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{vagas_ocupadas}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="400" y="0" width="100" height="20"/>
+                <reportElement x="400" y="0" width="100" height="20" style="RowStyleGray"/>
                 <textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement x="500" y="0" width="100" height="20"/>
+                <reportElement x="500" y="0" width="100" height="20" style="RowStyleGray"/>
+                <textFieldExpression><![CDATA[$F{horarios}]]></textFieldExpression>
+            </textField>
+        </band>
+
+
+        <!-- Linhas ímpares -->
+        <band height="20">
+            <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 != 0]]></printWhenExpression>
+            <textField>
+                <reportElement x="0" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <textFieldExpression><![CDATA[$F{Id_Turma}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <textFieldExpression><![CDATA[$F{semestre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <textFieldExpression><![CDATA[$F{vagas_disponibilizadas}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <textFieldExpression><![CDATA[$F{vagas_ocupadas}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="400" y="0" width="100" height="20" style="RowStyleWhite"/>
+                <textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="500" y="0" width="100" height="20" style="RowStyleWhite"/>
                 <textFieldExpression><![CDATA[$F{horarios}]]></textFieldExpression>
             </textField>
         </band>
