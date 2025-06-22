@@ -38,7 +38,7 @@ public class report_turma implements ActionListener{
              System.out.println("CRIAMOS O REPORT");
 
             // Data source from list of beans
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(items);
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(items, false);
 
              System.out.println("CRIAMOS O DATASOURCE");
 
