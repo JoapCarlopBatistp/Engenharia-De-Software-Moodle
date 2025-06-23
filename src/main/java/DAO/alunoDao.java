@@ -179,6 +179,37 @@ public class alunoDao extends pessoaDao{
         return notificacoesDoAluno;
     }
 
+    public List<turma> historicoMatriculasAluno(sessao sessao) throws Exception {
+         List<turma> turmas = new ArrayList<turma>(); 
+        
+        PreparedStatement statement;
+        ResultSet rs = null;
+        try {
+            statement = sessao.getConnection().connection.prepareStatement(this.buscarHistoricoDoAluno());
+            statement.setInt(1, sessao.getId());
+            rs = statement.executeQuery();
+
+            while (rs.next()) {
+                turma turma = new turma ();
+                turma.setId_turma(rs.getInt("Id_Turma"));
+                turma.setSemestre(rs.getString("semestre"));
+                turma.setVagas_disponibilizadas(rs.getInt("vagas_disponibilizadas"));
+                turma.setVagas_ocupadas(rs.getInt("vagas_ocupadas"));
+                turma.setDias(rs.getString("dias"));
+                turma.setHorario(rs.getString("horario"));
+                turma.setId_sala(rs.getInt("id_sala"));
+                turma.setId_cadeira(rs.getInt("id_cadeira"));
+                turma.setId_professor(rs.getInt("id_professor"));
+                turmas.add(turma);
+            }
+            statement.close();
+        } catch(Exception erro) {
+            throw erro;
+        }
+
+        return turmas;
+    }
+
      private String buscarTodosQuery() {
         return "select pes.*, alu.id_aluno from aluno alu	join pessoa pes on pes.id_pessoa = alu.id_pessoa";
     }
@@ -252,6 +283,18 @@ public class alunoDao extends pessoaDao{
         return "INSERT INTO notificacao "+
         "(id_professor, status, id_matricula_pendente) " +
         "VALUES(?, null, ?)";
+    }
+
+    private String buscarHistoricoDoAluno() {
+        return "select " +
+               "tur.* " +
+               " from " +
+               "matricula mat " +
+               " join turma tur on " +
+               "tur.id_turma = mat.id_turma " +
+               "join aluno alu on alu.id_aluno = mat.id_aluno " +
+               "where " +
+               "alu.id_pessoa = ? ";
     }
     
 }

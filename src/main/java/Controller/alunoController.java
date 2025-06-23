@@ -70,4 +70,9 @@ public class alunoController {
 
     }
 
+    public List<turma> historicoMatriculasAluno(sessao sessao) throws Exception {
+        alunoDao dao = new alunoDao();
+        return dao.historicoMatriculasAluno(sessao);
+    }
+
 }
