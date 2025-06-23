@@ -20,7 +20,11 @@ public class adminController {
     public adminController() {
     } 
 
-    public void cadastrarCadeira(cadeira cadeira) {
+    public void cadastrarCadeira(cadeira cadeira) throws Exception {
+        if (cadeira == null) { 
+            return; 
+        }
+        if(cadeira.getNome_Cadeira().equals("") || cadeira.getNome_Cadeira().equals(null)) throw new Exception("Dados inválidos");
         cadeiraDao cadeiraDAO = new cadeiraDao();
         cadeiraDAO.cadastrar(cadeira);
     }
