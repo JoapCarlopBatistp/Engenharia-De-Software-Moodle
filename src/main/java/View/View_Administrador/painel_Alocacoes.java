@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import Controller.adminController;
 import Controller.turmaController;
+import Model.professor;
 import Model.sala;
 import Model.turma;
 
@@ -33,6 +34,7 @@ public class painel_Alocacoes extends JPanel{
         configPainel();
         adicionaComponentes(titulo, botoes );
         botao_sala.addActionListener(e -> this.alocarSala());
+        botao_profe.addActionListener(e -> this.alocarProfessor());
         setVisible(true);
     }
  
@@ -70,8 +72,7 @@ public class painel_Alocacoes extends JPanel{
 
     }
 
-
-     private void alocarSala() {        
+    private void alocarSala() {
         adminController admController = new adminController();
         turmaController turmaController = new turmaController();
         JPanel myPanel = new JPanel();  
@@ -94,6 +95,33 @@ public class painel_Alocacoes extends JPanel{
 
             }
         }
+    }
+
+    private void alocarProfessor() {               
+        adminController admController = new adminController();
+        turmaController turmaController = new turmaController();
+        JPanel myPanel = new JPanel();  
+        JComboBox<turma> comboBoxTurma = new JComboBox<>(turmaController.listarTurmas().toArray(new turma[0]));
+        JComboBox<professor> comboBoxProfessor = new JComboBox<>(admController.listarProfessores().toArray(new professor[0]));     
+        myPanel.add(new JLabel("Escolha uma turma: "));
+        myPanel.add(comboBoxTurma);
+        myPanel.add(new JLabel("Escolha um professor: "));
+        myPanel.add(comboBoxProfessor);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            professor professorSelecionado = (professor) comboBoxProfessor.getSelectedItem();
+            turma turmaSelecionada = (turma) comboBoxTurma.getSelectedItem();
+            try {
+                admController.alocarProfessorTurma(professorSelecionado, turmaSelecionada);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+
+            }
+        }
 
     }
+      
+
 }

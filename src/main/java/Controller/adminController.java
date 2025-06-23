@@ -77,6 +77,10 @@ public class adminController {
         turmaController controller = new turmaController();
         controller.alocarSala(sala, turma);
     }
+    public void alocarProfessorTurma(professor professor, turma turma) throws Exception {
+        turmaController controller = new turmaController();
+        controller.alocarProfessor(professor, turma);        
+    }
 
 }
 
