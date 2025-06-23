@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import Controller.actions_performed.fechar_listener;
 import Model.sessao;
@@ -28,6 +29,9 @@ public class tela_administrador extends JFrame{
     private final painel_Alocacoes painel_alocacoes;
     private final botao_logout botao_sair;
     private BackgroundImagePanel backgroundPanel;
+    private JLabel imagem_gato_1;
+    private JLabel imagem_gato_2;
+    private JLabel imagem_gato_3;
 
     // Constantes em tamanho real dos pixels
     public static final int LARGURA_TELA = 1920;
@@ -42,6 +46,9 @@ public class tela_administrador extends JFrame{
         painel_relatorios = new painel_Relatorios();
         painel_alocacoes = new painel_Alocacoes();
         botao_sair = new botao_logout(this, sessao);
+        imagem_gato_1 = new JLabel();
+        imagem_gato_2 = new JLabel();
+        imagem_gato_3 = new JLabel();
         
         // Transforma as medidas em pixels, parece mais razoável
         // System.setProperty("sun.java2d.uiScale", "1");
@@ -98,9 +105,7 @@ public class tela_administrador extends JFrame{
         add(botao_sair);
         
 
-        add(painel_cadastros);
-        add(painel_relatorios);
-        add(painel_alocacoes);
+        
         //add(botaoFechar);
         //add(botaoMinimizar);
         configurarBotoesControle(screensize);
@@ -120,7 +125,19 @@ public class tela_administrador extends JFrame{
         // Definindo o tamanho(escala)
         Image imagemEmEscala_minimizar = imagem_minimizar.getScaledInstance(15,15,  java.awt.Image.SCALE_SMOOTH);
         
-                botaoFechar.setBounds((int)screensize.getWidth() - 64,32,32,32);
+        ImageIcon icone_gato_1 = new ImageIcon(tela_cadastro.class.getResource("/gato_deitado_1.png"));
+        Image gato_1 = icone_gato_1.getImage();
+        Image imagemEmEscala_gato_1 = gato_1.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);
+
+        ImageIcon icone_gato_2 = new ImageIcon(tela_cadastro.class.getResource("/gato_deitado_2.png"));
+        Image gato_2 = icone_gato_2.getImage();
+        Image imagemEmEscala_gato_2 = gato_2.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);
+
+        ImageIcon icone_gato_3 = new ImageIcon(tela_cadastro.class.getResource("/gato_deitado_3.png"));
+        Image gato_3 = icone_gato_3.getImage();
+        Image imagemEmEscala_gato_3 = gato_3.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);
+        
+        botaoFechar.setBounds((int)screensize.getWidth() - 64,32,32,32);
         botaoFechar.setLayout(null);
         botaoFechar.setBackground(new Color(61, 54, 92));
         botaoFechar.setBorder(null);
@@ -138,8 +155,23 @@ public class tela_administrador extends JFrame{
         backgroundPanel.setOpaque(false);
         backgroundPanel.setBounds(0,0,getWidth(),getHeight());
 
+        imagem_gato_1.setIcon(new ImageIcon(imagemEmEscala_gato_1));
+        imagem_gato_1.setBounds(1100, 22, 150, 100);
+
+        imagem_gato_2.setIcon(new ImageIcon(imagemEmEscala_gato_2));
+        imagem_gato_2.setBounds(200, 27, 150, 100);
+
+        imagem_gato_3.setIcon(new ImageIcon(imagemEmEscala_gato_3));
+        imagem_gato_3.setBounds(690, 27, 150, 100);
+
+        add(imagem_gato_1);
+        add(imagem_gato_2);
+        add(imagem_gato_3);
         add(botaoFechar);
         add(botaoMinimizar);
+        add(painel_cadastros);
+        add(painel_relatorios);
+        add(painel_alocacoes);
         add(backgroundPanel);
     }
 
