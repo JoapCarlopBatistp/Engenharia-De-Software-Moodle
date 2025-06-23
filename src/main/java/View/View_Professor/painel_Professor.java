@@ -1,18 +1,18 @@
 
 package View.View_Professor;
 
-import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.io.IOException;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.reports.report_minhas_turmas;
 import Model.sessao;
-
-
+import View.botao_redondo;
 
 public class painel_Professor extends JPanel{
     private sessao sessao;
@@ -23,6 +23,8 @@ public class painel_Professor extends JPanel{
         botao_redondo botao_chamada = new botao_redondo("Gerar histórico de matrícula");
     
         botao_redondo[] botoes = {botao_turmas_atuais, botao_autorizar_matricula, botao_chamada};
+
+        botao_turmas_atuais.addActionListener(new report_minhas_turmas(sessao));
 
         configPainel();
         adicionaComponentes(titulo, botoes );
@@ -50,7 +52,7 @@ public class painel_Professor extends JPanel{
         int yBase = 150;                     // Posição Y inicial
         int espacamento_y = 125;                // Espaço entre botões
         int width_botao = 230;
-
+        
         for (int i = 0; i < botoes.length; i++) {
             botao_redondo btn = botoes[i];            
             btn.setBounds(x , yBase + (espacamento_y*i), width_botao, 70);                
