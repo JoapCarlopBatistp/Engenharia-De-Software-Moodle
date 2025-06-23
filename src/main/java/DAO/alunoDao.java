@@ -87,7 +87,7 @@ public class alunoDao extends pessoaDao{
             statement.executeUpdate();
 
             statementUpdateTurma = sessao.getConnection().connection.prepareStatement(this.updateVagasTurmasQuery());
-            statementUpdateTurma.setInt(2, turmaParaMatricular.getId_turma());
+            statementUpdateTurma.setInt(1, turmaParaMatricular.getId_turma());
             statementUpdateTurma.executeUpdate();
         
             statement.close();

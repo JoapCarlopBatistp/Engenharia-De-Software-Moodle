@@ -23,17 +23,16 @@ public class alunoController {
 
     public void cadastrarMatricula(turma turmaParaMatricular, sessao sessao) throws Exception {
        alunoDao alunoDao = new alunoDao();
-       /*
-        * se a turma estiver lotada guardar notificacao para o professor*/
 
         if(turmaParaMatricular.getVagas_ocupadas() >=  turmaParaMatricular.getVagas_disponibilizadas()) {
             alunoDao.notificarProfessorMatricula(turmaParaMatricular, sessao);
             return;
         }
-        // if(existemHorariosConflitando(turmaParaMatricular, sessao)) {
-
-        // }
+        if(this.existemHorariosConflitando(turmaParaMatricular, sessao)) {
+            throw new Exception("Matricula rejeitada por conflito de horário");
+        }
        alunoDao.cadastrarMatricula(turmaParaMatricular, sessao);
+       sessao.buscarTurmasMatriculadas();
     }
 
     public List<notificacao> buscarNotificacoesProcessadas (sessao sessaoAtual) {
@@ -56,6 +55,19 @@ public class alunoController {
             throw ex;
         }
         return turmasMatriculadas;
+    }
+
+    private boolean existemHorariosConflitando(turma turmaParaMatricular, sessao sessao){
+        for (int i = 0; i < sessao.getTurmasMatriculadas().size(); i++) {
+             if(sessao.getTurmasMatriculadas().get(i).getDias().length() > turmaParaMatricular.getDias().length()) {
+                if (sessao.getTurmasMatriculadas().get(i).getDias().contains(turmaParaMatricular.getDias())) return true;
+            } else {
+                if (turmaParaMatricular.getDias().contains(sessao.getTurmasMatriculadas().get(i).getDias())) return true;
+                
+            }
+        }
+        return false;
+
     }
 
 }

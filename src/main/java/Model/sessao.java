@@ -16,6 +16,8 @@ public class sessao extends pessoa {
     private List<notificacao> notificacoes = new ArrayList<notificacao>();
 
     public databaseconn getConnection() {
+        connection = new databaseconn();
+        connection.getConnection();
         return connection;
     }
 
@@ -34,8 +36,6 @@ public class sessao extends pessoa {
     public sessao(pessoa pessoa) throws Exception {
 
         try {
-            connection = new databaseconn();
-            connection.getConnection();
             this.setDdd(pessoa.getDdd());
             this.setEmail(pessoa.getEmail());
             this.setNome(pessoa.getNome());
@@ -69,7 +69,7 @@ public class sessao extends pessoa {
         professorController controller = new professorController();
         try {
             this.notificacoes = controller.buscarNotificacoesParaProcessar(this);
-            this.turmasEnsinadas = controller.buscarTurmasEnsinadas(this);
+            this.buscarTurmasEnsinadas();
             this.turmasMatriculadas = null;
         } catch (Exception e) {
             throw e;
@@ -80,12 +80,34 @@ public class sessao extends pessoa {
         alunoController controller = new alunoController();
         try {
             this.notificacoes = controller.buscarNotificacoesProcessadas(this);
-            this.turmasMatriculadas = controller.buscarTurmasMatriculadas(this);
+            this.buscarTurmasMatriculadas();
             this.turmasEnsinadas = null;
         } catch (Exception e) {
             throw e;
         }
     }
+
+
+    public void buscarTurmasMatriculadas() throws Exception {
+        alunoController controller = new alunoController();
+        try {
+            this.turmasMatriculadas = controller.buscarTurmasMatriculadas(this);
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void buscarTurmasEnsinadas() throws Exception {
+        professorController controller = new professorController();
+        try {
+            this.turmasEnsinadas = controller.buscarTurmasEnsinadas(this);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    
 
     public void disconnect() {
         this.connection.close();
