@@ -2,7 +2,10 @@ package View.View_Professor;
 
 import Controller.actions_performed.fechar_listener;
 import Model.sessao;
+import View.BackgroundImagePanel;
 import View.botao_logout;
+import View.View_Login.tela_cadastro;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -19,6 +22,7 @@ public class tela_professor extends JFrame{
     private final painel_Presenca painel_presenca;
     private final painel_Professor painel_professor;
     private final JButton botao_sair;
+    private BackgroundImagePanel backgroundPanel;
 
     public tela_professor(sessao sessao) throws IOException{
 
@@ -32,6 +36,8 @@ public class tela_professor extends JFrame{
         botaoMinimizar.addActionListener(new minimizar_listener());
 
         configTela();
+        ImageIcon icone_background = new ImageIcon(tela_cadastro.class.getResource("/flat-mountains.png"));
+        backgroundPanel = new BackgroundImagePanel(icone_background);
         adicionaComponentes(painel_professor, painel_presenca);
         setVisible(true);
     }
@@ -95,8 +101,13 @@ public class tela_professor extends JFrame{
         botaoMinimizar.setIcon(new ImageIcon(imagemEmEscala_minimizar));
         botaoMinimizar.setFocusPainted(false); // muda o ícone
         
+        backgroundPanel.setLayout(null); 
+        backgroundPanel.setOpaque(false);
+        backgroundPanel.setBounds(0,0,getWidth(),getHeight());
+
         add(botaoFechar);
         add(botaoMinimizar);
+        add(backgroundPanel);
     }
 
     public class minimizar_listener implements ActionListener{    

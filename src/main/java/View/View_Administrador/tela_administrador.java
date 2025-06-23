@@ -14,7 +14,9 @@ import javax.swing.JFrame;
 
 import Controller.actions_performed.fechar_listener;
 import Model.sessao;
+import View.BackgroundImagePanel;
 import View.botao_logout;
+import View.View_Login.tela_cadastro;
 
 public class tela_administrador extends JFrame{
     
@@ -25,6 +27,7 @@ public class tela_administrador extends JFrame{
     private final painel_Relatorios painel_relatorios;
     private final painel_Alocacoes painel_alocacoes;
     private final botao_logout botao_sair;
+    private BackgroundImagePanel backgroundPanel;
 
     // Constantes em tamanho real dos pixels
     public static final int LARGURA_TELA = 1920;
@@ -47,6 +50,8 @@ public class tela_administrador extends JFrame{
         botaoMinimizar.addActionListener(new minimizar_listener());
 
         configTela();
+        ImageIcon icone_background = new ImageIcon(tela_cadastro.class.getResource("/flat-mountains.png"));
+        backgroundPanel = new BackgroundImagePanel(icone_background);
         adicionaComponentes();
         setVisible(true);
     }
@@ -129,8 +134,13 @@ public class tela_administrador extends JFrame{
         botaoMinimizar.setFocusPainted(false); // muda o ícone
         
 
+        backgroundPanel.setLayout(null); 
+        backgroundPanel.setOpaque(false);
+        backgroundPanel.setBounds(0,0,getWidth(),getHeight());
+
         add(botaoFechar);
         add(botaoMinimizar);
+        add(backgroundPanel);
     }
 
     public class minimizar_listener implements ActionListener{    

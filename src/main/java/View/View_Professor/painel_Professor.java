@@ -52,13 +52,12 @@ public class painel_Professor extends JPanel{
         int width_botao = 230;
 
         for (int i = 0; i < botoes.length; i++) {
-            botao_redondo btn = botoes[i];            
+            botao_redondo btn = botoes[i];         
             btn.setBounds(x , yBase + (espacamento_y*i), width_botao, 70);                
             btn.setBackground(Color.WHITE);
             btn.setFocusable(false);
             add(btn);
         }
-
 
     }
 
