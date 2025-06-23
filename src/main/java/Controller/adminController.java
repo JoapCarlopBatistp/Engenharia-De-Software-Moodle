@@ -20,7 +20,11 @@ public class adminController {
     public adminController() {
     } 
 
-    public void cadastrarCadeira(cadeira cadeira) {
+    public void cadastrarCadeira(cadeira cadeira) throws Exception {
+        if (cadeira == null) { 
+            return; 
+        }
+        if(cadeira.getNome_Cadeira().equals("") || cadeira.getNome_Cadeira().equals(null)) throw new Exception("Dados inválidos");
         cadeiraDao cadeiraDAO = new cadeiraDao();
         cadeiraDAO.cadastrar(cadeira);
     }
@@ -67,6 +71,15 @@ public class adminController {
         salaDao dao = new salaDao();
         salas = dao.buscaSalas();
         return salas;
+    }
+
+    public void alocarSalaTurma(sala sala, turma turma) throws Exception{
+        turmaController controller = new turmaController();
+        controller.alocarSala(sala, turma);
+    }
+    public void alocarProfessorTurma(professor professor, turma turma) throws Exception {
+        turmaController controller = new turmaController();
+        controller.alocarProfessor(professor, turma);        
     }
 
 }

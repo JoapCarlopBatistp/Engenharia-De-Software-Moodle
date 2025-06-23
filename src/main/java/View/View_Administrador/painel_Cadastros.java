@@ -109,7 +109,11 @@ public class painel_Cadastros extends JPanel{
 
     private void cadastrarCadeira(){
         adminController admController = new adminController();
-        admController.cadastrarCadeira(this.painelCadeira());
+        try {
+            admController.cadastrarCadeira(this.painelCadeira());
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
     private int painelSala() {        

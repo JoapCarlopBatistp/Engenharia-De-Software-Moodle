@@ -43,8 +43,8 @@ public class painel_Professor extends JPanel{
 
         // Config do título 
         titulo.setFont(new Font("Britannic Bold", Font.BOLD, 30));
-        titulo.setForeground(new Color(248, 181, 95));
-        titulo.setBounds(50,20,150,100);
+        titulo.setForeground(new Color(194,48,160));
+        titulo.setBounds(120,20,150,100);
         add(titulo);
         
                 // Configuração dos botões
@@ -54,13 +54,12 @@ public class painel_Professor extends JPanel{
         int width_botao = 230;
         
         for (int i = 0; i < botoes.length; i++) {
-            botao_redondo btn = botoes[i];            
+            botao_redondo btn = botoes[i];         
             btn.setBounds(x , yBase + (espacamento_y*i), width_botao, 70);                
             btn.setBackground(Color.WHITE);
             btn.setFocusable(false);
             add(btn);
         }
-
 
     }
 
