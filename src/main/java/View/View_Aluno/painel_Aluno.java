@@ -74,8 +74,6 @@ public class painel_Aluno extends JPanel{
             btn.setFocusable(false);
             add(btn);
         }
-
-
     }
 
     private void fazerMatricula() {
@@ -91,11 +89,11 @@ public class painel_Aluno extends JPanel{
         alunoController controller = new alunoController();
         JPanel myPanel = new JPanel();
         JComboBox<turma> comboBoxTurma = new JComboBox<>(controller.listarTurmas().toArray(new turma[0]));
-        myPanel.add(new JLabel("Digite a turma para matrícula"));
+        myPanel.add(new JLabel("Selecione a turma: "));
         myPanel.add(comboBoxTurma);
 
         int result = JOptionPane.showConfirmDialog(null, myPanel, 
-                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+                "Nova matrícula", JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
             turma turmaSelecionada = (turma) comboBoxTurma.getSelectedItem();
@@ -118,10 +116,10 @@ public class painel_Aluno extends JPanel{
         alunoController controller = new alunoController();
         JPanel myPanel = new JPanel();
         JComboBox<turma> comboBoxTurma = new JComboBox<>(controller.listarTurmas().toArray(new turma[0]));
-        myPanel.add(new JLabel("Turmas disponiveis"));
+        myPanel.add(new JLabel("Selecione a turma: "));
         myPanel.add(comboBoxTurma);
 
         JOptionPane.showConfirmDialog(null, myPanel, 
-                "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
+                "Turmas disponiveis", JOptionPane.OK_CANCEL_OPTION);
     }
 }

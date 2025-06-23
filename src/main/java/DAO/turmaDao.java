@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import Database.databaseconn;
 import Model.sala;
 import Model.turma;
+import Model.professor;
+import Model.sala;
 
 public class turmaDao {
      public void cadastrar(turma turma){
@@ -55,7 +57,7 @@ public class turmaDao {
         }
     }
 
-    public List<turma> buscarTodasTurmas() {
+    public List<turma> buscarTodasTurmas(boolean buscarApenasComVagasDisponiveis) {
         List<turma> turmas = new ArrayList<turma>();
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
@@ -66,7 +68,7 @@ public class turmaDao {
                 System.exit(0);
             }
 
-            statement = bd.connection.prepareStatement(this.buscarTodosQuery());
+            statement = bd.connection.prepareStatement(this.buscarTodosQuery(buscarApenasComVagasDisponiveis));
             rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -84,7 +86,8 @@ public class turmaDao {
                 turmas.add(turma);
             }
             statement.close();
-           bd.close();
+            rs.close();
+            bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -112,8 +115,43 @@ public class turmaDao {
         }
     }
 
-    private String buscarTodosQuery() {
-        return "select * from turma tur join cadeira car on car.id_cadeira = tur.id_cadeira";
+    public boolean verificaDisponibilidadeSala(turma turmaParaIncluirASala, sala salaEscolhida) {
+        boolean retorno = false;
+        databaseconn bd = new databaseconn();
+        PreparedStatement statement;
+        ResultSet rs = null;
+        try {
+            if(!bd.getConnection()){
+                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                System.exit(0);
+            }
+
+            statement = bd.connection.prepareStatement(this.buscarTodasSalasNoMesmoHorarioQuery());
+            statement.setTime(1, Time.valueOf(turmaParaIncluirASala.getHorario()));
+            statement.setString(2, "%"+turmaParaIncluirASala.getDias()+"%");
+            statement.setInt(3, salaEscolhida.getId_Sala());
+            statement.setString(4, turmaParaIncluirASala.getSemestre());
+            
+            
+            rs = statement.executeQuery();
+            if(!rs.next()) retorno = true;
+            statement.close();
+            rs.close();
+            bd.close();
+        } catch(Exception erro) {
+            JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
+        }
+
+        return retorno;
+    }
+
+    private String buscarTodosQuery(boolean buscarApenasComVagasDisponiveis) {
+        StringBuffer query = new StringBuffer();
+        query.append("select * from turma tur");
+        if(buscarApenasComVagasDisponiveis) {
+            query.append("where tur.vagas_disponibilizadas > tur.vagas_ocupadas");
+        }
+        return query.toString();
     }
 
     private String cadastrarQuery() {
@@ -131,6 +169,33 @@ public class turmaDao {
                     "id_professor) " +
                     "values(nextval('turma_Id_Turma_seq'), ?, ?, ?, ?, ?, ?, ?, ?)";
 
+    }    
+
+    public void alocarProfessor(professor professor, turma turma) throws Exception {
+        databaseconn bd = new databaseconn();
+        PreparedStatement statement;
+        try {
+            if(!bd.getConnection()){
+                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                System.exit(0);
+            }
+
+            statement = bd.connection.prepareStatement(this.alocarProfessorQuery());
+            statement.setInt(1, professor.getId_Professor());
+            statement.setInt(2, turma.getId_turma());
+            statement.executeUpdate();
+            statement.close();
+           bd.close();
+        } catch(Exception erro) {
+            throw erro;
+        }
+    }
+
+    private String alocarProfessorQuery() {
+        return "update turma " +
+                "set id_professor = ? " +
+                "where id_turma = ?";
+
     }
 
     private String alocarSalaQuery() {
@@ -138,5 +203,18 @@ public class turmaDao {
                 "set id_sala = ? " +
                 "where id_turma = ?";
 
+    }
+
+    private String buscarTodasSalasNoMesmoHorarioQuery() {
+        return "select " +
+                    "tur.id_turma " +
+                "from " +
+                    "turma tur " +
+                    "left join sala sal on sal.id_sala = tur.id_sala " +
+                "where " +
+                    "tur.horario = ? " +
+                    "and tur.dias like ? " +
+                    "and sal.id_sala = ?" +
+                    "and tur.semestre = ?";
     }
 }
