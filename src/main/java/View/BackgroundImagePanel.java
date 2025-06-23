@@ -2,12 +2,7 @@ package View;
 
 import javax.swing.*;
 
-import View.View_Login.tela_cadastro;
-
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class BackgroundImagePanel extends JPanel {
 

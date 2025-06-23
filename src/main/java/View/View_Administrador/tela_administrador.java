@@ -75,12 +75,12 @@ public class tela_administrador extends JFrame{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 
         painel_cadastros.setBounds(
-            75, 100,
+            125, 100,
             (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
             (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5));
         
         painel_relatorios.setBounds(
-            525, 100,
+            575, 100,
             (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
             (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) );    
 
@@ -91,7 +91,7 @@ public class tela_administrador extends JFrame{
         // painel_cadastros.setBounds(espacamento, 150, LARGURA_PAINEL, ALTURA_PAINEL);
         //painel_relatorios.setBounds(2*espacamento + LARGURA_PAINEL, 150, LARGURA_PAINEL, ALTURA_PAINEL);
         painel_alocacoes.setBounds(
-            975, 100,
+            1025, 100,
             (int)screensize.getWidth() - (int)(screensize.getWidth()/1.3),
             (int)screensize.getHeight() - (int)(screensize.getHeight()/3.5) ); 
         botao_sair.setBounds((int)screensize.getWidth() - 150,27,40,40);

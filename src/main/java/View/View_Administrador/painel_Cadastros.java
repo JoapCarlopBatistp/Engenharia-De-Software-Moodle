@@ -59,9 +59,9 @@ public class painel_Cadastros extends JPanel{
         
        // Config do título 
        titulo.setFont(new Font("Britannic Bold", Font.BOLD, 30));
-        titulo.setForeground(new Color(248, 181, 95));
+        titulo.setForeground(new Color(194,48,160));
         titulo.setBounds(
-            (LARGURA_PAINEL - 300) / 2,  // Centralizado horizontalmente
+            (LARGURA_PAINEL - 300) / 2 + 60,  // Centralizado horizontalmente
             50,                          // Margem superior
             300,                         // Largura
             50                           // Altura
@@ -69,7 +69,7 @@ public class painel_Cadastros extends JPanel{
         add(titulo);
         
         // Configuração dos botões
-        int x = (LARGURA_PAINEL - 260) / 2;  // Centraliza horizontalmente
+        int x = (LARGURA_PAINEL - 260) / 2;   // Centraliza horizontalmente
         int yBase = 150;                     // Posição Y inicial
         int espacamento = 80;                // Espaço entre botões
 
