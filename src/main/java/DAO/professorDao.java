@@ -131,7 +131,7 @@ public class professorDao extends pessoaDao{
     }
 
     private String buscarTodosQuery() {
-        return "select pes.*, pro.id_professor from professor pro	join pessoa pes on pes.id_pessoa = pro.id_pessoa";
+        return "select pes.*, pro.id_professor from professor pro join pessoa pes on pes.id_pessoa = pro.id_pessoa";
     }
     
     private String buscarQuery() {
@@ -162,7 +162,7 @@ public class professorDao extends pessoaDao{
                     "tur.* " +
                 "from "+
                     "turma tur "+
-                    "join professor on tur.id_professor = pro.id_professor "+
+                    "join professor pro on tur.id_professor = pro.id_professor "+
                 "where "+
                     "pro.id_pessoa =  ?";
     }
