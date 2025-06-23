@@ -29,6 +29,7 @@ public class tela_aluno extends JFrame{
     private BackgroundImagePanel backgroundPanel;
     private JLabel imagem_gato_1;
     private JLabel imagem_gato_2;
+    private JLabel imagem_gato_3;
 
     public tela_aluno(sessao sessao) throws IOException{
 
@@ -38,11 +39,10 @@ public class tela_aluno extends JFrame{
         botao_sair = new botao_logout(this, sessao);
         imagem_gato_1 = new JLabel();
         imagem_gato_2 = new JLabel();
+        imagem_gato_3 = new JLabel();
 
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());
-
-
 
         configTela();
         ImageIcon icone_background = new ImageIcon(tela_cadastro.class.getResource("/flat-mountains.png"));
@@ -82,6 +82,11 @@ public class tela_aluno extends JFrame{
         Image gato_2 = icone_gato_2.getImage();
         Image imagemEmEscala_gato_2 = gato_2.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);    
         
+        // Gato Esfinge
+        ImageIcon icone_gato_3 = new ImageIcon(tela_cadastro.class.getResource("/gato_secreto.png"));
+        Image gato_3 = icone_gato_3.getImage();
+        //Image imagemEmEscala_gato_3 = gato_3.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);
+
         imagem_gato_1.setIcon(new ImageIcon(imagemEmEscala_gato_1));
         imagem_gato_1.setBounds(1100, 22, 150, 150);
 
