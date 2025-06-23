@@ -16,6 +16,8 @@ public class sessao extends pessoa {
     private List<notificacao> notificacoes = new ArrayList<notificacao>();
 
     public databaseconn getConnection() {
+        connection = new databaseconn();
+        connection.getConnection();
         return connection;
     }
 
@@ -34,8 +36,6 @@ public class sessao extends pessoa {
     public sessao(pessoa pessoa) throws Exception {
 
         try {
-            connection = new databaseconn();
-            connection.getConnection();
             this.setDdd(pessoa.getDdd());
             this.setEmail(pessoa.getEmail());
             this.setNome(pessoa.getNome());
