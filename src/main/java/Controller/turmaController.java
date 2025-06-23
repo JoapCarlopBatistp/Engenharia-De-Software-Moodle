@@ -1,6 +1,7 @@
 package Controller;
 
 
+import Model.sala;
 import Model.turma;
 
 import java.util.ArrayList;
@@ -25,5 +26,10 @@ public class turmaController {
         turmaDao dao = new turmaDao();
         turmas = dao.buscarTodasTurmas();
         return turmas;
+    }
+
+    public void alocarSala(sala sala, turma turma) throws Exception {
+        turmaDao dao = new turmaDao();
+        dao.alocarSala(sala, turma);
     }
 }

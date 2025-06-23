@@ -60,9 +60,9 @@ public class alunoController {
     private boolean existemHorariosConflitando(turma turmaParaMatricular, sessao sessao){
         for (int i = 0; i < sessao.getTurmasMatriculadas().size(); i++) {
              if(sessao.getTurmasMatriculadas().get(i).getDias().length() > turmaParaMatricular.getDias().length()) {
-                if (sessao.getTurmasMatriculadas().get(i).getDias().contains(turmaParaMatricular.getDias())) return true;
+                if (sessao.getTurmasMatriculadas().get(i).getDias().contains(turmaParaMatricular.getDias()) && sessao.getTurmasMatriculadas().get(i).getHorario().equals(turmaParaMatricular.getHorario())) return true;
             } else {
-                if (turmaParaMatricular.getDias().contains(sessao.getTurmasMatriculadas().get(i).getDias())) return true;
+                if (turmaParaMatricular.getDias().contains(sessao.getTurmasMatriculadas().get(i).getDias()) && sessao.getTurmasMatriculadas().get(i).getHorario().equals(turmaParaMatricular.getHorario())) return true;
                 
             }
         }

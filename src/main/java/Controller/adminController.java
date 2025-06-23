@@ -69,6 +69,11 @@ public class adminController {
         return salas;
     }
 
+    public void alocarSalaTurma(sala sala, turma turma) throws Exception{
+        turmaController controller = new turmaController();
+        controller.alocarSala(sala, turma);
+    }
+
 }
 
     

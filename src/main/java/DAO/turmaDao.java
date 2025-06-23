@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import Database.databaseconn;
+import Model.sala;
 import Model.turma;
 
 public class turmaDao {
@@ -91,6 +92,26 @@ public class turmaDao {
         return turmas;
     }
 
+     public void alocarSala(sala sala, turma turma) throws Exception {
+        databaseconn bd = new databaseconn();
+        PreparedStatement statement;
+        try {
+            if(!bd.getConnection()){
+                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                System.exit(0);
+            }
+
+            statement = bd.connection.prepareStatement(this.alocarSalaQuery());
+            statement.setInt(1, sala.getId_Sala());
+            statement.setInt(2, turma.getId_turma());
+            statement.executeUpdate();
+            statement.close();
+           bd.close();
+        } catch(Exception erro) {
+            throw erro;
+        }
+    }
+
     private String buscarTodosQuery() {
         return "select * from turma tur join cadeira car on car.id_cadeira = tur.id_cadeira";
     }
@@ -109,6 +130,13 @@ public class turmaDao {
                     "id_cadeira, "+
                     "id_professor) " +
                     "values(nextval('turma_Id_Turma_seq'), ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    }
+
+    private String alocarSalaQuery() {
+        return "update turma " +
+                "set id_sala = ? " +
+                "where id_turma = ?";
 
     }
 }
