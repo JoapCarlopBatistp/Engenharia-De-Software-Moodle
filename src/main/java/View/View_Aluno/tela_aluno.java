@@ -11,13 +11,14 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controller.actions_performed.fechar_listener;
 import Model.sessao;
 import View.BackgroundImagePanel;
-import View.botao_logout;
 import View.View_Login.tela_cadastro;
+import View.botao_logout;
 
 public class tela_aluno extends JFrame{
 
@@ -26,6 +27,8 @@ public class tela_aluno extends JFrame{
     private final painel_Aluno painel_aluno;
     private final JButton botao_sair;
     private BackgroundImagePanel backgroundPanel;
+    private JLabel imagem_gato_1;
+    private JLabel imagem_gato_2;
 
     public tela_aluno(sessao sessao) throws IOException{
 
@@ -33,11 +36,13 @@ public class tela_aluno extends JFrame{
         botaoMinimizar = new JButton();
         painel_aluno = new painel_Aluno(sessao);
         botao_sair = new botao_logout(this, sessao);
+        imagem_gato_1 = new JLabel();
+        imagem_gato_2 = new JLabel();
 
         botaoFechar.addActionListener(new fechar_listener());
         botaoMinimizar.addActionListener(new minimizar_listener());
 
-        
+
 
         configTela();
         ImageIcon icone_background = new ImageIcon(tela_cadastro.class.getResource("/flat-mountains.png"));
@@ -66,9 +71,28 @@ public class tela_aluno extends JFrame{
             100,
             (int)screensize.getWidth() - (int)screensize.getWidth()/3,
             (int)screensize.getHeight() - (int)screensize.getHeight()/3);
+
+        // Gato lutando
+        ImageIcon icone_gato_1 = new ImageIcon(tela_cadastro.class.getResource("/gato_lutando.png"));
+        Image gato_1 = icone_gato_1.getImage();
+        Image imagemEmEscala_gato_1 = gato_1.getScaledInstance(150,150,  java.awt.Image.SCALE_SMOOTH);
+
+        // Gato Assutado
+        ImageIcon icone_gato_2 = new ImageIcon(tela_cadastro.class.getResource("/gato_assustado.png"));
+        Image gato_2 = icone_gato_2.getImage();
+        Image imagemEmEscala_gato_2 = gato_2.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);    
         
+        imagem_gato_1.setIcon(new ImageIcon(imagemEmEscala_gato_1));
+        imagem_gato_1.setBounds(1100, 22, 150, 150);
+
+        imagem_gato_2.setIcon(new ImageIcon(imagemEmEscala_gato_2));
+        imagem_gato_2.setBounds(200, 27, 150, 100);
+
         botao_sair.setBounds((int)screensize.getWidth() - 156,27,40,40);
         add(botao_sair);
+
+        add(imagem_gato_1);
+        add(imagem_gato_2);
 
         add(painel_aluno);
         configurarBotoesControle(screensize);
