@@ -135,7 +135,7 @@ public class turmaDao {
 
     }    
 
-     public void alocarProfessor(professor professor, turma turma) throws Exception {
+    public void alocarProfessor(professor professor, turma turma) throws Exception {
         databaseconn bd = new databaseconn();
         PreparedStatement statement;
         try {

@@ -4,7 +4,6 @@ package Controller;
 import Model.sala;
 import Model.turma;
 import Model.professor;
-import Model.sala;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class turmaController {
         turmaDao dao = new turmaDao();
         turmas = dao.buscarTodasTurmas();
         return turmas;
-    }   
+    }
 
     public void alocarProfessor(professor professor, turma turma) throws Exception {
         turmaDao dao = new turmaDao();
