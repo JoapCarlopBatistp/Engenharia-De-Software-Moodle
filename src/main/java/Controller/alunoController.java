@@ -22,8 +22,8 @@ public class alunoController {
     }
 
     public void cadastrarMatricula(turma turmaParaMatricular, sessao sessao) throws Exception {
-       alunoDao alunoDao = new alunoDao();
-
+        alunoDao alunoDao = new alunoDao();
+        turmaController turmaDao = new turmaController();
         if(turmaParaMatricular.getVagas_ocupadas() >=  turmaParaMatricular.getVagas_disponibilizadas()) {
             alunoDao.notificarProfessorMatricula(turmaParaMatricular, sessao);
             return;
@@ -32,6 +32,7 @@ public class alunoController {
             throw new Exception("Matricula rejeitada por conflito de horário");
         }
        alunoDao.cadastrarMatricula(turmaParaMatricular, sessao);
+       turmaDao.incrementarNumeroAlunos(sessao, turmaParaMatricular);
        sessao.buscarTurmasMatriculadas();
     }
 
@@ -78,6 +79,20 @@ public class alunoController {
     public List<turma> buscaTurmasComVagasDisponiveis() {
         turmaController controller = new turmaController();
         return controller.buscaTurmasComVagasDisponiveis();
+    }
+
+    public void matriculaAposProfessorAceitarNotificacao(notificacao notificacao) throws Exception {
+        alunoDao dao = new alunoDao();
+        turmaController controller = new turmaController();
+        sessao sessao = new sessaoController().criarSessaoDePessoa(this.buscaAlunoDaMatricula(notificacao.getId_matricula()));
+        turma turma = controller.buscarTurmaDaMatriculaPendente(notificacao.getId_matricula());
+        dao.cadastrarMatricula(turma, sessao);
+    }
+
+
+    private int buscaAlunoDaMatricula(int id_matricula_pendente) {
+        alunoDao dao = new alunoDao();
+        return dao.buscaIdPessoaAlunoMatriculaPendente(id_matricula_pendente);
     }
 
 }

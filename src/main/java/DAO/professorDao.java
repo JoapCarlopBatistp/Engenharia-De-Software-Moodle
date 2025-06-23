@@ -131,6 +131,24 @@ public class professorDao extends pessoaDao{
         return notificacoes;
     }
 
+    public void atualizarNotificao(notificacao notificacao, sessao sessao) throws Exception {
+        PreparedStatement statement = null;
+        try {
+            statement = sessao.getConnection().connection.prepareStatement(this.atualizarNotificacaoQuery());
+            statement.setString(1, notificacao.getStatus());
+            statement.setInt(2, notificacao.getId_matricula());
+            statement.executeUpdate();
+    
+            statement.close();
+        } catch(Exception erro) {
+            throw erro;
+        }
+    }
+
+    private String atualizarNotificacaoQuery() {
+        return "update notificacao set status = ? where id_matricula_pendente = ?";
+    }
+
     private String buscarTodosQuery() {
         return "select pes.*, pro.id_professor from professor pro join pessoa pes on pes.id_pessoa = pro.id_pessoa";
     }

@@ -80,19 +80,13 @@ public class alunoDao extends pessoaDao{
 
     public void cadastrarMatricula(turma turmaParaMatricular, sessao sessao) throws Exception{
         PreparedStatement statement = null;
-        PreparedStatement statementUpdateTurma = null;
         try {
             statement = sessao.getConnection().connection.prepareStatement(this.cadastrarMatricula());
             statement.setInt(1, sessao.getId());
             statement.setInt(2, turmaParaMatricular.getId_turma());
             statement.executeUpdate();
-
-            statementUpdateTurma = sessao.getConnection().connection.prepareStatement(this.updateVagasTurmasQuery());
-            statementUpdateTurma.setInt(1, turmaParaMatricular.getId_turma());
-            statementUpdateTurma.executeUpdate();
         
             statement.close();
-            statementUpdateTurma.close();
         } catch(Exception erro) {
             throw erro;
         }
@@ -125,7 +119,7 @@ public class alunoDao extends pessoaDao{
     }
 
     public List<turma> buscarTurmasMatriculadas(sessao sessao) throws Exception {
-         List<turma> turmas = new ArrayList<turma>(); 
+        List<turma> turmas = new ArrayList<turma>(); 
         
         PreparedStatement statement;
         ResultSet rs = null;
@@ -214,7 +208,47 @@ public class alunoDao extends pessoaDao{
         return turmas;
     }
 
-     private String buscarTodosQuery() {
+    public int buscaIdPessoaAlunoMatriculaPendente(int id_matricula) {
+        int id_pessoa = 0;
+        databaseconn bd = new databaseconn();
+        PreparedStatement statement;
+        ResultSet rs = null;
+        try {
+            if(!bd.getConnection()){
+                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                System.exit(0);
+            }
+
+            statement = bd.connection.prepareStatement(this.buscarIdPessoaAlunoMatriculaQuery());
+            statement.setInt(1, id_matricula);
+            rs = statement.executeQuery();
+
+            if (rs.next()) {
+                id_pessoa = rs.getInt("id_pessoa");
+            }
+            statement.close();
+            rs.close();
+            bd.close();
+        } catch(Exception erro) {
+            JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
+        }
+
+        return id_pessoa;
+    }
+
+    private String buscarIdPessoaAlunoMatriculaQuery() {
+        return "select " +
+                    "alu.id_pessoa " +
+                "from " +
+                    "matricula_pendente mape " +
+                "join notificacao noti on " +
+                    "mape.id_matricula_pendente = noti.id_matricula_pendente " +
+                "join aluno alu on alu.id_aluno = mape.id_aluno " +
+                "where " +
+                   "mape.id_matricula_pendente = ? ";
+    }
+
+    private String buscarTodosQuery() {
         return "select pes.*, alu.id_aluno from aluno alu	join pessoa pes on pes.id_pessoa = alu.id_pessoa";
     }
     
@@ -275,14 +309,6 @@ public class alunoDao extends pessoaDao{
                     "alu.id_pessoa = ?";
     }
 
-    private String updateVagasTurmasQuery(){
-        return "update " +
-                    "turma "+
-                "set "+
-                    "vagas_ocupadas = vagas_ocupadas + 1 "+
-                "where "+
-                    "Id_Turma = ?";
-    }
     private String cadastrarNotificacaoAlunoQuery(){
         return "INSERT INTO notificacao "+
         "(id_professor, status, id_matricula_pendente) " +

@@ -34,5 +34,18 @@ public class professorController {
 
         return turmas;
     }
+
+    public void processarNotificacaoMatricula(notificacao notificacao, sessao sessao) throws Exception {
+        try {
+            professorDao dao = new professorDao();
+            dao.atualizarNotificao(notificacao, sessao);
+            if(notificacao.getStatus().equals("ACE")) {
+                alunoController control = new alunoController();
+                control.matriculaAposProfessorAceitarNotificacao(notificacao);
+            }
+        } catch(Exception ex) {
+            throw ex;
+        }
+    }
     
 }

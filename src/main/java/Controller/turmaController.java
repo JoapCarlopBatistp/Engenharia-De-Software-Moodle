@@ -2,6 +2,7 @@ package Controller;
 
 
 import Model.sala;
+import Model.sessao;
 import Model.turma;
 import Model.professor;
 
@@ -55,5 +56,15 @@ public class turmaController {
         turmas = dao.buscarTodasTurmas(true);
         return turmas;
 
+    }
+
+    public void incrementarNumeroAlunos(sessao sessao, turma turma) throws Exception {
+        turmaDao dao = new turmaDao();
+        dao.incrementarVagasOcupadas(sessao, turma);
+    }
+
+    public turma buscarTurmaDaMatriculaPendente(int id_matricula_pendente) throws Exception {
+        turmaDao dao = new turmaDao();
+        return dao.buscaTurmaMatriculaPendente(id_matricula_pendente);
     }
 }

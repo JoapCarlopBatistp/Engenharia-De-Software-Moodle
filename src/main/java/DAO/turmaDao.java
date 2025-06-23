@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 
 import Database.databaseconn;
 import Model.sala;
+import Model.sessao;
 import Model.turma;
 import Model.professor;
-import Model.sala;
 
 public class turmaDao {
      public void cadastrar(turma turma){
@@ -189,6 +189,78 @@ public class turmaDao {
         } catch(Exception erro) {
             throw erro;
         }
+    }
+
+    public void incrementarVagasOcupadas(sessao sessao, turma turma) throws Exception {
+        PreparedStatement statementUpdateTurma = null;
+        try {
+
+            statementUpdateTurma = sessao.getConnection().connection.prepareStatement(this.updateVagasTurmasQuery());
+            statementUpdateTurma.setInt(1, turma.getId_turma());
+            statementUpdateTurma.executeUpdate();
+        
+            statementUpdateTurma.close();
+        } catch(Exception erro) {
+            throw erro;
+        }
+    } 
+
+    public turma buscaTurmaMatriculaPendente(int id_matricula_pendente) {
+        
+        turma turma = new turma ();
+        databaseconn bd = new databaseconn();
+        PreparedStatement statement;
+        ResultSet rs = null;
+        try {
+            if(!bd.getConnection()){
+                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                System.exit(0);
+            }
+
+            statement = bd.connection.prepareStatement(this.buscarTurmaMatriculaPendenteQuery());
+            statement.setInt(1, id_matricula_pendente);
+            rs = statement.executeQuery();
+
+            if (rs.next()) {
+                turma.setId_turma(rs.getInt("Id_Turma"));
+                turma.setSemestre(rs.getString("semestre"));
+                turma.setVagas_disponibilizadas(rs.getInt("vagas_disponibilizadas"));
+                turma.setVagas_ocupadas(rs.getInt("vagas_ocupadas"));
+                turma.setDias(rs.getString("dias"));
+                turma.setHorario(rs.getString("horario"));
+                turma.setId_sala(rs.getInt("id_sala"));
+                turma.setId_cadeira(rs.getInt("id_cadeira"));
+                turma.setId_professor(rs.getInt("id_professor"));
+            }
+            statement.close();
+            rs.close();
+            bd.close();
+        } catch(Exception erro) {
+            JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
+        }
+
+        return turma;
+    }
+
+    private String buscarTurmaMatriculaPendenteQuery() {
+        return "select " +
+                    "tur.* " +
+                "from" +
+                    "matricula_pendente mape " +
+                "join notificacao noti on " +
+                    "mape.id_matricula_pendente = noti.id_matricula_pendente " +
+                "join turma tur on tur.id_turma  = mape.id_turma " +
+                "where " +
+                    "mape.id_matricula_pendente = ?";
+    }
+
+    private String updateVagasTurmasQuery(){
+        return "update " +
+                    "turma "+
+                "set "+
+                    "vagas_ocupadas = vagas_ocupadas + 1 "+
+                "where "+
+                    "Id_Turma = ?";
     }
 
     private String alocarProfessorQuery() {

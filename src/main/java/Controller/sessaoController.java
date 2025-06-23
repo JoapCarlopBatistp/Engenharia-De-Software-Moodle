@@ -18,4 +18,13 @@ public class sessaoController {
             throw ex;
         }
     }
+
+    public sessao criarSessaoDePessoa(int id_pessoa) throws Exception {
+        try{
+            sessaoDao sessaoDao = new sessaoDao();
+            return sessaoDao.criarSessao(id_pessoa);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }
