@@ -10,7 +10,7 @@ import Model.turma;
 
 public class professorController {
 
-    public List<notificacao> buscarNotificacoesParaProcessar(sessao sessao) throws Exception {
+    public static List<notificacao> buscarNotificacoesParaProcessar(sessao sessao) throws Exception {
         List<notificacao> notificacoes = new ArrayList<notificacao>();
         try {
             professorDao dao = new professorDao();
