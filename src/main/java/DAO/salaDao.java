@@ -54,7 +54,8 @@ public class salaDao {
                 salas.add(sala);
             }
             statement.close();
-           bd.close();
+            rs.close();
+            bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -84,7 +85,8 @@ public class salaDao {
                 salas.add(sala);
             }
             statement.close();
-           bd.close();
+            rs.close();
+            bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }

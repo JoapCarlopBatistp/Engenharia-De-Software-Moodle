@@ -66,6 +66,7 @@ public class administradorDao extends pessoaDao {
                 admins.add(admin);
             }
             statement.close();
+            rs.close();
             bd.connection.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());

@@ -75,4 +75,9 @@ public class alunoController {
         return dao.historicoMatriculasAluno(sessao);
     }
 
+    public List<turma> buscaTurmasComVagasDisponiveis() {
+        turmaController controller = new turmaController();
+        return controller.buscaTurmasComVagasDisponiveis();
+    }
+
 }

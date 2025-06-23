@@ -62,7 +62,8 @@ public class pessoaDao{
                 pessoa.setUsername(rs.getString("Nome_de_Usuario"));
             }
             statement.close();
-           bd.close();
+            rs.close();
+            bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -96,7 +97,8 @@ public class pessoaDao{
                 pessoas.add(pessoa);
             }
             statement.close();
-           bd.close();
+            rs.close();
+            bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }

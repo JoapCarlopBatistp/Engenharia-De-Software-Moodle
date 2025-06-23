@@ -25,7 +25,7 @@ public class turmaController {
     public List<turma> listarTurmas() {
         List<turma> turmas = new ArrayList<turma>();
         turmaDao dao = new turmaDao();
-        turmas = dao.buscarTodasTurmas();
+        turmas = dao.buscarTodasTurmas(false);
         return turmas;
     }
 
@@ -36,6 +36,24 @@ public class turmaController {
 
     public void alocarSala(sala sala, turma turma) throws Exception {
         turmaDao dao = new turmaDao();
-        dao.alocarSala(sala, turma);
+        if(this.salaEstaDisponivelNoHorario(turma, sala)){
+            dao.alocarSala(sala, turma);
+            return;
+        }
+        throw new Exception("A turma não está disponivel neste horário.");
+    }
+
+    public boolean salaEstaDisponivelNoHorario(turma turma, sala sala) {
+        turmaDao dao = new turmaDao();
+        return dao.verificaDisponibilidadeSala(turma, sala);
+
+    }
+
+    public List<turma> buscaTurmasComVagasDisponiveis() {
+        List<turma> turmas = new ArrayList<turma>();
+        turmaDao dao = new turmaDao();
+        turmas = dao.buscarTodasTurmas(true);
+        return turmas;
+
     }
 }

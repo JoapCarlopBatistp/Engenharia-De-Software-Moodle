@@ -69,7 +69,8 @@ public class alunoDao extends pessoaDao{
                 alunos.add(aluno);
             }
             statement.close();
-           bd.close();
+            rs.close();
+            bd.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -147,6 +148,7 @@ public class alunoDao extends pessoaDao{
                 turmas.add(turma);
             }
             statement.close();
+            rs.close();
         } catch(Exception erro) {
             throw erro;
         }
@@ -172,6 +174,7 @@ public class alunoDao extends pessoaDao{
                 notificacoesDoAluno.add(notificacao);
             }
             statement.close();
+            rs.close();
         } catch(Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu no cadastro:\n " + erro.toString());
         }
@@ -203,6 +206,7 @@ public class alunoDao extends pessoaDao{
                 turmas.add(turma);
             }
             statement.close();
+            rs.close();
         } catch(Exception erro) {
             throw erro;
         }

@@ -53,6 +53,7 @@ public class cadeiraDao {
                 cadeira.setNome_Cadeira(rs.getString("Nome"));
                 cadeira.setCodigo_Cadeira(rs.getString("Codigo"));                
             }
+            rs.close();
             statement.close();
             bd.connection.close();
         } catch(Exception erro) {
@@ -83,6 +84,7 @@ public class cadeiraDao {
                 cadeira.setId_Cadeira(rs.getInt("Id_Cadeira"));
                 cadeiras.add(cadeira);
             }
+            rs.close();
             statement.close();
             bd.connection.close();
         } catch(Exception erro) {
