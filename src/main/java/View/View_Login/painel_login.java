@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 
 import Controller.sessaoController;
 import Model.roleEnum;
@@ -65,15 +68,28 @@ public class painel_login extends JPanel {
         usuario.setBackground(new Color(61,54,92));
         usuario.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         usuario.setForeground(new Color(194,48,160));
+        usuario.setCaretColor(new Color(194,48,160));
 
+        Border paddingBorder = new EmptyBorder(0, 10, 0, 10);
+        Border originalBorderUsuario = usuario.getBorder();
+
+        usuario.setBorder(new CompoundBorder(originalBorderUsuario, paddingBorder));
+  
         titulo_senha.setFont(new Font("Verdana", Font.BOLD, 18));
         titulo_senha.setForeground(new Color(194,48,160));
         titulo_senha.setBounds(40,370,150,100);
+
+
 
         senha.setBounds(40, 440, 300, 40);
         senha.setBackground(new Color(61,54,92));
         senha.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         senha.setForeground(new Color(194,48,160));
+        senha.setCaretColor(new Color(194,48,160));
+
+        Border originalBorderSenha = senha.getBorder();
+
+        senha.setBorder(new CompoundBorder(originalBorderSenha, paddingBorder));
 
         botao_login.setBounds(70, 530, 230, 50);
         botao_login.setBackground(new Color(61,54,92));
