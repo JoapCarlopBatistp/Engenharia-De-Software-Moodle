@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.io.IOException;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -162,12 +163,18 @@ public class painel_Cadastros extends JPanel{
         myPanel.add(Box.createHorizontalStrut(15)); // a spacer
         myPanel.add(new JLabel("Digite o horário da turma:"));
         myPanel.add(horario);
-        myPanel.add(new JLabel("Nome da Cadeira:"));
-        myPanel.add(comboBoxCadeira);
-        myPanel.add(new JLabel("Nome de Professores:"));
-        myPanel.add(comboBoxProfessor);
-        myPanel.add(new JLabel("Escolha uma sala para a turma:"));
-        myPanel.add(comboBoxSala);
+
+        JPanel myPanel2 = new JPanel();
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+        myPanel2.setLayout(new BoxLayout(myPanel2, BoxLayout.Y_AXIS));
+        myPanel2.add(new JLabel("Nome da Cadeira:"));
+        myPanel2.add(comboBoxCadeira);
+        myPanel2.add(new JLabel("Nome de Professores:"));
+        myPanel2.add(comboBoxProfessor);
+        myPanel2.add(new JLabel("Escolha uma sala para a turma:"));
+        myPanel2.add(comboBoxSala);
+
+        myPanel.add(myPanel2);
 
         int result = JOptionPane.showConfirmDialog(null, myPanel, 
                 "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
