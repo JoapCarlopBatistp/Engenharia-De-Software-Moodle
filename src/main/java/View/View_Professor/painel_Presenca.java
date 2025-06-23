@@ -37,8 +37,8 @@ public class painel_Presenca extends JPanel{
 
         // Config do título 
         titulo.setFont(new Font("Britannic Bold", Font.BOLD, 30));
-        titulo.setForeground(new Color(248, 181, 95));
-        titulo.setBounds(50,20,150,100);
+        titulo.setForeground(new Color(194,48,160));
+        titulo.setBounds(115,20,150,100);
         add(titulo);
         
                 // Configuração dos botões
