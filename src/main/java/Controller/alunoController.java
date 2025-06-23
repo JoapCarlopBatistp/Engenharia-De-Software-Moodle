@@ -32,6 +32,7 @@ public class alunoController {
             throw new Exception("Matricula rejeitada por conflito de horário");
         }
        alunoDao.cadastrarMatricula(turmaParaMatricular, sessao);
+       sessao.buscarTurmasMatriculadas();
     }
 
     public List<notificacao> buscarNotificacoesProcessadas (sessao sessaoAtual) {
