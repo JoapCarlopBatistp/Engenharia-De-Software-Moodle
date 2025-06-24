@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Controller.alunoController;
+import Controller.reports.report_historico_aluno;
 import Controller.reports.report_minhas_turmas;
 import Model.sessao;
 import Model.turma;
@@ -37,6 +38,7 @@ public class painel_Aluno extends JPanel{
         botao_turmas_disponiveis.addActionListener(e -> this.visualizarTurmasDisponiveis());
         
         botao_turmas_atuais.addActionListener(new report_minhas_turmas(sessao));
+        botao_historico.addActionListener(new report_historico_aluno(sessao));
         setVisible(true);
     }
 
