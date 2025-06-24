@@ -31,7 +31,7 @@ public class tela_professor extends JFrame{
         botaoFechar = new JButton();
         botaoMinimizar = new JButton();
         painel_professor = new painel_Professor(sessao);
-        painel_presenca = new painel_Presenca();
+        painel_presenca = new painel_Presenca(sessao);
         botao_sair = new botao_logout(this, sessao);
         imagem_gato = new JLabel();
         imagem_professor = new JLabel();

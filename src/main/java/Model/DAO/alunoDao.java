@@ -38,6 +38,39 @@ public class alunoDao extends pessoaDao{
         }
     }
 
+    public List<aluno> buscarAlunosPorTurma(int idTurma) {
+    List<aluno> alunos = new ArrayList<>();
+    databaseconn bd = new databaseconn();
+    PreparedStatement statement = null;
+    ResultSet rs = null;
+    try {
+        if(!bd.getConnection()){
+            JOptionPane.showMessageDialog(null, "Falha na conexão, o sistema será fechado!");
+            System.exit(0);
+        }
+        // Supondo que a tabela de relacionamento se chama 'aluno_turma'
+        String sql = "SELECT a.* FROM aluno a " +
+                     "JOIN aluno_turma at ON a.id_aluno = at.id_aluno " +
+                     "WHERE at.id_turma = ?";
+        statement = bd.connection.prepareStatement(sql);
+        statement.setInt(1, idTurma);
+        rs = statement.executeQuery();
+        while(rs.next()) {
+            aluno a = new aluno();
+            a.setId_Aluno(rs.getInt("id_aluno"));
+            a.setNome(rs.getString("nome")); // Ajuste conforme seus campos
+            // Adicione outros setters se necessário
+            alunos.add(a);
+        }
+        statement.close();
+        rs.close();
+        bd.close();
+    } catch(Exception erro) {
+        JOptionPane.showMessageDialog(null, "Erro ao buscar alunos da turma:\\n " + erro.toString());
+    }
+    return alunos;
+}
+
     public pessoa buscar(String username) {
         return super.buscar(username, this.buscarQuery());
     }

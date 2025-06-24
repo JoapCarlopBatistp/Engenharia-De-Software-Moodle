@@ -1,19 +1,31 @@
 
 package View.View_Professor;
 
+import View.TabelaPresencaUtil;
 import View.botao_redondo;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.io.IOException;
+import java.util.List;
+
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Controller.presencaController;
+import Controller.turmaController;
+import Model.presenca;
+import Model.sessao;
+import Model.turma;
 
 public class painel_Presenca extends JPanel{
 
-    public painel_Presenca() throws IOException{
-
+    private sessao sessao;
+    public painel_Presenca(sessao sessao) throws IOException{
+        this.sessao = sessao;
         JLabel titulo = new JLabel("Presença");
         botao_redondo botao_relatorio_presenca = new botao_redondo("Gerar Relatório de Presença");
         botao_redondo botao_verificar_presenca = new botao_redondo("Fazer chamada");
@@ -22,6 +34,7 @@ public class painel_Presenca extends JPanel{
 
         configPainel();
         adicionaComponentes(titulo, botoes );
+        botao_verificar_presenca.addActionListener(e->this.fazerChamada());
         setVisible(true);
     }
 
@@ -57,6 +70,36 @@ public class painel_Presenca extends JPanel{
 
 
     }
+
+    private void fazerChamada() {
+    JComboBox<turma> comboBoxTurma = new JComboBox<>(this.sessao.getTurmasEnsinadas().toArray(new turma[0]));
+    presencaController controller = new presencaController();
+    TabelaPresencaUtil tabela = new TabelaPresencaUtil();
+    JPanel myPanel = new JPanel();
+    myPanel.add(new JLabel("Escolha uma turma:"));
+    myPanel.add(comboBoxTurma);
+
+    int option = JOptionPane.showConfirmDialog(null, myPanel, 
+            "Seleção de Turma", JOptionPane.OK_CANCEL_OPTION);
+
+    if (option == JOptionPane.OK_OPTION) {
+        turma turmaSelecionada = (turma) comboBoxTurma.getSelectedItem();
+
+        // Monte a lista de presencas (de acordo com sua lógica/banco)
+        List<presenca> listaPresenca = controller.buscarPresencasPorTurma(turmaSelecionada); // Você precisa implementar esse método
+
+        // Mostra a tabela para o professor marcar presença
+        List<presenca> resultado = tabela.mostrarTabelaPresenca(listaPresenca);
+
+        // Aqui você pode salvar/processar o resultado como quiser
+        if (resultado != null && !resultado.isEmpty()) {
+            // Salve as presenças (ex: enviar para o banco, etc)
+            controller.salvarPresencas(resultado); // Implemente de acordo com seu app!
+            JOptionPane.showMessageDialog(this, "Presenças salvas com sucesso!");
+        }
+    }
+}
+    
 
 }
 

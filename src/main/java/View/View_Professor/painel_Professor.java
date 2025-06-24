@@ -43,16 +43,13 @@ public class painel_Professor extends JPanel{
         configPainel();
         adicionaComponentes(titulo, botoes );
 
-        // botao_autorizar_matricula.addActionListener(e -> {
-        //     try {
-        //         this.painelAutorizar();
-        //     } catch (Exception e1) {
-        //         // TODO Auto-generated catch block
-        //         e1.printStackTrace();
-        //     }
-        // });
-
-        // botao_chamada.addActionListener(e->this.fazerChamada());
+        botao_autorizar_matricula.addActionListener(e -> {
+            try {
+                this.painelAutorizar();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
         
         setVisible(true);
     }
@@ -88,72 +85,63 @@ public class painel_Professor extends JPanel{
         }
 
     }
-    // private int painelAutorizar() throws Exception{        
-    //     JTextField CapacidadeField = new JTextField(2);
+    private int painelAutorizar() throws Exception{        
+        JTextField CapacidadeField = new JTextField(2);
+        professorController professorController = new professorController();
+        JPanel myPanel = new JPanel();   
+        Object[] opcoes = {"Autorizar", "Negar", "Cancelar"};
+        notificacao[] verificacao = professorController.buscarNotificacoesParaProcessar(sessao).toArray(new notificacao[0]);
+        JComboBox<notificacao> comboBoxNotificacoes = new JComboBox<>(professorController.buscarNotificacoesParaProcessar(sessao).toArray(new notificacao[0]));
 
-    //     JPanel myPanel = new JPanel();   
-    //     Object[] opcoes = {"Autorizar", "Negar", "Cancelar"};
-    //     notificacao[] verificacao = professorController.buscarNotificacoesParaProcessar(sessao).toArray(new notificacao[0]);
-    //     JComboBox<notificacao> comboBoxNotificacoes = new JComboBox<>(professorController.buscarNotificacoesParaProcessar(sessao).toArray(new notificacao[0]));
-
-    //     if(verificacao.length == 0){
-    //         myPanel.add(new JLabel("Nenhuma notificação pendente"));
-    //         int resultado = JOptionPane.showConfirmDialog(null, myPanel, 
-    //             "Selecionar matrícula para autorizar: ", JOptionPane.OK_CANCEL_OPTION);
-    //         if (resultado == JOptionPane.OK_CANCEL_OPTION){
-    //             return -1;
-    //         }
-    //         return -1;
-    //     }
-    //     myPanel.add(comboBoxNotificacoes);
+        if(verificacao.length == 0){
+            myPanel.add(new JLabel("Nenhuma notificação pendente"));
+            int resultado = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Selecionar matrícula para autorizar: ", JOptionPane.OK_CANCEL_OPTION);
+            if (resultado == JOptionPane.OK_CANCEL_OPTION){
+                return -1;
+            }
+            return -1;
+        }
+        myPanel.add(comboBoxNotificacoes);
 
 
 
-    //     int result = JOptionPane.showConfirmDialog(null, myPanel, 
-    //             "Selecionar matrícula para autorizar: ", JOptionPane.OK_CANCEL_OPTION);
-    //     if (result == JOptionPane.OK_OPTION) {
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Selecionar matrícula para autorizar: ", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
 
-    //         int resposta = JOptionPane.showOptionDialog(
-    //         null,
-    //         "Deseja autorizar ou negar o aluno?",
-    //         "Aviso",
-    //         JOptionPane.DEFAULT_OPTION,
-    //         JOptionPane.WARNING_MESSAGE,
-    //         null,
-    //         opcoes,
-    //         opcoes[0] // botão padrão
-    //         );
+            int resposta = JOptionPane.showOptionDialog(
+            null,
+            "Deseja autorizar ou negar o aluno?",
+            "Aviso",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.WARNING_MESSAGE,
+            null,
+            opcoes,
+            opcoes[0] // botão padrão
+            );
 
-    //         switch (resposta) {
-    //             case 0:
-    //                 System.out.println("Usuário escolheu Autorizar");
-    //                 break;
-    //             case 1:
-    //                 System.out.println("Usuário escolheu Negar");
-    //                 break;
-    //             case 2:
-    //                 System.out.println("Usuário escolheu Cancelar");
-    //                 break;
-    //             case JOptionPane.CLOSED_OPTION:
-    //                 System.out.println("Usuário fechou o diálogo (X)");
-    //                 break;
-    //         }
-    //         return Integer.parseInt(CapacidadeField.getText());
-    //     }
-    //     return -1;
+            switch (resposta) {
+                case 0:
+                    System.out.println("Usuário escolheu Autorizar");
+                    break;
+                case 1:
+                    System.out.println("Usuário escolheu Negar");
+                    break;
+                case 2:
+                    System.out.println("Usuário escolheu Cancelar");
+                    break;
+                case JOptionPane.CLOSED_OPTION:
+                    System.out.println("Usuário fechou o diálogo (X)");
+                    break;
+            }
+            return Integer.parseInt(CapacidadeField.getText());
+        }
+        return -1;
 
-    // }
+    }
 
-    // private void fazerChamada() {
-    //     JPanel myPanel = new JPanel();
-    //     JComboBox<turma> comboBoxTurma = new JComboBox<>(this.sessao.getTurmasEnsinadas().toArray(new sala[0]));
-
-    //     myPanel.add(new JLabel("Escolha uma"));
-    //     myPanel.add(comboBoxTurma);
-
-    //     JOptionPane.showConfirmDialog(null, myPanel, 
-    //             "Por favor cadastre os dados: ", JOptionPane.OK_CANCEL_OPTION);
-    // }
+   
 
 }
 

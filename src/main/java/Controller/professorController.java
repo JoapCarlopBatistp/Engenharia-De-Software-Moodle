@@ -10,7 +10,7 @@ import Model.DAO.professorDao;
 
 public class professorController {
 
-    public static List<notificacao> buscarNotificacoesParaProcessar(sessao sessao) throws Exception {
+    public List<notificacao> buscarNotificacoesParaProcessar(sessao sessao) throws Exception {
         List<notificacao> notificacoes = new ArrayList<notificacao>();
         try {
             professorDao dao = new professorDao();
