@@ -6,7 +6,7 @@ import java.util.List;
 
 import Controller.alunoController;
 import Controller.professorController;
-import Database.databaseconn;
+import Model.Database.databaseconn;
 
 public class sessao extends pessoa {
 

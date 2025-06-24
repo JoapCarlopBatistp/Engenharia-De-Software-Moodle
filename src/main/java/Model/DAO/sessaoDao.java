@@ -1,13 +1,13 @@
-package DAO;
+package Model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
-import Database.databaseconn;
 import Model.pessoa;
 import Model.sessao;
+import Model.Database.databaseconn;
 
 public class sessaoDao {
 

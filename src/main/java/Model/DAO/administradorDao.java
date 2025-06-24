@@ -1,4 +1,4 @@
-package DAO;
+package Model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +7,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Database.databaseconn;
 import Model.admin;
 import Model.pessoa;
+import Model.Database.databaseconn;
 
 public class administradorDao extends pessoaDao {
     public void cadastrar(pessoa pessoa){

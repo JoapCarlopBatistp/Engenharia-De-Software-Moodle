@@ -1,4 +1,4 @@
-package DAO;
+package Model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,10 +8,10 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Database.databaseconn;
 import Model.sala;
 import Model.sessao;
 import Model.turma;
+import Model.Database.databaseconn;
 import Model.professor;
 
 public class turmaDao {
