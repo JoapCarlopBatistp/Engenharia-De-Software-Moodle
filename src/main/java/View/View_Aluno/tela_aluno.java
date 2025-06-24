@@ -67,8 +67,8 @@ public class tela_aluno extends JFrame{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 
         painel_aluno.setBounds(
-            75,
-            100,
+            270,
+            150,
             (int)screensize.getWidth() - (int)screensize.getWidth()/3,
             (int)screensize.getHeight() - (int)screensize.getHeight()/3);
 
@@ -82,19 +82,12 @@ public class tela_aluno extends JFrame{
         Image gato_2 = icone_gato_2.getImage();
         Image imagemEmEscala_gato_2 = gato_2.getScaledInstance(150,100,  java.awt.Image.SCALE_SMOOTH);    
         
-        // Gato Esfinge
-        ImageIcon icone_gato_3 = new ImageIcon(tela_cadastro.class.getResource("/gato_secreto.png"));
-        Image gato_3 = icone_gato_3.getImage();
-        Image imagemEmEscala_gato_3 = gato_3.getScaledInstance(250, 175,  java.awt.Image.SCALE_SMOOTH);
 
         imagem_gato_1.setIcon(new ImageIcon(imagemEmEscala_gato_1));
-        imagem_gato_1.setBounds(1100, 22, 150, 150);
+        imagem_gato_1.setBounds(500, 5, 150, 150);
 
         imagem_gato_2.setIcon(new ImageIcon(imagemEmEscala_gato_2));
-        imagem_gato_2.setBounds(200, 27, 150, 100);
-
-        imagem_gato_3.setIcon(new ImageIcon(imagemEmEscala_gato_3));
-        imagem_gato_3.setBounds(1050, 450, 250, 175);
+        imagem_gato_2.setBounds(700, 59, 150, 100);
 
         botao_sair.setBounds((int)screensize.getWidth() - 156,27,40,40);
         add(botao_sair);
