@@ -5,14 +5,13 @@ import Model.pessoa;
 import Model.professor;
 import Model.sala;
 import Model.turma;
+import Model.DAO.alunoDao;
+import Model.DAO.cadeiraDao;
+import Model.DAO.professorDao;
+import Model.DAO.salaDao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import DAO.alunoDao;
-import DAO.cadeiraDao;
-import DAO.professorDao;
-import DAO.salaDao;
 
 
 public class adminController {

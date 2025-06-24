@@ -3,10 +3,10 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.professorDao;
 import Model.notificacao;
 import Model.sessao;
 import Model.turma;
+import Model.DAO.professorDao;
 
 public class professorController {
 

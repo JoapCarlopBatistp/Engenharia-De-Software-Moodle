@@ -1,4 +1,4 @@
-package DAO;
+package Model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Database.databaseconn;
 import Model.cadeira;
+import Model.Database.databaseconn;
 
 public class cadeiraDao {
     public void cadastrar(cadeira cadeira){

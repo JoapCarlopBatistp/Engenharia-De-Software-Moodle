@@ -1,7 +1,7 @@
 package Controller;
 
-import DAO.sessaoDao;
 import Model.sessao;
+import Model.DAO.sessaoDao;
 
 public class sessaoController {
     

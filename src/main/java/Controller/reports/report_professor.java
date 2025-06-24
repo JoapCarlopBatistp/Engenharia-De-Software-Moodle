@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import Model.professor;
+import Model.DAO.professorDao;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -14,7 +15,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
-import DAO.professorDao;
 
 public class report_professor implements ActionListener{
 

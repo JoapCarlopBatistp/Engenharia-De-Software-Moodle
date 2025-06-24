@@ -4,11 +4,10 @@ import Model.aluno;
 import Model.notificacao;
 import Model.sessao;
 import Model.turma;
+import Model.DAO.alunoDao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import DAO.alunoDao;
 
 
 

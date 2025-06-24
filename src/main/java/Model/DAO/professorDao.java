@@ -1,4 +1,4 @@
-package DAO;
+package Model.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,12 +7,12 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import Database.databaseconn;
 import Model.notificacao;
 import Model.pessoa;
 import Model.professor;
 import Model.sessao;
 import Model.turma;
+import Model.Database.databaseconn;
 
 public class professorDao extends pessoaDao{
 

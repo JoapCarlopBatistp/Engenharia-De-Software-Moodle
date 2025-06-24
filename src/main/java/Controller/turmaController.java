@@ -4,12 +4,11 @@ package Controller;
 import Model.sala;
 import Model.sessao;
 import Model.turma;
+import Model.DAO.turmaDao;
 import Model.professor;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import DAO.turmaDao;
 
 
 public class turmaController {
