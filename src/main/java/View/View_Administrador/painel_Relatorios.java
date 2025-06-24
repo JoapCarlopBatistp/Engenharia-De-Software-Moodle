@@ -2,14 +2,23 @@ package View.View_Administrador;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Controller.alunoController;
+import Controller.reports.report_historico_aluno;
 import Controller.reports.report_professor;
 import Controller.reports.report_sala;
 import Controller.reports.report_turma_vagas;
+import Controller.sessaoController;
+import Model.aluno;
+import Model.sessao;
 import static View.View_Administrador.tela_administrador.ALTURA_PAINEL;
 import static View.View_Administrador.tela_administrador.LARGURA_PAINEL;
 import View.botao_redondo;
@@ -32,7 +41,7 @@ public class painel_Relatorios extends JPanel{
         botao_sala.addActionListener(new report_sala());
         botao_turma_vagas.addActionListener(new report_turma_vagas());
         botao_profe.addActionListener(new report_professor());
-
+        botao_matricula.addActionListener(e -> this.PainelHistorico());
         // Array para o loop
         botao_redondo[] botoes = {botao_sala, botao_turma_vagas, botao_turma_professores, botao_matricula, botao_profe};
 
@@ -73,6 +82,38 @@ public class painel_Relatorios extends JPanel{
             add(btn);
         }
 
+    }
+
+    private void PainelHistorico() {
+        alunoController controller = new alunoController();
+        JPanel myPanel = new JPanel();
+        
+        JComboBox<aluno> comboBoxAluno = new JComboBox<>(controller.buscarTodosALunos().toArray(new aluno[0]));
+        myPanel.add(new JLabel("Selecione o aluno: "));
+        myPanel.add(comboBoxAluno);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                "Gerar histórico de matrícula", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            aluno alunoSelecionado = (aluno) comboBoxAluno.getSelectedItem();
+            
+            // Mágica para criar a sessao do aluno
+            sessao sessao_aluno;
+            try {
+                sessao_aluno = new sessaoController().criarSessaoDePessoa(alunoSelecionado.getId()  );
+                //  System.out.println("Sem erro para criar a sessao");
+            } catch (Exception ex) {
+                // System.out.println(ex.getMessage());
+                sessao_aluno = null;
+            }
+            
+            // criando um listener na mão
+             ActionListener listener = new report_historico_aluno(sessao_aluno);
+             listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "OK"));              
+            
+        }
+        //return null;
     }
 
 }

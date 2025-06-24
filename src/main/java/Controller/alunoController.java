@@ -10,8 +10,6 @@ import java.util.List;
 
 import DAO.alunoDao;
 
-
-
 public class alunoController {
     
     public alunoController() {
@@ -96,7 +94,7 @@ public class alunoController {
     }
 
 
-    private int buscaAlunoDaMatricula(int id_matricula_pendente) {
+    public int buscaAlunoDaMatricula(int id_matricula_pendente) {
         alunoDao dao = new alunoDao();
         return dao.buscaIdPessoaAlunoMatriculaPendente(id_matricula_pendente);
     }
