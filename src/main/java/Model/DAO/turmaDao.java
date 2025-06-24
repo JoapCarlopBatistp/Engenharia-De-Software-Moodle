@@ -286,7 +286,7 @@ public class turmaDao {
                 "where " +
                     "tur.horario = ? " +
                     "and tur.dias like ? " +
-                    "and sal.id_sala = ?" +
+                    "and sal.id_sala = ? " +
                     "and tur.semestre = ?";
     }
 }
