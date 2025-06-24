@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.aluno;
 import Model.notificacao;
 import Model.sessao;
 import Model.turma;
@@ -70,6 +71,11 @@ public class alunoController {
         return false;
 
     }
+
+    public List<aluno> buscarTodosALunos() {
+        alunoDao dao = new alunoDao();
+        return dao.buscarTodoAlunos();
+    } 
 
     public List<turma> historicoMatriculasAluno(sessao sessao) throws Exception {
         alunoDao dao = new alunoDao();
